@@ -1,0 +1,549 @@
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ ls
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ FidelityLeapDemos/
+ IdeaProjects/
+ Links/
+'Local Settings'@
+ Music/
+'My Documents'@
+ NTUSER.DAT
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TM.blf
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+'Start Menu'@
+ Templates@
+ Untitled.ipynb
+ Videos/
+ docker-extras/
+ leap-sprint1/
+ lil-leap/
+ mod-10/
+ module-10/
+ module-10REAL/
+ module11_v1/
+ notes.txt
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ source/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ git clone https://github.com/Neueda-Technologies
+Cloning into 'Neueda-Technologies'...
+remote: Not Found
+fatal: repository 'https://github.com/Neueda-Technologies/' not found
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ git clone https://github.com/Neueda-Technologies/leap-sprint2
+Cloning into 'leap-sprint2'...
+remote: Enumerating objects: 491, done.
+remote: Counting objects: 100% (491/491), done.
+remote: Compressing objects: 100% (252/252), done.
+remote: Total 491 (delta 166), reused 463 (delta 138), pack-reused 0 (from 0)
+Receiving objects: 100% (491/491), 145.45 KiB | 11.19 MiB/s, done.
+Resolving deltas: 100% (166/166), done.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd leap-sprint2
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/leap-sprint2 (main)
+$ code .
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/leap-sprint2 (main)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ ls
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ FidelityLeapDemos/
+ IdeaProjects/
+ Links/
+'Local Settings'@
+ Music/
+'My Documents'@
+ NTUSER.DAT
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TM.blf
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+'Start Menu'@
+ Templates@
+ Untitled.ipynb
+ Videos/
+ docker-extras/
+ leap-sprint1/
+ leap-sprint2/
+ lil-leap/
+ mod-10/
+ module-10/
+ module-10REAL/
+ module11_v1/
+ notes.txt
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ source/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ git clone https://github.com/tanuK17/sprint2_mod3
+Cloning into 'sprint2_mod3'...
+warning: You appear to have cloned an empty repository.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd sprint2_mod3/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ git clone https://github.com/Neueda-Technologies/leap-sprint2/tree/main/labs/03-pr-workflow/starter
+Cloning into 'starter'...
+fatal: repository 'https://github.com/Neueda-Technologies/leap-sprint2/tree/main/labs/03-pr-workflow/starter/' not found
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ git clone https://github.com/Neueda-Technologies/leap-sprint2/tree/main/labs/03-pr-workflow/
+Cloning into '03-pr-workflow'...
+fatal: repository 'https://github.com/Neueda-Technologies/leap-sprint2/tree/main/labs/03-pr-workflow/' not found
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd leap-sprint2
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/leap-sprint2 (main)
+$ ls
+README.md  demos/  labs/  solutions/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/leap-sprint2 (main)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd sprint2_mod3/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ cp -r ../labs/03-pr-workflow/starter/* .
+cp: cannot stat '../labs/03-pr-workflow/starter/*': No such file or directory
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ ls ../labs
+ls: cannot access '../labs': No such file or directory
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd sprint2_mod3/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ cp -r ../leap-sprint2/labs/03-pr-workflow/starter/* .
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ ls
+Dockerfile  Jenkinsfile  pom.xml  src/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Dockerfile
+        Jenkinsfile
+        pom.xml
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git add .
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git commit -m "chore: initial project setup"
+[main (root-commit) d8504a7] chore: initial project setup
+ 4 files changed, 62 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 Jenkinsfile
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/com/neueda/leap/Main.java
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git branch
+* main
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git push -u origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (12/12), 1.33 KiB | 339.00 KiB/s, done.
+Total 12 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/tanuK17/sprint2_mod3
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git checkout -b feat/udpate-main/message
+Switched to a new branch 'feat/udpate-main/message'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ code .
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git status
+On branch feat/udpate-main/message
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   src/main/java/com/neueda/leap/Main.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git diff
+diff --git a/src/main/java/com/neueda/leap/Main.java b/src/main/java/com/neueda/leap/Main.java
+index 0b12876..bf38510 100644
+--- a/src/main/java/com/neueda/leap/Main.java
++++ b/src/main/java/com/neueda/leap/Main.java
+@@ -2,6 +2,6 @@ package com.neueda.leap;
+
+ public class Main {
+     public static void main(String[] args) {
+-        System.out.println("Hello world from the team's Sprint 1 project skeleton");
++        System.out.println("Hello world from the team's Sprint 2 project skeleton");
+     }
+ }
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git add .
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git commit -m "feat: update application greeting"
+[feat/udpate-main/message c69865d] feat: update application greeting
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git push -u origin feat/update-main-message
+error: src refspec feat/update-main-message does not match any
+error: failed to push some refs to 'https://github.com/tanuK17/sprint2_mod3'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/udpate-main/message)
+$ git branch -m feat/update-main-message
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ git push -u origin feat/update-main-message
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (9/9), 550 bytes | 550.00 KiB/s, done.
+Total 9 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'feat/update-main-message' on GitHub by visiting:
+remote:      https://github.com/tanuK17/sprint2_mod3/pull/new/feat/update-main-message
+remote:
+To https://github.com/tanuK17/sprint2_mod3
+ * [new branch]      feat/update-main-message -> feat/update-main-message
+branch 'feat/update-main-message' set up to track 'origin/feat/update-main-message'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ git push origin --delete feat/update-main/message
+error: unable to delete 'feat/update-main/message': remote ref does not exist
+error: failed to push some refs to 'https://github.com/tanuK17/sprint2_mod3'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd sprint2_mod3/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ ls
+Dockerfile  Jenkinsfile  pom.xml  src/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ git branch
+* feat/update-main-message
+  main
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ git push -u origin feat/update-main-message
+branch 'feat/update-main-message' set up to track 'origin/feat/update-main-message'.
+Everything up-to-date
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/update-main-message)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git pull origin main
+From https://github.com/tanuK17/sprint2_mod3
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git checkout -b feat/conflict-demo
+Switched to a new branch 'feat/conflict-demo'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (feat/conflict-demo)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ git pull
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (1/1), 921 bytes | 230.00 KiB/s, done.
+From https://github.com/tanuK17/sprint2_mod3
+   d8504a7..53837b7  main       -> origin/main
+Updating d8504a7..53837b7
+Fast-forward
+ src/main/java/com/neueda/leap/Main.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/sprint2_mod3 (main)
+$ cd ..
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ ls
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ FidelityLeapDemos/
+ IdeaProjects/
+ Links/
+'Local Settings'@
+ Music/
+'My Documents'@
+ NTUSER.DAT
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TM.blf
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{8d41c8c5-a1e4-11ef-a03f-0e47b7d8fc33}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+'Start Menu'@
+ Templates@
+ Untitled.ipynb
+ Videos/
+ docker-extras/
+ leap-sprint1/
+ leap-sprint2/
+ lil-leap/
+ mod-10/
+ module-10/
+ module-10REAL/
+ module11_v1/
+ notes.txt
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ source/
+ sprint2_mod3/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd lil-leap/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (tanush)
+$ git pull
+remote: Enumerating objects: 100, done.
+remote: Counting objects: 100% (94/94), done.
+remote: Compressing objects: 100% (63/63), done.
+remote: Total 79 (delta 31), reused 38 (delta 9), pack-reused 0 (from 0)
+Unpacking objects: 100% (79/79), 1.25 MiB | 3.04 MiB/s, done.
+From https://github.com/juliawiecek/lil-leap
+   6b8622b..e766bfc  main       -> origin/main
+Already up to date.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (tanush)
+$ ls
+README.md  src/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (tanush)
+$ git status
+On branch tanush
+Your branch is up to date with 'origin/tanush'.
+
+nothing to commit, working tree clean
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (tanush)
+$ git switch main
+Switched to branch 'main'
+Your branch is behind 'origin/main' by 23 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git pull
+Updating 6b8622b..e766bfc
+Fast-forward
+ .idea/.gitignore                     |  10 ++++++++++
+ .idea/compiler.xml                   |  13 +++++++++++++
+ .idea/encodings.xml                  |   7 +++++++
+ .idea/jarRepositories.xml            |  20 ++++++++++++++++++++
+ .idea/misc.xml                       |  12 ++++++++++++
+ .idea/vcs.xml                        |   6 ++++++
+ Dockerfile                           |   1 -
+ InitialSetup/Jenkins Setup.pages     | Bin 0 -> 886507 bytes
+ InitialSetup/Jenkins Setup.pdf       | Bin 0 -> 541199 bytes
+ Jenkinsfile                          |  24 ++++++++++++++++++++++++
+ README.md                            |   2 +-
+ src/main/java/Main.java              |   7 ++++---
+ target/maven-archiver/pom.properties |   3 +++
+ target/sprint1-greeter-app.jar       | Bin 0 -> 1596 bytes
+ 14 files changed, 100 insertions(+), 5 deletions(-)
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/compiler.xml
+ create mode 100644 .idea/encodings.xml
+ create mode 100644 .idea/jarRepositories.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 InitialSetup/Jenkins Setup.pages
+ create mode 100644 InitialSetup/Jenkins Setup.pdf
+ create mode 100644 Jenkinsfile
+ create mode 100644 target/maven-archiver/pom.properties
+ create mode 100644 target/sprint1-greeter-app.jar
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ ls
+Dockerfile  InitialSetup/  Jenkinsfile  README.md  pom.xml  src/  target/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git pull origin main
+From https://github.com/juliawiecek/lil-leap
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch -c fix/jenkins-java21-tanush
+Switched to a new branch 'fix/jenkins-java21-tanush'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git diff
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch jenkins-java21-tanush
+fatal: invalid reference: jenkins-java21-tanush
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch fix/jenkins-java21-tanush
+Switched to branch 'fix/jenkins-java21-tanush'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git pull origin main
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 7 (delta 3), reused 7 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 489 bytes | 14.00 KiB/s, done.
+From https://github.com/juliawiecek/lil-leap
+ * branch            main       -> FETCH_HEAD
+   e766bfc..1227f7f  main       -> origin/main
+Updating e766bfc..1227f7f
+Fast-forward
+ pom.xml                 | 2 +-
+ src/main/java/Main.java | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch fix/jenkins-java21-tanush
+Switched to branch 'fix/jenkins-java21-tanush'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ git merge main
+Updating e766bfc..1227f7f
+Fast-forward
+ pom.xml                 | 2 +-
+ src/main/java/Main.java | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ find . -name "Main.java"
+./src/main/java/Main.java
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ find . -name "pom.xml"
+./pom.xml
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ grep -n -E "mainClass|main.class|groupId|artifactId" pom.xml
+3:    <groupId>com.neueda.leap</groupId>
+4:    <artifactId>sprint1-greeter-app</artifactId>
+18:                <groupId>org.apache.maven.plugins</groupId>
+19:                <artifactId>maven-jar-plugin</artifactId>
+24:                            <mainClass>Main</mainClass>
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$ ^C
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/jenkins-java21-tanush)
+$
