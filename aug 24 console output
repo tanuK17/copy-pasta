@@ -1,0 +1,94 @@
+Started by user Admin
+Obtained Jenkinsfile from git https://github.com/juliawiecek/lil-leap
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/lil-leap
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/juliawiecek/lil-leap
+ > git init /var/lib/jenkins/workspace/lil-leap # timeout=10
+Fetching upstream changes from https://github.com/juliawiecek/lil-leap
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/juliawiecek/lil-leap +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/juliawiecek/lil-leap # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 1227f7f0b9f857286ffef0763a6c7bf2e1651c9f (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1227f7f0b9f857286ffef0763a6c7bf2e1651c9f # timeout=10
+Commit message: "fixed: main java package to default, path in pom fixed"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/lil-leap/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/juliawiecek/lil-leap # timeout=10
+Fetching upstream changes from https://github.com/juliawiecek/lil-leap
+ > git --version # timeout=10
+ > git --version # 'git version 2.50.1'
+ > git fetch --tags --force --progress -- https://github.com/juliawiecek/lil-leap +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 1227f7f0b9f857286ffef0763a6c7bf2e1651c9f (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 1227f7f0b9f857286ffef0763a6c7bf2e1651c9f # timeout=10
+Commit message: "fixed: main java package to default, path in pom fixed"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn -B clean package -DskipTests
+/var/lib/jenkins/workspace/lil-leap@tmp/durable-81ca7e8e/script.sh.copy: line 1: mvn: command not found
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Smoke Test)
+Stage "Smoke Test" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 127
+Finished: FAILURE
