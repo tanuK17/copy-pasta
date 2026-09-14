@@ -1,0 +1,54 @@
+[ec2-user@ip-10-14-141-133 ~]$ cd ~/lil-leap/
+[ec2-user@ip-10-14-141-133 lil-leap]$ git fetch origin
+remote: Enumerating objects: 182, done.
+remote: Counting objects: 100% (172/172), done.
+remote: Compressing objects: 100% (70/70), done.
+remote: Total 121 (delta 40), reused 93 (delta 29), pack-reused 0 (from 0)
+Receiving objects: 100% (121/121), 314.50 KiB | 7.31 MiB/s, done.
+Resolving deltas: 100% (40/40), completed with 21 local objects.
+From https://github.com/juliawiecek/lil-leap
+   177dbf4..d7a98b0  feature/database-hardening    -> origin/feature/database-hardening
+ * [new branch]      feature/NEXT-88-client-query-scoping -> origin/feature/NEXT-88-client-query-scoping
+ * [new branch]      feature/analyst-role-schema   -> origin/feature/analyst-role-schema
+ * [new branch]      feature/database-analyst-role -> origin/feature/database-analyst-role
+   0cd7670..4ac6fd9  feature/user-registration     -> origin/feature/user-registration
+   296fd27..948c550  main                          -> origin/main
+ * [new branch]      revert-30-feature/analyst-role-schema -> origin/revert-30-feature/analyst-role-schema
+[ec2-user@ip-10-14-141-133 lil-leap]$ git switch feature/NEXT-88-client-query-scoping
+branch 'feature/NEXT-88-client-query-scoping' set up to track 'origin/feature/NEXT-88-client-query-scoping'.
+Switched to a new branch 'feature/NEXT-88-client-query-scoping'
+[ec2-user@ip-10-14-141-133 lil-leap]$ git pull --ff-only origin feature/NEXT-88-client-query-scoping
+From https://github.com/juliawiecek/lil-leap
+ * branch            feature/NEXT-88-client-query-scoping -> FETCH_HEAD
+Already up to date.
+[ec2-user@ip-10-14-141-133 lil-leap]$ set -a
+[ec2-user@ip-10-14-141-133 lil-leap]$ source .env
+[ec2-user@ip-10-14-141-133 lil-leap]$ set +a
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up -d db
+[+] Running 1/0
+ ✔ Container lil-leap-db-1  Running                                                              0.0s
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec -T db psql -U "$DB_ADMIN_USERNAME" -d "$DB_NAME" < db/tests/004_client_data_isolation.sql
+BEGIN
+INSERT 0 2
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+ERROR:  syntax error at or near ":"
+LINE 3:   a UUID := :'user_a';
+                    ^
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec -T db psql -U "$DB_ADMIN_USERNAME" -d "$DB_NAME" < db/tests/004_client_data_isolation.sql
+BEGIN
+INSERT 0 2
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+ERROR:  syntax error at or near ":"
+LINE 3:   a UUID := :'user_a';
+                    ^
+[ec2-user@ip-10-14-141-133 lil-leap]$ backend/src/main/java/com/neueda/leap/portfolioa^C
+[ec2-user@ip-10-14-141-133 lil-leap]$ backend/src/main/java/com/neueda/leap/portfolio^C
+[ec2-user@ip-10-14-141-133 lil-leap]$
