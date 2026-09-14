@@ -1,0 +1,78 @@
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (main)
+$ git switch -c feature/NEXT-88-client-query-scoping
+Switched to a new branch 'feature/NEXT-88-client-query-scoping'
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-88-client-query-scoping)
+$ cd ~/lil-leap/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-88-client-query-scoping)
+$ git branch --show-current
+feature/NEXT-88-client-query-scoping
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-88-client-query-scoping)
+$ git status --short
+?? RUN_NEXT_88.md
+?? backend/src/main/java/com/neueda/leap/portfolio/
+?? backend/src/test/java/com/neueda/leap/portfolio/
+?? db/tests/004_client_data_isolation.sql
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-88-client-query-scoping)
+$ cd backend
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/backend (feature/NEXT-88-client-query-scoping)
+$ mvn clean test
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.neueda.leap:sprint1-greeter-app >-----------------
+[INFO] Building sprint1-greeter-app 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.3.2:clean (default-clean) @ sprint1-greeter-app ---
+[INFO] Deleting C:\Users\Administrator\lil-leap\backend\target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 55 source files with javac [debug parameters release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Administrator/lil-leap/backend/src/main/java/com/neueda/leap/portfolio/service/ClientFinancialQueryService.java:[102,20] cannot find symbol
+  symbol:   class Instant
+  location: class com.neueda.leap.portfolio.service.ClientFinancialQueryService
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.237 s
+[INFO] Finished at: 2026-09-14T19:44:59Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project sprint1-greeter-app: Compilation failure
+[ERROR] /C:/Users/Administrator/lil-leap/backend/src/main/java/com/neueda/leap/portfolio/service/ClientFinancialQueryService.java:[102,20] cannot find symbol
+[ERROR]   symbol:   class Instant
+[ERROR]   location: class com.neueda.leap.portfolio.service.ClientFinancialQueryService
+[ERROR]
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/backend (feature/NEXT-88-client-query-scoping)
+$
