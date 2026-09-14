@@ -1,0 +1,347 @@
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd lil-leap/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-88-client-query-scoping)
+$ cd backend
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/backend (feature/NEXT-88-client-query-scoping)
+$ mvn clean test
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.neueda.leap:sprint1-greeter-app >-----------------
+[INFO] Building sprint1-greeter-app 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.3.2:clean (default-clean) @ sprint1-greeter-app ---
+[INFO] Deleting C:\Users\Administrator\lil-leap\backend\target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 55 source files with javac [debug parameters release 17] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 11 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] /C:/Users/Administrator/lil-leap/backend/src/test/java/com/neueda/leap/portfolio/ClientFinancialQueryServiceTest.java: C:\Users\Administrator\lil-leap\backend\src\test\java\com\neueda\leap\portfolio\ClientFinancialQueryServiceTest.java uses unchecked or unsafe operations.
+[INFO] /C:/Users/Administrator/lil-leap/backend/src/test/java/com/neueda/leap/portfolio/ClientFinancialQueryServiceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO]
+[INFO] --- surefire:3.2.5:test (default-test) @ sprint1-greeter-app ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.neueda.leap.config.SecurityConfigTest
+19:49:55.492 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.neueda.leap.config.SecurityConfigTest]: SecurityConfigTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:49:55.729 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.config.SecurityConfigTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:49:56.288 [main] INFO  c.n.leap.config.SecurityConfigTest - Starting SecurityConfigTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:49:56.289 [main] INFO  c.n.leap.config.SecurityConfigTest - No active profile set, falling back to 1 default profile: "default"
+19:49:57.864 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: 419d98ed-bf5c-4ac7-9cee-594b2d9d60c2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:49:57.872 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:49:58.417 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:49:58.417 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:49:58.418 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+19:49:58.438 [main] INFO  c.n.leap.config.SecurityConfigTest - Started SecurityConfigTest in 2.613 seconds (process running for 4.412)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.349 s -- in com.neueda.leap.config.SecurityConfigTest
+[INFO] Running com.neueda.leap.onboarding.RegistrationControllerTest
+19:49:58.679 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.onboarding.RegistrationControllerTest]: RegistrationControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:49:58.878 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.onboarding.RegistrationControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:49:58.953 [main] INFO  c.n.l.o.RegistrationControllerTest - Starting RegistrationControllerTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:49:58.953 [main] INFO  c.n.l.o.RegistrationControllerTest - No active profile set, falling back to 1 default profile: "default"
+19:49:59.357 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: 6917ad5c-6b12-416a-b75a-6bbbd312ac0a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:49:59.358 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:49:59.385 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:49:59.385 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:49:59.385 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+19:49:59.392 [main] INFO  c.n.l.o.RegistrationControllerTest - Started RegistrationControllerTest in 0.502 seconds (process running for 5.366)
+19:49:59.718 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'password': rejected value [123]; codes [Size.registerUserRequest.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.password,password]; arguments []; default message [password],128,8]; default message [size must be between 8 and 128]] ]
+19:49:59.831 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'email': rejected value [not-an-email]; codes [Email.registerUserRequest.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@669580e2,.*]; default message [must be a well-formed email address]] ]
+19:49:59.896 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'firstName': rejected value []; codes [NotBlank.registerUserRequest.firstName,NotBlank.firstName,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.firstName,firstName]; arguments []; default message [firstName]]; default message [must not be blank]] ]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.229 s -- in com.neueda.leap.onboarding.RegistrationControllerTest
+[INFO] Running com.neueda.leap.onboarding.RegistrationServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.312 s -- in com.neueda.leap.onboarding.RegistrationServiceTest
+[INFO] Running com.neueda.leap.portfolio.ClientFinancialControllerTest
+19:50:00.241 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.portfolio.ClientFinancialControllerTest]: ClientFinancialControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:50:00.287 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.portfolio.ClientFinancialControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:50:00.327 [main] INFO  c.n.l.p.ClientFinancialControllerTest - Starting ClientFinancialControllerTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:50:00.327 [main] INFO  c.n.l.p.ClientFinancialControllerTest - No active profile set, falling back to 1 default profile: "default"
+19:50:00.767 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: e2f40382-452e-45b9-bec8-c05d18588729
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:50:00.768 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:50:00.782 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:50:00.782 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:50:00.783 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+19:50:00.822 [main] INFO  c.n.l.p.ClientFinancialControllerTest - Started ClientFinancialControllerTest in 0.532 seconds (process running for 6.796)
+[ERROR] Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.647 s <<< FAILURE! -- in com.neueda.leap.portfolio.ClientFinancialControllerTest
+[ERROR] com.neueda.leap.portfolio.ClientFinancialControllerTest.cashUsesAuthenticatedPrincipalNotAClientRequestParameter -- Time elapsed: 0.016 s <<< ERROR!
+jakarta.servlet.ServletException: Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)
+        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+        at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+        at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+        at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+        at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+        at com.neueda.leap.portfolio.ClientFinancialControllerTest.cashUsesAuthenticatedPrincipalNotAClientRequestParameter(ClientFinancialControllerTest.java:45)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at com.neueda.leap.portfolio.controller.ClientFinancialController.cash(ClientFinancialController.java:36)
+        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+        at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+        at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+        at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+        ... 12 more
+
+[ERROR] com.neueda.leap.portfolio.ClientFinancialControllerTest.ordersUsesAuthenticatedPrincipalNotAClientRequestParameter -- Time elapsed: 0.020 s <<< ERROR!
+jakarta.servlet.ServletException: Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)
+        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+        at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+        at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+        at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+        at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+        at com.neueda.leap.portfolio.ClientFinancialControllerTest.ordersUsesAuthenticatedPrincipalNotAClientRequestParameter(ClientFinancialControllerTest.java:54)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at com.neueda.leap.portfolio.controller.ClientFinancialController.orders(ClientFinancialController.java:42)
+        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+        at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+        at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+        at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+        ... 12 more
+
+[ERROR] com.neueda.leap.portfolio.ClientFinancialControllerTest.holdingsUsesAuthenticatedPrincipalNotAClientRequestParameter -- Time elapsed: 0.007 s <<< ERROR!
+jakarta.servlet.ServletException: Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)
+        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+        at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+        at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+        at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+        at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+        at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+        at com.neueda.leap.portfolio.ClientFinancialControllerTest.holdingsUsesAuthenticatedPrincipalNotAClientRequestParameter(ClientFinancialControllerTest.java:36)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+        at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+        at com.neueda.leap.portfolio.controller.ClientFinancialController.holdings(ClientFinancialController.java:30)
+        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+        at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+        at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+        at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+        ... 12 more
+
+[INFO] Running com.neueda.leap.portfolio.ClientFinancialQueryServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.364 s -- in com.neueda.leap.portfolio.ClientFinancialQueryServiceTest
+[INFO] Running com.neueda.leap.security.JwtAuthenticationFilterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.neueda.leap.security.JwtAuthenticationFilterTest
+[INFO] Running com.neueda.leap.security.JwtServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.neueda.leap.security.JwtServiceTest
+[INFO] Running com.neueda.leap.user.AuthControllerTest
+19:50:01.348 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:50:01.415 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.AuthControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:50:01.634 [main] INFO  c.n.leap.user.AuthControllerTest - Starting AuthControllerTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:50:01.636 [main] INFO  c.n.leap.user.AuthControllerTest - No active profile set, falling back to 1 default profile: "default"
+19:50:01.961 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: 98312d11-00ca-44ae-b461-51be520dd484
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:50:01.962 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:50:01.968 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:50:01.968 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:50:01.969 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+19:50:01.972 [main] INFO  c.n.leap.user.AuthControllerTest - Started AuthControllerTest in 0.544 seconds (process running for 7.945)
+19:50:02.000 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.user.dto.LoginResponse> com.neueda.leap.user.AuthController.login(com.neueda.leap.user.dto.LoginRequest): [Field error in object 'loginRequest' on field 'email': rejected value []; codes [NotBlank.loginRequest.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginRequest.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.708 s -- in com.neueda.leap.user.AuthControllerTest
+[INFO] Running com.neueda.leap.user.AuthenticationFlowTest
+19:50:02.058 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.AuthenticationFlowTest]: AuthenticationFlowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:50:02.077 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.AuthenticationFlowTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:50:02.113 [main] INFO  c.n.leap.user.AuthenticationFlowTest - Starting AuthenticationFlowTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:50:02.113 [main] INFO  c.n.leap.user.AuthenticationFlowTest - No active profile set, falling back to 1 default profile: "default"
+19:50:02.279 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: 300fe46c-d1a1-4248-99fe-272a6e400cae
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:50:02.279 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:50:02.337 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:50:02.337 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:50:02.338 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+19:50:02.341 [main] INFO  c.n.leap.user.AuthenticationFlowTest - Started AuthenticationFlowTest in 0.262 seconds (process running for 8.315)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.322 s -- in com.neueda.leap.user.AuthenticationFlowTest
+[INFO] Running com.neueda.leap.user.UserControllerTest
+19:50:02.379 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:50:02.401 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.UserControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+19:50:02.452 [main] INFO  c.n.leap.user.UserControllerTest - Starting UserControllerTest using Java 25.0.3 with PID 13424 (started by Administrator in C:\Users\Administrator\lil-leap\backend)
+19:50:02.453 [main] INFO  c.n.leap.user.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+19:50:02.691 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
+
+Using generated security password: d109a0e1-ad0f-4ac1-8bce-4902e7badbff
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+19:50:02.692 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+19:50:02.699 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+19:50:02.699 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+19:50:02.700 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+19:50:02.704 [main] INFO  c.n.leap.user.UserControllerTest - Started UserControllerTest in 0.275 seconds (process running for 8.677)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.339 s -- in com.neueda.leap.user.UserControllerTest
+[INFO] Running com.neueda.leap.user.UserServiceTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.357 s -- in com.neueda.leap.user.UserServiceTest
+[INFO]
+[INFO] Results:
+[INFO]
+[ERROR] Errors:
+[ERROR]   ClientFinancialControllerTest.cashUsesAuthenticatedPrincipalNotAClientRequestParameter:45 » Servlet Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+[ERROR]   ClientFinancialControllerTest.holdingsUsesAuthenticatedPrincipalNotAClientRequestParameter:36 » Servlet Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+[ERROR]   ClientFinancialControllerTest.ordersUsesAuthenticatedPrincipalNotAClientRequestParameter:54 » Servlet Request processing failed: java.lang.NullPointerException: Cannot invoke "com.neueda.leap.security.JwtPrincipal.userId()" because "principal" is null
+[INFO]
+[ERROR] Tests run: 36, Failures: 0, Errors: 3, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.923 s
+[INFO] Finished at: 2026-09-14T19:50:03Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project sprint1-greeter-app:
+[ERROR]
+[ERROR] Please refer to C:\Users\Administrator\lil-leap\backend\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/backend (feature/NEXT-88-client-query-scoping)
+$
