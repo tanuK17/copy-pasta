@@ -1,0 +1,24 @@
+changed - schema:
+
+-- ==========================================================
+-- ANALYST_PROFILES (Internal Staff Identity)
+-- Extends users the same way customer_profiles/financial_profiles do for TRADER,
+-- but scoped to what an internal analyst actually needs.
+-- ==========================================================
+
+CREATE TABLE analyst_profiles (
+    analyst_profile_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL,
+    employee_id VARCHAR(30) NOT NULL,
+    department VARCHAR(100),
+
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_analyst_profile_user
+        FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT,
+    CONSTRAINT uk_analyst_profile_user UNIQUE (user_id),  -- one profile per user
+    CONSTRAINT chk_analyst_employee_id CHECK (length(trim(employee_id)) > 0)
+);
+
+CREATE INDEX idx_analyst_profile_user ON analyst_profiles(user_id);
