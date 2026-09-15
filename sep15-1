@@ -151,4 +151,52 @@ fatal: unrecognized argument: --current
   feature/data-pipeline
   feature/database-hardening
   main
+[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap/
+[ec2-user@ip-10-14-141-133 lil-leap]$ find . -maxdepth 3 -type f | grep -Ei "cert|tls|keystore|p12"
+[ec2-user@ip-10-14-141-133 lil-leap]$ grep -n -A15 -B10 "backend.p12" docker-compose.yml
+46-    restart: unless-stopped
+47-    volumes:
+48-      - db_data:/var/lib/postgresql/data
+49-      # Numeric prefixes control init order: schema first, then the
+50-      # restricted app role. Both only run once, against an empty volume.
+51-      - ./db/finalized-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+52-      - ./db/init-app-role.sh:/docker-entrypoint-initdb.d/02-app-role.sh:ro
+53-
+54-secrets:
+55-  backend_tls_keystore:
+56:    file: ${TLS_KEYSTORE_PATH:-./certs/backend.p12}
+57-
+58-volumes:
+59-  db_data:
+60-    # Named volume: persists Postgres data across `docker compose down` and
+61-    # `docker compose up`. Use `docker compose down -v` to also remove this
+62-    # volume, which wipes the database and starts fresh on the next `up`.
+[ec2-user@ip-10-14-141-133 lil-leap]$ grep -RniE "backend.p12|keytool|keystore|TLS_KEYSTORE" README.md RUN_*.md backend docker-compose.yml env.example 2>/dev/null
+README.md:180:- Compose validation alone receives a synthetic `TLS_KEYSTORE_PASSWORD` and `/dev/null` as `TLS_KEYSTORE_PATH`. These variables are scoped to that stage; tests and image builds receive no deployment credentials. Validation checks the resolved model, not certificate validity. The backend tests generate temporary certificates to test actual TLS handshakes.
+README.md:182:- A future deployment stage must bind a real keystore file and password from Jenkins credentials only for its deployment commands. Runtime TLS requirements in `docker-compose.yml` remain mandatory. See [backend TLS setup](backend/README.md#tls-setup).
+backend/src/main/resources/application.yml:73:    key-store: ${TLS_KEYSTORE:file:./certs/backend.p12}
+backend/src/main/resources/application.yml:75:    key-store-password: ${TLS_KEYSTORE_PASSWORD:}
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:46:import java.security.KeyStore;
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:68:    private static Path keystore;
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:86:        keystore = directory.resolve("test.p12");
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:88:        keystore.toFile().deleteOnExit();
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:89:        String executable = System.getProperty("os.name").startsWith("Windows") ? "keytool.exe" : "keytool";
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:93:                "-keystore", keystore.toString(), "-storepass", TEST_PASSWORD, "-noprompt")
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:97:        properties.add("server.ssl.key-store", () -> keystore.toUri().toString());
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:102:        KeyStore trustStore = KeyStore.getInstance("PKCS12");
+backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:103:        try (var input = Files.newInputStream(keystore)) {
+backend/README.md:67:Provide a PKCS12 keystore containing the server private key and certificate chain:
+backend/README.md:71:| Keystore | `TLS_KEYSTORE` (default `file:./certs/backend.p12`, relative to working directory) | TLS_KEYSTORE_PATH` (default `./certs/backend.p12`, relative to repository root), mounted read-only as a Docker secret |
+backend/README.md:72:| Keystore password | `TLS_KEYSTORE_PASSWORD` | `TLS_KEYSTORE_PASSWORD` (required) |
+backend/README.md:74:For local development, run this from `backend` (keytool prompts for the password):
+backend/README.md:78:keytool -genkeypair -alias backend -keyalg RSA -keysize 3072 -storetype PKCS12 -keystore certs/backend.p12 -validity 30 -dname "CN=localhost" -ext "SAN=dns:localhost,ip:127.0.0.1"
+backend/README.md:79:# Set TLS_KEYSTORE_PASSWORD in your private environment, matching the prompted password.
+backend/README.md:84:issued by your trusted CA for the deployed hostname. Keep the keystore and its
+backend/README.md:86:secret manager. For Compose, set `TLS_KEYSTORE_PATH` to the supplied keystore and
+backend/README.md:122:`mvn clean test` generates a temporary localhost certificate using the JDK's keytool;
+docker-compose.yml:17:      TLS_KEYSTORE: file:/run/secrets/backend_tls_keystore
+docker-compose.yml:18:      TLS_KEYSTORE_PASSWORD: ${TLS_KEYSTORE_PASSWORD:?Set TLS_KEYSTORE_PASSWORD for the backend TLS certificate}
+docker-compose.yml:20:      - backend_tls_keystore
+docker-compose.yml:55:  backend_tls_keystore:
+docker-compose.yml:56:    file: ${TLS_KEYSTORE_PATH:-./certs/backend.p12}
 [ec2-user@ip-10-14-141-133 lil-leap]$
