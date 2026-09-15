@@ -87,4 +87,177 @@ Last login: Tue Sep 15 17:34:59 2026 from 10.14.140.0
 [ERROR]
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ec2-user@ip-10-14-141-133 backend]$ java -version
+openjdk version "21.0.8" 2025-07-15 LTS
+OpenJDK Runtime Environment Corretto-21.0.8.9.1 (build 21.0.8+9-LTS)
+OpenJDK 64-Bit Server VM Corretto-21.0.8.9.1 (build 21.0.8+9-LTS, mixed mode, sharing)
+[ec2-user@ip-10-14-141-133 backend]$ javac- version
+-bash: javac-: command not found
+[ec2-user@ip-10-14-141-133 backend]$ javac -version
+javac 21.0.8
+[ec2-user@ip-10-14-141-133 backend]$ mvn -version
+Apache Maven 3.8.4 (Red Hat 3.8.4-3.amzn2023.0.5)
+Maven home: /usr/share/maven
+Java version: 17.0.16, vendor: Amazon.com Inc., runtime: /usr/lib/jvm/java-17-amazon-corretto.x86_64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "6.1.150-174.273.amzn2023.x86_64", arch: "amd64", family: "unix"
+[ec2-user@ip-10-14-141-133 backend]$ sudo dnf install -y java-21-amazon-corretto-devel
+Last metadata expiration check: 1 day, 5:14:04 ago on Mon Sep 14 13:28:16 2026.
+Package java-21-amazon-corretto-devel-1:21.0.8+9-1.amzn2023.1.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[ec2-user@ip-10-14-141-133 backend]$ sudo alternatives --config java
+
+There are 2 programs which provide 'java'.
+
+  Selection    Command
+-----------------------------------------------
+   1           /usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/java
+*+ 2           /usr/lib/jvm/java-21-amazon-corretto.x86_64/bin/java
+
+Enter to keep the current selection[+], or type selection number: 2
+[ec2-user@ip-10-14-141-133 backend]$ sudo alternatives --config javac
+
+There are 2 programs which provide 'javac'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           /usr/lib/jvm/java-21-amazon-corretto.x86_64/bin/javac
+   2           /usr/lib/jvm/java-17-amazon-corretto.x86_64/bin/javac
+
+Enter to keep the current selection[+], or type selection number: 1
+[ec2-user@ip-10-14-141-133 backend]$ java -version
+openjdk version "21.0.8" 2025-07-15 LTS
+OpenJDK Runtime Environment Corretto-21.0.8.9.1 (build 21.0.8+9-LTS)
+OpenJDK 64-Bit Server VM Corretto-21.0.8.9.1 (build 21.0.8+9-LTS, mixed mode, sharing)
+[ec2-user@ip-10-14-141-133 backend]$ javac -version
+javac 21.0.8
+[ec2-user@ip-10-14-141-133 backend]$ mvn -version
+Apache Maven 3.8.4 (Red Hat 3.8.4-3.amzn2023.0.5)
+Maven home: /usr/share/maven
+Java version: 17.0.16, vendor: Amazon.com Inc., runtime: /usr/lib/jvm/java-17-amazon-corretto.x86_64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "6.1.150-174.273.amzn2023.x86_64", arch: "amd64", family: "unix"
+[ec2-user@ip-10-14-141-133 backend]$ ls -d /usr/lib/jvm/*21*
+/usr/lib/jvm/java-21                  /usr/lib/jvm/java-21-amazon-corretto.x86_64  /usr/lib/jvm/jre-21
+/usr/lib/jvm/java-21-amazon-corretto  /usr/lib/jvm/java-21-openjdk                 /usr/lib/jvm/jre-21-openjdk
+[ec2-user@ip-10-14-141-133 backend]$ export JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto.x86_64
+[ec2-user@ip-10-14-141-133 backend]$ export PATH="$JAVA_HOME/bin:$PATH"
+[ec2-user@ip-10-14-141-133 backend]$ java -version
+openjdk version "21.0.8" 2025-07-15 LTS
+OpenJDK Runtime Environment Corretto-21.0.8.9.1 (build 21.0.8+9-LTS)
+OpenJDK 64-Bit Server VM Corretto-21.0.8.9.1 (build 21.0.8+9-LTS, mixed mode, sharing)
+[ec2-user@ip-10-14-141-133 backend]$ javac -version
+javac 21.0.8
+[ec2-user@ip-10-14-141-133 backend]$ mvn -version
+Apache Maven 3.8.4 (Red Hat 3.8.4-3.amzn2023.0.5)
+Maven home: /usr/share/maven
+Java version: 21.0.8, vendor: Amazon.com Inc., runtime: /usr/lib/jvm/java-21-amazon-corretto.x86_64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "6.1.150-174.273.amzn2023.x86_64", arch: "amd64", family: "unix"
+[ec2-user@ip-10-14-141-133 backend]$ cd ~/lil-leap/backend
+[ec2-user@ip-10-14-141-133 backend]$ mvn clean test
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.neueda.leap:sprint1-greeter-app >-----------------
+[INFO] Building sprint1-greeter-app 0.1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ sprint1-greeter-app ---
+[INFO] Deleting /home/ec2-user/lil-leap/backend/target
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 68 source files with javac [debug parameters release 21] to target/classes
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO]
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 17 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[3,37] package com.neueda.leap.order.api.dto does not exist
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[4,37] package com.neueda.leap.order.api.dto does not exist
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[29,13] cannot find symbol
+  symbol:   class OrderSubmissionService
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[95,13] cannot find symbol
+  symbol:   class CreateOrderRequest
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[107,13] cannot find symbol
+  symbol:   class OrderResponse
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[38,23] cannot find symbol
+  symbol:   class OrderSubmissionService
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[51,9] cannot find symbol
+  symbol:   class OrderSubmissionResult
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[61,9] cannot find symbol
+  symbol:   class OrderResponse
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[65,9] cannot find symbol
+  symbol:   class OrderSubmissionResult
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[96,20] cannot find symbol
+  symbol:   class CreateOrderRequest
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[108,20] cannot find symbol
+  symbol:   class OrderResponse
+  location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[INFO] 11 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.002 s
+[INFO] Finished at: 2026-09-15T18:52:36Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile (default-testCompile) on project sprint1-greeter-app: Compilation failure: Compilation failure:
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[3,37] package com.neueda.leap.order.api.dto does not exist
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[4,37] package com.neueda.leap.order.api.dto does not exist
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[29,13] cannot find symbol
+[ERROR]   symbol:   class OrderSubmissionService
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[95,13] cannot find symbol
+[ERROR]   symbol:   class CreateOrderRequest
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[107,13] cannot find symbol
+[ERROR]   symbol:   class OrderResponse
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[38,23] cannot find symbol
+[ERROR]   symbol:   class OrderSubmissionService
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[51,9] cannot find symbol
+[ERROR]   symbol:   class OrderSubmissionResult
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[61,9] cannot find symbol
+[ERROR]   symbol:   class OrderResponse
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[65,9] cannot find symbol
+[ERROR]   symbol:   class OrderSubmissionResult
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[96,20] cannot find symbol
+[ERROR]   symbol:   class CreateOrderRequest
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/order/service/OrderSubmissionServiceTest.java:[108,20] cannot find symbol
+[ERROR]   symbol:   class OrderResponse
+[ERROR]   location: class com.neueda.leap.order.service.OrderSubmissionServiceTest
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 [ec2-user@ip-10-14-141-133 backend]$
