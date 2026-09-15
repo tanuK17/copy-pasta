@@ -55,244 +55,36 @@ Run "/usr/bin/dnf check-release-update" for full release and version update info
       ~~._.   _/
          _/ _/
        _/m/'
-Last login: Tue Sep 15 13:12:35 2026 from 10.14.140.0
-[ec2-user@ip-10-14-141-133 ~]$ cd ~/lil-leap/
-[ec2-user@ip-10-14-141-133 lil-leap]$ git fetch origin
-remote: Enumerating objects: 481, done.
-remote: Counting objects: 100% (356/356), done.
-remote: Compressing objects: 100% (121/121), done.
-remote: Total 230 (delta 85), reused 174 (delta 62), pack-reused 0 (from 0)
-Receiving objects: 100% (230/230), 116.05 KiB | 7.74 MiB/s, done.
-Resolving deltas: 100% (85/85), completed with 40 local objects.
-From https://github.com/juliawiecek/lil-leap
- * [new branch]      feature/NEXT-97-order-submission -> origin/feature/NEXT-97-order-submission
-   0446238..686b1ff  feature/password-reset           -> origin/feature/password-reset
- + 4ac6fd9...74bb7e4 feature/user-registration        -> origin/feature/user-registration  (forced update)
-   948c550..76f3eef  main                             -> origin/main
- * [new branch]      updates/frontend3                -> origin/updates/frontend3
-[ec2-user@ip-10-14-141-133 lil-leap]$ git switch feature/NEXT-97-order-submission
-branch 'feature/NEXT-97-order-submission' set up to track 'origin/feature/NEXT-97-order-submission'.
-Switched to a new branch 'feature/NEXT-97-order-submission'
-[ec2-user@ip-10-14-141-133 lil-leap]$ git pull --ff-only origin feature/NEXT-97-order-submission
-From https://github.com/juliawiecek/lil-leap
- * branch            feature/NEXT-97-order-submission -> FETCH_HEAD
-Already up to date.
-[ec2-user@ip-10-14-141-133 lil-leap]$ ls
-InitialSetup  README_BUNDLE.md           RUN_NEXT_88.md  ci             docker-compose.yml
-Jenkinsfile   README_NEXT_97.md          RUN_NEXT_97.md  data-pipeline  env.example
-README.md     RUN_DATABASE_HARDENING.md  backend         db             frontend
-[ec2-user@ip-10-14-141-133 lil-leap]$ set -a
-[ec2-user@ip-10-14-141-133 lil-leap]$ source .env
-[ec2-user@ip-10-14-141-133 lil-leap]$ set +a
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up -d db
-error while interpolating services.app.environment.TLS_KEYSTORE_PASSWORD: required variable TLS_KEYSTORE_PASSWORD is missing a value: Set TLS_KEYSTORE_PASSWORD for the backend TLS certificate
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compsoe ps
--bash: docker-compsoe: command not found
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose ps
-error while interpolating services.app.environment.TLS_KEYSTORE_PASSWORD: required variable TLS_KEYSTORE_PASSWORD is missing a value: Set TLS_KEYSTORE_PASSWORD for the backend TLS certificate
-[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap/
-[ec2-user@ip-10-14-141-133 lil-leap]$ nano .env
-[ec2-user@ip-10-14-141-133 lil-leap]$ set -a
-[ec2-user@ip-10-14-141-133 lil-leap]$ source .env
-[ec2-user@ip-10-14-141-133 lil-leap]$ set +a
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up -d db
-[+] Running 1/0
- ✔ Container lil-leap-db-1  Running                                                                                0.0s
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec -T db psql -U "$DB_ADMIN_USERNAME" -d "$DB_NAME" < db/tests/005_order_submission_idempotency.sql
-BEGIN
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-ROLLBACK
-                               result
----------------------------------------------------------------------
- PASS: order submission persists SUBMITTED order and creates no fill
-(1 row)
-
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up --build -d
-[+] Building 46.3s (17/17) FINISHED                                                                      docker:default
- => [app internal] load build definition from Dockerfile                                                           0.0s
- => => transferring dockerfile: 1.91kB                                                                             0.0s
- => [app internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine                               0.6s
- => [app internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21                                0.6s
- => [app internal] load .dockerignore                                                                              0.0s
- => => transferring context: 144B                                                                                  0.0s
- => [app build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:a972570be789ee5c9fa23446a8914ac732  0.0s
- => [app stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:974b08960c5d96694c780e65b2d5705  0.0s
- => [app internal] load build context                                                                              0.0s
- => => transferring context: 150.82kB                                                                              0.0s
- => CACHED [app build 2/6] WORKDIR /app                                                                            0.0s
- => [app build 3/6] COPY pom.xml .                                                                                 0.1s
- => [app build 4/6] RUN mvn -B dependency:go-offline                                                              30.4s
- => [app build 5/6] COPY src/ src/                                                                                 0.1s
- => [app build 6/6] RUN mvn -B clean package -DskipTests                                                          14.4s
- => CACHED [app stage-1 2/4] WORKDIR /app                                                                          0.0s
- => CACHED [app stage-1 3/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                            0.0s
- => [app stage-1 4/4] COPY --from=build /app/target/sprint1-greeter-app.jar app.jar                                0.0s
- => [app] exporting to image                                                                                       0.3s
- => => exporting layers                                                                                            0.3s
- => => writing image sha256:126a872871fabb619ccf7ca1dc84cacd501b4b3d2611dc32c6757780db7acd26                       0.0s
- => => naming to docker.io/library/lil-leap-app                                                                    0.0s
- => [app] resolving provenance for metadata file                                                                   0.0s
-[+] Running 1/0
- ✔ Container lil-leap-db-1   Running                                                                               0.0s
- ⠋ Container lil-leap-app-1  Recreate                                                                              0.0s
-Error response from daemon: invalid mount config for type "bind": bind source path does not exist: /home/ec2-user/lil-leap/certs/backend.p12
-[ec2-user@ip-10-14-141-133 lil-leap]$ git show current
-fatal: ambiguous argument 'current': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-[ec2-user@ip-10-14-141-133 lil-leap]$ git show --current
-fatal: unrecognized argument: --current
-[ec2-user@ip-10-14-141-133 lil-leap]$ git branch
-  feature/NEXT-88-client-query-scoping
-* feature/NEXT-97-order-submission
-  feature/data-pipeline
-  feature/database-hardening
-  main
-[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap/
-[ec2-user@ip-10-14-141-133 lil-leap]$ find . -maxdepth 3 -type f | grep -Ei "cert|tls|keystore|p12"
-[ec2-user@ip-10-14-141-133 lil-leap]$ grep -n -A15 -B10 "backend.p12" docker-compose.yml
-46-    restart: unless-stopped
-47-    volumes:
-48-      - db_data:/var/lib/postgresql/data
-49-      # Numeric prefixes control init order: schema first, then the
-50-      # restricted app role. Both only run once, against an empty volume.
-51-      - ./db/finalized-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
-52-      - ./db/init-app-role.sh:/docker-entrypoint-initdb.d/02-app-role.sh:ro
-53-
-54-secrets:
-55-  backend_tls_keystore:
-56:    file: ${TLS_KEYSTORE_PATH:-./certs/backend.p12}
-57-
-58-volumes:
-59-  db_data:
-60-    # Named volume: persists Postgres data across `docker compose down` and
-61-    # `docker compose up`. Use `docker compose down -v` to also remove this
-62-    # volume, which wipes the database and starts fresh on the next `up`.
-[ec2-user@ip-10-14-141-133 lil-leap]$ grep -RniE "backend.p12|keytool|keystore|TLS_KEYSTORE" README.md RUN_*.md backend docker-compose.yml env.example 2>/dev/null
-README.md:180:- Compose validation alone receives a synthetic `TLS_KEYSTORE_PASSWORD` and `/dev/null` as `TLS_KEYSTORE_PATH`. These variables are scoped to that stage; tests and image builds receive no deployment credentials. Validation checks the resolved model, not certificate validity. The backend tests generate temporary certificates to test actual TLS handshakes.
-README.md:182:- A future deployment stage must bind a real keystore file and password from Jenkins credentials only for its deployment commands. Runtime TLS requirements in `docker-compose.yml` remain mandatory. See [backend TLS setup](backend/README.md#tls-setup).
-backend/src/main/resources/application.yml:73:    key-store: ${TLS_KEYSTORE:file:./certs/backend.p12}
-backend/src/main/resources/application.yml:75:    key-store-password: ${TLS_KEYSTORE_PASSWORD:}
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:46:import java.security.KeyStore;
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:68:    private static Path keystore;
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:86:        keystore = directory.resolve("test.p12");
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:88:        keystore.toFile().deleteOnExit();
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:89:        String executable = System.getProperty("os.name").startsWith("Windows") ? "keytool.exe" : "keytool";
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:93:                "-keystore", keystore.toString(), "-storepass", TEST_PASSWORD, "-noprompt")
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:97:        properties.add("server.ssl.key-store", () -> keystore.toUri().toString());
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:102:        KeyStore trustStore = KeyStore.getInstance("PKCS12");
-backend/src/test/java/com/neueda/leap/security/TlsSecurityTest.java:103:        try (var input = Files.newInputStream(keystore)) {
-backend/README.md:67:Provide a PKCS12 keystore containing the server private key and certificate chain:
-backend/README.md:71:| Keystore | `TLS_KEYSTORE` (default `file:./certs/backend.p12`, relative to working directory) | TLS_KEYSTORE_PATH` (default `./certs/backend.p12`, relative to repository root), mounted read-only as a Docker secret |
-backend/README.md:72:| Keystore password | `TLS_KEYSTORE_PASSWORD` | `TLS_KEYSTORE_PASSWORD` (required) |
-backend/README.md:74:For local development, run this from `backend` (keytool prompts for the password):
-backend/README.md:78:keytool -genkeypair -alias backend -keyalg RSA -keysize 3072 -storetype PKCS12 -keystore certs/backend.p12 -validity 30 -dname "CN=localhost" -ext "SAN=dns:localhost,ip:127.0.0.1"
-backend/README.md:79:# Set TLS_KEYSTORE_PASSWORD in your private environment, matching the prompted password.
-backend/README.md:84:issued by your trusted CA for the deployed hostname. Keep the keystore and its
-backend/README.md:86:secret manager. For Compose, set `TLS_KEYSTORE_PATH` to the supplied keystore and
-backend/README.md:122:`mvn clean test` generates a temporary localhost certificate using the JDK's keytool;
-docker-compose.yml:17:      TLS_KEYSTORE: file:/run/secrets/backend_tls_keystore
-docker-compose.yml:18:      TLS_KEYSTORE_PASSWORD: ${TLS_KEYSTORE_PASSWORD:?Set TLS_KEYSTORE_PASSWORD for the backend TLS certificate}
-docker-compose.yml:20:      - backend_tls_keystore
-docker-compose.yml:55:  backend_tls_keystore:
-docker-compose.yml:56:    file: ${TLS_KEYSTORE_PATH:-./certs/backend.p12}
-[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap
-
-mkdir -p certs
-
-keytool -genkeypair \
--alias backend \
--keyalg RSA \
--keysize 3072 \
--storetype PKCS12 \
--keystore certs/backend.p12 \
--storepass "$TLS_KEYSTORE_PASSWORD" \
--keypass "$TLS_KEYSTORE_PASSWORD" \
--validity 30 \
--dname "CN=localhost" \
--ext "SAN=dns:localhost,ip:127.0.0.1"
-Generating 3,072 bit RSA key pair and self-signed certificate (SHA384withRSA) with a validity of 30 days
-        for: CN=localhost
-[ec2-user@ip-10-14-141-133 lil-leap]$ ls -lh certs/backend.p12
--rw-r--r--. 1 ec2-user ec2-user 3.4K Sep 15 18:28 certs/backend.p12
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up --build -d
-[+] Building 0.7s (17/17) FINISHED                                                                       docker:default
- => [app internal] load build definition from Dockerfile                                                           0.0s
- => => transferring dockerfile: 1.91kB                                                                             0.0s
- => [app internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine                               0.5s
- => [app internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21                                0.5s
- => [app internal] load .dockerignore                                                                              0.0s
- => => transferring context: 144B                                                                                  0.0s
- => [app build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:a972570be789ee5c9fa23446a8914ac732  0.0s
- => [app stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:974b08960c5d96694c780e65b2d5705  0.0s
- => [app internal] load build context                                                                              0.0s
- => => transferring context: 19.92kB                                                                               0.0s
- => CACHED [app stage-1 2/4] WORKDIR /app                                                                          0.0s
- => CACHED [app stage-1 3/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                            0.0s
- => CACHED [app build 2/6] WORKDIR /app                                                                            0.0s
- => CACHED [app build 3/6] COPY pom.xml .                                                                          0.0s
- => CACHED [app build 4/6] RUN mvn -B dependency:go-offline                                                        0.0s
- => CACHED [app build 5/6] COPY src/ src/                                                                          0.0s
- => CACHED [app build 6/6] RUN mvn -B clean package -DskipTests                                                    0.0s
- => CACHED [app stage-1 4/4] COPY --from=build /app/target/sprint1-greeter-app.jar app.jar                         0.0s
- => [app] exporting to image                                                                                       0.0s
- => => exporting layers                                                                                            0.0s
- => => writing image sha256:126a872871fabb619ccf7ca1dc84cacd501b4b3d2611dc32c6757780db7acd26                       0.0s
- => => naming to docker.io/library/lil-leap-app                                                                    0.0s
- => [app] resolving provenance for metadata file                                                                   0.0s
-[+] Running 2/2
- ✔ Container lil-leap-db-1   Running                                                                               0.0s
- ✔ Container lil-leap-app-1  Started                                                                               0.4s
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose ps
-NAME             IMAGE                COMMAND                  SERVICE   CREATED         STATUS                 PORTS
-lil-leap-app-1   lil-leap-app         "java -jar app.jar"      app       4 seconds ago   Up 4 seconds           8080/tcp
-lil-leap-db-1    postgres:16-alpine   "docker-entrypoint.s…"   db        3 days ago      Up 5 hours (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
-[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose logs app --tail=80
-app-1  |
-app-1  |   .   ____          _            __ _ _
-app-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-app-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
-app-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-app-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
-app-1  |  =========|_|==============|___/=/_/_/_/
-app-1  |
-app-1  |  :: Spring Boot ::                (v3.3.4)
-app-1  |
-app-1  | 2026-09-15 18:29:01,243 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-app-1  | 2026-09-15 18:29:01,290 INFO  com.neueda.leap.Main - Starting Main v0.1.0 using Java 21.0.12 with PID 1 (/app/app.jar started by appuser in /app)
-app-1  | 2026-09-15 18:29:01,295 INFO  com.neueda.leap.Main - No active profile set, falling back to 1 default profile: "default"
-app-1  | 2026-09-15 18:29:01,884 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.neueda.leap.Main]
-app-1  | 2026-09-15 18:29:02,691 ERROR o.s.boot.SpringApplication - Application run failed
-app-1  | org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.neueda.leap.Main]
-app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:179)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:417)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
-app-1  |        at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
-app-1  |        at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
-app-1  |        at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:789)
-app-1  |        at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:607)
-app-1  |        at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-app-1  |        at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-app-1  |        at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-app-1  |        at com.neueda.leap.Main.main(Main.java:22)
-app-1  |        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
-app-1  |        at java.base/java.lang.reflect.Method.invoke(Unknown Source)
-app-1  |        at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102)
-app-1  |        at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64)
-app-1  |        at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40)
-app-1  | Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'orderSubmissionController' for bean class [com.neueda.leap.order.submission.controller.OrderSubmissionController] conflicts with existing, non-compatible bean definition of same name and class [com.neueda.leap.order.api.OrderSubmissionController]
-app-1  |        at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:361)
-app-1  |        at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:288)
-app-1  |        at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:306)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:246)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:197)
-app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:165)
-app-1  |        ... 18 common frames omitted
-[ec2-user@ip-10-14-141-133 lil-leap]$
+Last login: Tue Sep 15 17:34:59 2026 from 10.14.140.0
+[ec2-user@ip-10-14-141-133 ~]$ cd ~/lil-leap/backend
+[ec2-user@ip-10-14-141-133 backend]$ mvn clean test
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.neueda.leap:sprint1-greeter-app >-----------------
+[INFO] Building sprint1-greeter-app 0.1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ sprint1-greeter-app ---
+[INFO] Deleting /home/ec2-user/lil-leap/backend/target
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 68 source files with javac [debug parameters release 21] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.840 s
+[INFO] Finished at: 2026-09-15T18:39:37Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project sprint1-greeter-app: Fatal error compiling: error: release version 21 not supported -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ec2-user@ip-10-14-141-133 backend]$
