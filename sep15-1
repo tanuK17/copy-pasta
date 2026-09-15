@@ -199,4 +199,100 @@ docker-compose.yml:18:      TLS_KEYSTORE_PASSWORD: ${TLS_KEYSTORE_PASSWORD:?Set 
 docker-compose.yml:20:      - backend_tls_keystore
 docker-compose.yml:55:  backend_tls_keystore:
 docker-compose.yml:56:    file: ${TLS_KEYSTORE_PATH:-./certs/backend.p12}
+[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap
+
+mkdir -p certs
+
+keytool -genkeypair \
+-alias backend \
+-keyalg RSA \
+-keysize 3072 \
+-storetype PKCS12 \
+-keystore certs/backend.p12 \
+-storepass "$TLS_KEYSTORE_PASSWORD" \
+-keypass "$TLS_KEYSTORE_PASSWORD" \
+-validity 30 \
+-dname "CN=localhost" \
+-ext "SAN=dns:localhost,ip:127.0.0.1"
+Generating 3,072 bit RSA key pair and self-signed certificate (SHA384withRSA) with a validity of 30 days
+        for: CN=localhost
+[ec2-user@ip-10-14-141-133 lil-leap]$ ls -lh certs/backend.p12
+-rw-r--r--. 1 ec2-user ec2-user 3.4K Sep 15 18:28 certs/backend.p12
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up --build -d
+[+] Building 0.7s (17/17) FINISHED                                                                       docker:default
+ => [app internal] load build definition from Dockerfile                                                           0.0s
+ => => transferring dockerfile: 1.91kB                                                                             0.0s
+ => [app internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine                               0.5s
+ => [app internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21                                0.5s
+ => [app internal] load .dockerignore                                                                              0.0s
+ => => transferring context: 144B                                                                                  0.0s
+ => [app build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:a972570be789ee5c9fa23446a8914ac732  0.0s
+ => [app stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:974b08960c5d96694c780e65b2d5705  0.0s
+ => [app internal] load build context                                                                              0.0s
+ => => transferring context: 19.92kB                                                                               0.0s
+ => CACHED [app stage-1 2/4] WORKDIR /app                                                                          0.0s
+ => CACHED [app stage-1 3/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                            0.0s
+ => CACHED [app build 2/6] WORKDIR /app                                                                            0.0s
+ => CACHED [app build 3/6] COPY pom.xml .                                                                          0.0s
+ => CACHED [app build 4/6] RUN mvn -B dependency:go-offline                                                        0.0s
+ => CACHED [app build 5/6] COPY src/ src/                                                                          0.0s
+ => CACHED [app build 6/6] RUN mvn -B clean package -DskipTests                                                    0.0s
+ => CACHED [app stage-1 4/4] COPY --from=build /app/target/sprint1-greeter-app.jar app.jar                         0.0s
+ => [app] exporting to image                                                                                       0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:126a872871fabb619ccf7ca1dc84cacd501b4b3d2611dc32c6757780db7acd26                       0.0s
+ => => naming to docker.io/library/lil-leap-app                                                                    0.0s
+ => [app] resolving provenance for metadata file                                                                   0.0s
+[+] Running 2/2
+ ✔ Container lil-leap-db-1   Running                                                                               0.0s
+ ✔ Container lil-leap-app-1  Started                                                                               0.4s
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose ps
+NAME             IMAGE                COMMAND                  SERVICE   CREATED         STATUS                 PORTS
+lil-leap-app-1   lil-leap-app         "java -jar app.jar"      app       4 seconds ago   Up 4 seconds           8080/tcp
+lil-leap-db-1    postgres:16-alpine   "docker-entrypoint.s…"   db        3 days ago      Up 5 hours (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose logs app --tail=80
+app-1  |
+app-1  |   .   ____          _            __ _ _
+app-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+app-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+app-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+app-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+app-1  |  =========|_|==============|___/=/_/_/_/
+app-1  |
+app-1  |  :: Spring Boot ::                (v3.3.4)
+app-1  |
+app-1  | 2026-09-15 18:29:01,243 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+app-1  | 2026-09-15 18:29:01,290 INFO  com.neueda.leap.Main - Starting Main v0.1.0 using Java 21.0.12 with PID 1 (/app/app.jar started by appuser in /app)
+app-1  | 2026-09-15 18:29:01,295 INFO  com.neueda.leap.Main - No active profile set, falling back to 1 default profile: "default"
+app-1  | 2026-09-15 18:29:01,884 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.neueda.leap.Main]
+app-1  | 2026-09-15 18:29:02,691 ERROR o.s.boot.SpringApplication - Application run failed
+app-1  | org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.neueda.leap.Main]
+app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:179)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:417)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+app-1  |        at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+app-1  |        at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+app-1  |        at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:789)
+app-1  |        at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:607)
+app-1  |        at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+app-1  |        at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+app-1  |        at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+app-1  |        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+app-1  |        at com.neueda.leap.Main.main(Main.java:22)
+app-1  |        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+app-1  |        at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+app-1  |        at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102)
+app-1  |        at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64)
+app-1  |        at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40)
+app-1  | Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'orderSubmissionController' for bean class [com.neueda.leap.order.submission.controller.OrderSubmissionController] conflicts with existing, non-compatible bean definition of same name and class [com.neueda.leap.order.api.OrderSubmissionController]
+app-1  |        at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:361)
+app-1  |        at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:288)
+app-1  |        at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:306)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:246)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:197)
+app-1  |        at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:165)
+app-1  |        ... 18 common frames omitted
 [ec2-user@ip-10-14-141-133 lil-leap]$
