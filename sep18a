@@ -134,4 +134,169 @@ ERROR tests/test_quote_ingestor.py
 1 error in 3.15s
 (.venv)
 Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ ^C
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ cd ~/lil-leap/data-pipeline/
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ source .venv/Scripts/activate
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -m py_compile src/quote_ingestor.py
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -m pytest -q
+......................FF.                                                [100%]
+================================== FAILURES ===================================
+______________________ test_transform_preserves_contract ______________________
+
+    def test_transform_preserves_contract():
+>       row=transform_batch(frame(), Instruments())[0]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_quote_ingestor.py:15:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\quote_ingestor.py:17: in transform_batch
+    validate_quotes(frame)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+quotes =   symbol                  quote_timestamp  ...         source  synthetic
+0   aapl 2026-09-18 20:42:43.928099+00:00  ...  SYNTHETIC_GBM       True
+
+[1 rows x 8 columns]
+
+    def validate_quotes(quotes: pd.DataFrame) -> None:
+        """Validate generated quotes against the NextTrade quote contract.
+
+        Args:
+            quote: generated quote data to validate
+
+        Raises:
+            ValueError: If the quote dataset violates the required contract.
+
+            """
+
+
+        required_columns = {
+            "symbol",
+            "quote_timestamp",
+            "price",
+            "bid",
+            "ask",
+            "currency",
+            "source",
+            "synthetic",
+        }
+
+        missing_columns = required_columns.difference(quotes.columns)
+
+        if missing_columns:
+            raise ValueError(
+                f"Missing required columns: {sorted(missing_columns)}"
+            )
+
+        if quotes.empty:
+            raise ValueError("Quote dataset is empty.")
+
+        if quotes[list(required_columns)].isna().any().any():
+            raise ValueError("Required quote fields must not contain null values.")
+
+        # re-read: Ensure that the quotes are sorted by symbol and timestamp
+
+        if quotes.duplicated(["symbol", "quote_timestamp"]).any():
+            raise ValueError("Symbol and timestamp combinations must be unique")
+        if not (quotes[["price", "bid", "ask"]] > 0).all().all():
+            raise ValueError("Price, bid, and ask must be greater than zero")
+        if not (quotes["bid"] <= quotes["price"]).all():
+            raise ValueError("Bid must not exceed price")
+        if not (quotes["price"] <= quotes["ask"]).all():
+            raise ValueError("Ask must not be below price")
+        if not quotes["currency"].eq("USD").all():
+            raise ValueError("All quotes must use USD")
+        if not quotes["source"].eq("SYNTHETIC_GBM").all():
+            raise ValueError("All quotes must identify the synthetic GBM source")
+        if not quotes["synthetic"].eq(True).all():
+            raise ValueError("Every generated quote must be labeled synthetic")
+
+        actual_symbols = set(quotes["symbol"])
+        if not actual_symbols.issubset(set(SYMBOL_CONFIG)):
+>           raise ValueError("Quote dataset contains an unsupported symbol")
+E           ValueError: Quote dataset contains an unsupported symbol
+
+src\generate_quotes.py:193: ValueError
+_______________________ test_currency_mismatch_rejected _______________________
+
+    def test_currency_mismatch_rejected():
+>       with pytest.raises(QuoteIngestionError): transform_batch(frame("EUR"), Instruments())
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_quote_ingestor.py:20:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\quote_ingestor.py:17: in transform_batch
+    validate_quotes(frame)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+quotes =   symbol                  quote_timestamp  ...         source  synthetic
+0   aapl 2026-09-18 20:42:44.074468+00:00  ...  SYNTHETIC_GBM       True
+
+[1 rows x 8 columns]
+
+    def validate_quotes(quotes: pd.DataFrame) -> None:
+        """Validate generated quotes against the NextTrade quote contract.
+
+        Args:
+            quote: generated quote data to validate
+
+        Raises:
+            ValueError: If the quote dataset violates the required contract.
+
+            """
+
+
+        required_columns = {
+            "symbol",
+            "quote_timestamp",
+            "price",
+            "bid",
+            "ask",
+            "currency",
+            "source",
+            "synthetic",
+        }
+
+        missing_columns = required_columns.difference(quotes.columns)
+
+        if missing_columns:
+            raise ValueError(
+                f"Missing required columns: {sorted(missing_columns)}"
+            )
+
+        if quotes.empty:
+            raise ValueError("Quote dataset is empty.")
+
+        if quotes[list(required_columns)].isna().any().any():
+            raise ValueError("Required quote fields must not contain null values.")
+
+        # re-read: Ensure that the quotes are sorted by symbol and timestamp
+
+        if quotes.duplicated(["symbol", "quote_timestamp"]).any():
+            raise ValueError("Symbol and timestamp combinations must be unique")
+        if not (quotes[["price", "bid", "ask"]] > 0).all().all():
+            raise ValueError("Price, bid, and ask must be greater than zero")
+        if not (quotes["bid"] <= quotes["price"]).all():
+            raise ValueError("Bid must not exceed price")
+        if not (quotes["price"] <= quotes["ask"]).all():
+            raise ValueError("Ask must not be below price")
+        if not quotes["currency"].eq("USD").all():
+>           raise ValueError("All quotes must use USD")
+E           ValueError: All quotes must use USD
+
+src\generate_quotes.py:185: ValueError
+=========================== short test summary info ===========================
+FAILED tests/test_quote_ingestor.py::test_transform_preserves_contract - ValueError: Quote dataset contains an unsupported symbol
+FAILED tests/test_quote_ingestor.py::test_currency_mismatch_rejected - ValueError: All quotes must use USD
+2 failed, 23 passed in 1.24s
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
 $
