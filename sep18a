@@ -1,302 +1,656 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~
-$ cd lil-leap/
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ git apply --check /c/Users/Administrator/Downloads/lil-leap-postgres-quote-ingestion-safe/lil-leap-postgres-quote-ingestion-safe/existing-files.patch
-error: patch failed: data-pipeline/requirements.txt:2
-error: data-pipeline/requirements.txt: patch does not apply
-error: patch failed: data-pipeline/.gitignore:16
-error: data-pipeline/.gitignore: patch does not apply
-error: patch failed: data-pipeline/README.md:39
-error: data-pipeline/README.md: patch does not apply
-error: patch failed: docker-compose.yml:55
-error: docker-compose.yml: patch does not apply
-error: patch failed: env.example:20
-error: env.example: patch does not apply
+PS C:\Users\Administrator> ssh ec2-user@10.14.141.133
+ec2-user@10.14.141.133's password:
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ cd ~/lil-leap/
+A newer release of "Amazon Linux" is available.
+  Version 2023.10.20260105:
+  Version 2023.10.20260120:
+  Version 2023.10.20260202:
+  Version 2023.10.20260216:
+  Version 2023.10.20260302:
+  Version 2023.10.20260325:
+  Version 2023.10.20260330:
+  Version 2023.11.20260406:
+  Version 2023.11.20260413:
+  Version 2023.11.20260427:
+  Version 2023.11.20260505:
+  Version 2023.11.20260509:
+  Version 2023.11.20260511:
+  Version 2023.11.20260514:
+  Version 2023.11.20260526:
+  Version 2023.12.20260608:
+  Version 2023.12.20260611:
+  Version 2023.12.20260622:
+  Version 2023.12.20260629:
+  Version 2023.12.20260706:
+  Version 2023.12.20260710:
+  Version 2023.12.20260720:
+  Version 2023.12.20260724:
+  Version 2023.12.20260727:
+  Version 2023.12.20260803:
+  Version 2023.12.20260817:
+  Version 2023.12.20260831:
+  Version 2023.12.20260909:
+  Version 2023.12.20260914:
+  Version 2023.12.20260917:
+  Version 2023.9.20250929:
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+  Version 2023.9.20251027:
+  Version 2023.9.20251105:
+  Version 2023.9.20251110:
+  Version 2023.9.20251117:
+  Version 2023.9.20251208:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Tue Sep 15 18:39:20 2026 from 10.14.140.0
+[ec2-user@ip-10-14-141-133 ~]$ cd ~/lil-leap/
+[ec2-user@ip-10-14-141-133 lil-leap]$ git fetch origin
+remote: Enumerating objects: 812, done.
+remote: Counting objects: 100% (520/520), done.
+remote: Compressing objects: 100% (247/247), done.
+remote: Total 812 (delta 244), reused 452 (delta 209), pack-reused 292 (from 1)
+Receiving objects: 100% (812/812), 492.66 KiB | 11.73 MiB/s, done.
+Resolving deltas: 100% (284/284), completed with 110 local objects.
+From https://github.com/juliawiecek/lil-leap
+ * [new branch]      architecture                      -> origin/architecture
+ * [new branch]      chore/jacoco-backend-coverage     -> origin/chore/jacoco-backend-coverage
+ * [new branch]      chore/pytest-python-coverage      -> origin/chore/pytest-python-coverage
+ * [new branch]      feature/auth-service-nestjs       -> origin/feature/auth-service-nestjs
+ * [new branch]      feature/br-02-portfolio-isolation -> origin/feature/br-02-portfolio-isolation
+ * [new branch]      feature/openapi-docsArchitecture  -> origin/feature/openapi-docsArchitecture
+   686b1ff..a1d10b0  feature/password-reset            -> origin/feature/password-reset
+ * [new branch]      feature/postgres-quote-ingestion  -> origin/feature/postgres-quote-ingestion
+   76f3eef..0b71bef  main                              -> origin/main
+ * [new branch]      test/auth-integration             -> origin/test/auth-integration
+   23a0546..e7dd335  updates/frontend3                 -> origin/updates/frontend3
+[ec2-user@ip-10-14-141-133 lil-leap]$ git switch feature/postgres-quote-ingestion
+M       .env
+branch 'feature/postgres-quote-ingestion' set up to track 'origin/feature/postgres-quote-ingestion'.
+Switched to a new branch 'feature/postgres-quote-ingestion'
+[ec2-user@ip-10-14-141-133 lil-leap]$ git pull --ff-only origin feature/postgres-quote-ingestion
+From https://github.com/juliawiecek/lil-leap
+ * branch            feature/postgres-quote-ingestion -> FETCH_HEAD
+Already up to date.
+[ec2-user@ip-10-14-141-133 lil-leap]$ set -a
+[ec2-user@ip-10-14-141-133 lil-leap]$ source .env
+[ec2-user@ip-10-14-141-133 lil-leap]$ set +a
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose config -q
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up -d db
+[+] Running 1/1
+ ✔ Container lil-leap-db-1  Started                                                                                0.9s
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose ps
+NAME            IMAGE                COMMAND                  SERVICE   CREATED         STATUS                            PORTS
+lil-leap-db-1   postgres:16-alpine   "docker-entrypoint.s…"   db        4 seconds ago   Up 3 seconds (health: starting)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec -T db psql -U "$DB_ADMIN_USERNAME" -d "$DB_NAME" -v ON_ERROR_STOP=1 < db/seeds/001_us_equity_instruments.sql
+INSERT 0 5
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose build quote-service
+[+] Building 19.8s (12/12) FINISHED                                                                      docker:default
+ => [quote-service internal] load build definition from Dockerfile                                                 0.0s
+ => => transferring dockerfile: 420B                                                                               0.0s
+ => [quote-service internal] load metadata for docker.io/library/python:3.12-slim                                  0.6s
+ => [quote-service internal] load .dockerignore                                                                    0.0s
+ => => transferring context: 159B                                                                                  0.0s
+ => [quote-service 1/6] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9  0.0s
+ => [quote-service internal] load build context                                                                    0.0s
+ => => transferring context: 23.32kB                                                                               0.0s
+ => CACHED [quote-service 2/6] WORKDIR /app                                                                        0.0s
+ => [quote-service 3/6] COPY requirements.txt .                                                                    0.1s
+ => [quote-service 4/6] RUN python -m pip install --no-cache-dir -r requirements.txt                              17.4s
+ => [quote-service 5/6] COPY src/ src/                                                                             0.0s
+ => [quote-service 6/6] RUN useradd --create-home appuser && chown -R appuser:appuser /app                         0.3s
+ => [quote-service] exporting to image                                                                             1.3s
+ => => exporting layers                                                                                            1.3s
+ => => writing image sha256:dac7d8f39db98f9c770edf469be9121186ad7ff2414198cd3dffeb189d23ffa0                       0.0s
+ => => naming to docker.io/library/lil-leap-quote-service                                                          0.0s
+ => [quote-service] resolving provenance for metadata file                                                         0.0s
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose run --rm quote-service python -m src.quote_ingestor --once --periods 10 --seed 42
+[+] Creating 1/0
+ ✔ Container lil-leap-db-1  Running                                                                                0.0s
+Generated: 50
+Inserted: 50
+Skipped: 0
+Symbols: 5
+Source: SYNTHETIC_GBM
+[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ git status --short
- M data-pipeline/.gitignore
- M data-pipeline/README.md
- M data-pipeline/requirements.txt
- M data-pipeline/src/app.py
- M data-pipeline/src/quote_provider.py
- M docker-compose.yml
- M env.example
-?? backend/src/main/java/com/neueda/leap/marketdata/
-?? backend/src/test/java/com/neueda/leap/marketdata/
-?? data-pipeline/src/database.py
-?? data-pipeline/src/instrument_repository.py
-?? data-pipeline/src/quote_ingestor.py
-?? data-pipeline/src/quote_repository.py
-?? data-pipeline/src/service_runner.py
-?? data-pipeline/tests/test_database.py
-?? data-pipeline/tests/test_postgres_quote_provider.py
-?? data-pipeline/tests/test_quote_ingestor.py
-?? db/seeds/
-?? db/tests/006_quote_ingestion.sql
-?? docs/
+set -a
+source .env
+set +a
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ grep -n "PostgresQuoteProvider" data-pipeline/src/quote_provider.py data-pipeline/src/app.py
-data-pipeline/src/quote_provider.py:45:class PostgresQuoteProvider:
-data-pipeline/src/app.py:14:    PostgresQuoteProvider,
-data-pipeline/src/app.py:37:            active_provider = PostgresQuoteProvider()
+docker-compose exec db \
+  psql \
+  -U "$DB_ADMIN_USERNAME" \
+  -d "$DB_NAME" \
+  -c "
+    SELECT
+      i.market_code,
+      i.symbol,
+      q.quote_id,
+      q.bid,
+      q.ask,
+      q.quoted_at,
+      q.source,
+      q.is_synthetic
+    FROM quotes q
+    JOIN instruments i
+      ON i.instrument_id = q.instrument_id
+    WHERE i.market_code = 'NASDAQ'
+    ORDER BY q.quoted_at DESC
+    LIMIT 20;
+  "
+ market_code | symbol |               quote_id               |     bid      |     ask      |       quoted_at        |    source     | is_synthetic
+-------------+--------+--------------------------------------+--------------+--------------+------------------------+---------------+--------------
+ NASDAQ      | AAPL   | 4ad865f2-8065-4ec9-94f8-6e959ebd8c8d | 224.50750000 | 224.59730000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | 52ead422-0a71-4c5d-93d1-24741e7339b6 | 510.26410000 | 510.46830000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 8afe014f-cb9b-4113-b076-a9995eb0b8d4 | 235.66070000 | 235.75490000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | 9845cb58-d4c0-4631-bfd4-155c24463763 | 175.14020000 | 175.21020000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | GOOGL  | aee9810c-9396-4b9c-ba57-86059ce7c030 | 204.93510000 | 205.01710000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | GOOGL  | f8e510c0-ae44-47c8-b2a4-f2082b05bc45 | 204.91670000 | 204.99870000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | d0315cc9-cb19-49cd-aab1-d3fd6a517226 | 510.60730000 | 510.81150000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 4a96678f-702a-49ef-b076-d10f69b81baf | 235.42310000 | 235.51730000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | 8c1822d6-e6fe-470e-9d1f-34dc44194716 | 175.02120000 | 175.09120000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AAPL   | d32c720e-26ba-4222-8368-7fbd206074aa | 224.51040000 | 224.60020000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | dc242fb4-a668-41e0-8baf-ecba3c88b601 | 175.09980000 | 175.16980000 | 2026-09-18 21:03:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 34e507c1-a8a2-4e55-8172-30e8780e3a7d | 235.29350000 | 235.38770000 | 2026-09-18 21:03:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | 44584a05-7761-4d87-954c-189493dd9eb4 | 510.47490000 | 510.67910000 | 2026-09-18 21:03:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AAPL   | 371aeeb4-9c36-407d-adaf-18007239b340 | 224.56690000 | 224.65670000 | 2026-09-18 21:03:07+00 | SY--More--
+Cancel request sent
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec db   psql   -U "$DB_ADMIN_USERNAME"   -d "$DB_NAME"   -c "
+    SELECT
+      i.market_code,
+      i.symbol,
+      q.quote_id,
+      q.bid,
+      q.ask,
+      q.quoted_at,
+      q.source,
+      q.is_synthetic
+    FROM quotes q
+    JOIN instruments i
+      ON i.instrument_id = q.instrument_id
+    WHERE i.market_code = 'NASDAQ'
+    ORDER BY q.quoted_at DESC
+    LIMIT 20;
+  "
+ market_code | symbol |               quote_id               |     bid      |     ask      |       quoted_at        |    source     | is_synthetic
+-------------+--------+--------------------------------------+--------------+--------------+------------------------+---------------+--------------
+ NASDAQ      | AAPL   | 4ad865f2-8065-4ec9-94f8-6e959ebd8c8d | 224.50750000 | 224.59730000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | 52ead422-0a71-4c5d-93d1-24741e7339b6 | 510.26410000 | 510.46830000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 8afe014f-cb9b-4113-b076-a9995eb0b8d4 | 235.66070000 | 235.75490000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | 9845cb58-d4c0-4631-bfd4-155c24463763 | 175.14020000 | 175.21020000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | GOOGL  | aee9810c-9396-4b9c-ba57-86059ce7c030 | 204.93510000 | 205.01710000 | 2026-09-18 21:05:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | GOOGL  | f8e510c0-ae44-47c8-b2a4-f2082b05bc45 | 204.91670000 | 204.99870000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | d0315cc9-cb19-49cd-aab1-d3fd6a517226 | 510.60730000 | 510.81150000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 4a96678f-702a-49ef-b076-d10f69b81baf | 235.42310000 | 235.51730000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | 8c1822d6-e6fe-470e-9d1f-34dc44194716 | 175.02120000 | 175.09120000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AAPL   | d32c720e-26ba-4222-8368-7fbd206074aa | 224.51040000 | 224.60020000 | 2026-09-18 21:04:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | NVDA   | dc242fb4-a668-41e0-8baf-ecba3c88b601 | 175.09980000 | 175.16980000 | 2026-09-18 21:03:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | AMZN   | 34e507c1-a8a2-4e55-8172-30e8780e3a7d | 235.29350000 | 235.38770000 | 2026-09-18 21:03:07+00 | SYNTHETIC_GBM | t
+ NASDAQ      | MSFT   | 44584a05-7761-4d87-954c-189493dd9eb4 | 510.47490000 | 510.67910000 | 2026-09-18 21:03:07+00 | SY[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose exec -T db psql -U "$DB_ADMIN_USERNAME" -d "$DB_NAME" -v ON_ERROR_STOP=1 < db/tests/006_quote_ingestion.sql
+BEGIN
+INSERT 0 5
+INSERT 0 5
+DO
+INSERT 0 1
+INSERT 0 0
+DO
+ROLLBACK
+                            result
+---------------------------------------------------------------
+ PASS: US-equity seed and quote ingestion constraints verified
+(1 row)
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ grep -n "quote-service" docker-compose.yml
-60:  quote-service:
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose up -d quote-service
+[+] Running 2/2
+ ✔ Container lil-leap-db-1             Healthy                                                                     0.5s
+ ✔ Container lil-leap-quote-service-1  Started                                                                     0.9s
+[ec2-user@ip-10-14-141-133 lil-leap]$ sleep 10
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose logs quote-service --tail=100
+quote-service-1  |  * Serving Flask app 'app'
+quote-service-1  |  * Debug mode: off
+quote-service-1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+quote-service-1  |  * Running on all addresses (0.0.0.0)
+quote-service-1  |  * Running on http://127.0.0.1:8080
+quote-service-1  |  * Running on http://172.19.0.3:8080
+quote-service-1  | Press CTRL+C to quit
+[ec2-user@ip-10-14-141-133 lil-leap]$ curl http://localhost:8081/health
+{"status":"UP"}
+[ec2-user@ip-10-14-141-133 lil-leap]$ curl http://localhost:8081/api/v1/quotes/AAPL
+{"ask":224.5973,"bid":224.5075,"cache_age_ms":0.0,"cache_ttl_ms":5000.0,"cached":false,"currency":"USD","price":224.5524,"quote_timestamp":"2026-09-18T21:05:07+00:00","source":"SYNTHETIC_GBM","symbol":"AAPL","synthetic":true}
+[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap/backend
+[ec2-user@ip-10-14-141-133 backend]$ mvn clean verify
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.neueda.leap:sprint1-greeter-app >-----------------
+[INFO] Building sprint1-greeter-app 0.1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.2/maven-jar-plugin-3.4.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.2/maven-jar-plugin-3.4.2.pom (7.7 kB at 14 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.2/maven-jar-plugin-3.4.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.2/maven-jar-plugin-3.4.2.jar (34 kB at 709 kB/s)
+[INFO]
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ sprint1-greeter-app ---
+[INFO] Deleting /home/ec2-user/lil-leap/backend/target
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ sprint1-greeter-app ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- maven-compiler-plugin:3.13.0:compile (default-compile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 53 source files with javac [debug parameters release 17] to target/classes
+[INFO]
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ sprint1-greeter-app ---
+[INFO] skip non existing resourceDirectory /home/ec2-user/lil-leap/backend/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.13.0:testCompile (default-testCompile) @ sprint1-greeter-app ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug parameters release 17] to target/test-classes
+[INFO] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java: /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java uses unchecked or unsafe operations.
+[INFO] /home/ec2-user/lil-leap/backend/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java: Recompile with -Xlint:unchecked for details.
+[INFO]
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ sprint1-greeter-app ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.neueda.leap.config.SecurityConfigTest
+21:05:05.431 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.neueda.leap.config.SecurityConfigTest]: SecurityConfigTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:05.712 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.config.SecurityConfigTest
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
-$ git branch -m feature/postgres-quote-ingestion
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-ingestion)
-$ cd ~/lil-leap/data-pipeline
+ :: Spring Boot ::                (v3.3.4)
 
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ source .venv/Scripts/activate
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -m pip install --upgrade pip
-Requirement already satisfied: pip in .\.venv\Lib\site-packages (26.2.1)
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -m pip install -r requirements.txt
-Requirement already satisfied: numpy in .\.venv\Lib\site-packages (from -r requirements.txt (line 1)) (2.5.3)
-Requirement already satisfied: pandas in .\.venv\Lib\site-packages (from -r requirements.txt (line 2)) (3.0.5)
-Requirement already satisfied: pytest in .\.venv\Lib\site-packages (from -r requirements.txt (line 3)) (9.1.1)
-Requirement already satisfied: pytest-cov in .\.venv\Lib\site-packages (from -r requirements.txt (line 4)) (7.1.0)
-Collecting psycopg==3.2.10 (from psycopg[binary]==3.2.10->-r requirements.txt (line 5))
-  Downloading psycopg-3.2.10-py3-none-any.whl.metadata (4.6 kB)
-Requirement already satisfied: flask in .\.venv\Lib\site-packages (from -r requirements.txt (line 6)) (3.1.3)
-Requirement already satisfied: tzdata in .\.venv\Lib\site-packages (from psycopg==3.2.10->psycopg[binary]==3.2.10->-r requirements.txt (line 5)) (2026.3)
-Collecting psycopg-binary==3.2.10 (from psycopg[binary]==3.2.10->-r requirements.txt (line 5))
-  Downloading psycopg_binary-3.2.10-cp314-cp314-win_amd64.whl.metadata (3.0 kB)
-Requirement already satisfied: python-dateutil>=2.8.2 in .\.venv\Lib\site-packages (from pandas->-r requirements.txt (line 2)) (2.9.0.post0)
-Requirement already satisfied: colorama>=0.4 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (0.4.6)
-Requirement already satisfied: iniconfig>=1.0.1 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (2.3.0)
-Requirement already satisfied: packaging>=22 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (26.3)
-Requirement already satisfied: pluggy<2,>=1.5 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (1.6.0)
-Requirement already satisfied: pygments>=2.7.2 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (2.21.0)
-Requirement already satisfied: coverage>=7.10.6 in .\.venv\Lib\site-packages (from coverage[toml]>=7.10.6->pytest-cov->-r requirements.txt (line 4)) (7.16.1)
-Requirement already satisfied: blinker>=1.9.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (1.9.0)
-Requirement already satisfied: click>=8.1.3 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (8.5.0)
-Requirement already satisfied: itsdangerous>=2.2.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (2.2.0)
-Requirement already satisfied: jinja2>=3.1.2 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.1.6)
-Requirement already satisfied: markupsafe>=2.1.1 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.0.3)
-Requirement already satisfied: werkzeug>=3.1.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.1.8)
-Requirement already satisfied: six>=1.5 in .\.venv\Lib\site-packages (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 2)) (1.17.0)
-Downloading psycopg-3.2.10-py3-none-any.whl (206 kB)
-Downloading psycopg_binary-3.2.10-cp314-cp314-win_amd64.whl (3.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 84.3 MB/s  0:00:00
-Installing collected packages: psycopg-binary, psycopg
-Successfully installed psycopg-3.2.10 psycopg-binary-3.2.10
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -c "import psycopg; print(psycopg.__version__)"
-3.2.10
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -m pytest -q
+21:05:06.603 [main] INFO  c.n.leap.config.SecurityConfigTest - Starting SecurityConfigTest using Java 21.0.8 with PID 9366 (started by ec2-user in /home/ec2-user/lil-leap/backend)
+21:05:06.605 [main] INFO  c.n.leap.config.SecurityConfigTest - No active profile set, falling back to 1 default profile: "default"
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/ec2-user/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+21:05:10.272 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
 
-=================================== ERRORS ====================================
-________________ ERROR collecting tests/test_quote_ingestor.py ________________
-.venv\Lib\site-packages\_pytest\python.py:508: in importtestmodule
-    mod = import_path(
-.venv\Lib\site-packages\_pytest\pathlib.py:596: in import_path
-    importlib.import_module(module_name)
-C:\Python314\Lib\importlib\__init__.py:88: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<frozen importlib._bootstrap>:1398: in _gcd_import
-    ???
-<frozen importlib._bootstrap>:1371: in _find_and_load
-    ???
-<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
-    ???
-<frozen importlib._bootstrap>:938: in _load_unlocked
-    ???
-.venv\Lib\site-packages\_pytest\assertion\rewrite.py:188: in exec_module
-    exec(co, module.__dict__)
-tests\test_quote_ingestor.py:6: in <module>
-    from src.quote_ingestor import transform_batch, ingest_frame, QuoteIngestionError
-E     File "C:\Users\Administrator\lil-leap\data-pipeline\src\quote_ingestor.py", line 51
-E       print(f"Generated: {len(frame)}
-E             ^
-E   SyntaxError: unterminated f-string literal (detected at line 51)
-=========================== short test summary info ===========================
-ERROR tests/test_quote_ingestor.py
-!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-1 error in 3.15s
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ ^C
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ cd ~/lil-leap/data-pipeline/
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ source .venv/Scripts/activate
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -m py_compile src/quote_ingestor.py
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$ python -m pytest -q
-......................FF.                                                [100%]
-================================== FAILURES ===================================
-______________________ test_transform_preserves_contract ______________________
+Using generated security password: 84e78b57-eac8-4a23-beb7-a2f4f22eb6da
 
-    def test_transform_preserves_contract():
->       row=transform_batch(frame(), Instruments())[0]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-tests\test_quote_ingestor.py:15:
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-src\quote_ingestor.py:17: in transform_batch
-    validate_quotes(frame)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+21:05:10.285 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+21:05:11.334 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+21:05:11.335 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+21:05:11.337 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+21:05:11.371 [main] INFO  c.n.leap.config.SecurityConfigTest - Started SecurityConfigTest in 5.528 seconds (process running for 7.237)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.585 s -- in com.neueda.leap.config.SecurityConfigTest
+[INFO] Running com.neueda.leap.marketdata.JdbcQuoteRepositoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.636 s -- in com.neueda.leap.marketdata.JdbcQuoteRepositoryTest
+[INFO] Running com.neueda.leap.onboarding.RegistrationControllerTest
+21:05:12.349 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.onboarding.RegistrationControllerTest]: RegistrationControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:12.451 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.onboarding.RegistrationControllerTest
 
-quotes =   symbol                  quote_timestamp  ...         source  synthetic
-0   aapl 2026-09-18 20:42:43.928099+00:00  ...  SYNTHETIC_GBM       True
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
-[1 rows x 8 columns]
+ :: Spring Boot ::                (v3.3.4)
 
-    def validate_quotes(quotes: pd.DataFrame) -> None:
-        """Validate generated quotes against the NextTrade quote contract.
+21:05:12.568 [main] INFO  c.n.l.o.RegistrationControllerTest - Starting RegistrationControllerTest using Java 21.0.8 with PID 9366 (started by ec2-user in /home/ec2-user/lil-leap/backend)
+21:05:12.568 [main] INFO  c.n.l.o.RegistrationControllerTest - No active profile set, falling back to 1 default profile: "default"
+21:05:13.180 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
 
-        Args:
-            quote: generated quote data to validate
+Using generated security password: 22cc8571-7947-4948-96e9-73c703cc34c1
 
-        Raises:
-            ValueError: If the quote dataset violates the required contract.
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-            """
+21:05:13.182 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+21:05:13.218 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+21:05:13.218 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+21:05:13.219 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+21:05:13.233 [main] INFO  c.n.l.o.RegistrationControllerTest - Started RegistrationControllerTest in 0.758 seconds (process running for 9.099)
+21:05:13.778 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'password': rejected value [123]; codes [Size.registerUserRequest.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.password,password]; arguments []; default message [password],128,8]; default message [size must be between 8 and 128]] ]
+21:05:13.940 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'email': rejected value [not-an-email]; codes [Email.registerUserRequest.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@78f35e39,.*]; default message [must be a well-formed email address]] ]
+21:05:13.969 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.onboarding.dto.UserResponse> com.neueda.leap.onboarding.controller.RegistrationController.register(com.neueda.leap.onboarding.dto.RegisterUserRequest): [Field error in object 'registerUserRequest' on field 'firstName': rejected value []; codes [NotBlank.registerUserRequest.firstName,NotBlank.firstName,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [registerUserRequest.firstName,firstName]; arguments []; default message [firstName]]; default message [must not be blank]] ]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.639 s -- in com.neueda.leap.onboarding.RegistrationControllerTest
+[INFO] Running com.neueda.leap.onboarding.RegistrationServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.753 s -- in com.neueda.leap.onboarding.RegistrationServiceTest
+[INFO] Running com.neueda.leap.security.JwtAuthenticationFilterTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.120 s -- in com.neueda.leap.security.JwtAuthenticationFilterTest
+[INFO] Running com.neueda.leap.security.JwtServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in com.neueda.leap.security.JwtServiceTest
+[INFO] Running com.neueda.leap.user.AuthControllerTest
+21:05:15.002 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:15.054 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.AuthControllerTest
 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
-        required_columns = {
-            "symbol",
-            "quote_timestamp",
-            "price",
-            "bid",
-            "ask",
-            "currency",
-            "source",
-            "synthetic",
-        }
+ :: Spring Boot ::                (v3.3.4)
 
-        missing_columns = required_columns.difference(quotes.columns)
+21:05:15.132 [main] INFO  c.n.leap.user.AuthControllerTest - Starting AuthControllerTest using Java 21.0.8 with PID 9366 (started by ec2-user in /home/ec2-user/lil-leap/backend)
+21:05:15.134 [main] INFO  c.n.leap.user.AuthControllerTest - No active profile set, falling back to 1 default profile: "default"
+21:05:15.740 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
 
-        if missing_columns:
-            raise ValueError(
-                f"Missing required columns: {sorted(missing_columns)}"
-            )
+Using generated security password: 49ed938c-1d9c-4958-81dd-067c81559f46
 
-        if quotes.empty:
-            raise ValueError("Quote dataset is empty.")
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-        if quotes[list(required_columns)].isna().any().any():
-            raise ValueError("Required quote fields must not contain null values.")
+21:05:15.741 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+21:05:15.794 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+21:05:15.794 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+21:05:15.798 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 4 ms
+21:05:15.814 [main] INFO  c.n.leap.user.AuthControllerTest - Started AuthControllerTest in 0.753 seconds (process running for 11.68)
+21:05:15.867 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.neueda.leap.user.dto.LoginResponse> com.neueda.leap.user.AuthController.login(com.neueda.leap.user.dto.LoginRequest): [Field error in object 'loginRequest' on field 'email': rejected value []; codes [NotBlank.loginRequest.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [loginRequest.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.900 s -- in com.neueda.leap.user.AuthControllerTest
+[INFO] Running com.neueda.leap.user.AuthenticationFlowTest
+21:05:15.909 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.AuthenticationFlowTest]: AuthenticationFlowTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:15.956 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.AuthenticationFlowTest
 
-        # re-read: Ensure that the quotes are sorted by symbol and timestamp
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
-        if quotes.duplicated(["symbol", "quote_timestamp"]).any():
-            raise ValueError("Symbol and timestamp combinations must be unique")
-        if not (quotes[["price", "bid", "ask"]] > 0).all().all():
-            raise ValueError("Price, bid, and ask must be greater than zero")
-        if not (quotes["bid"] <= quotes["price"]).all():
-            raise ValueError("Bid must not exceed price")
-        if not (quotes["price"] <= quotes["ask"]).all():
-            raise ValueError("Ask must not be below price")
-        if not quotes["currency"].eq("USD").all():
-            raise ValueError("All quotes must use USD")
-        if not quotes["source"].eq("SYNTHETIC_GBM").all():
-            raise ValueError("All quotes must identify the synthetic GBM source")
-        if not quotes["synthetic"].eq(True).all():
-            raise ValueError("Every generated quote must be labeled synthetic")
+ :: Spring Boot ::                (v3.3.4)
 
-        actual_symbols = set(quotes["symbol"])
-        if not actual_symbols.issubset(set(SYMBOL_CONFIG)):
->           raise ValueError("Quote dataset contains an unsupported symbol")
-E           ValueError: Quote dataset contains an unsupported symbol
+21:05:16.007 [main] INFO  c.n.leap.user.AuthenticationFlowTest - Starting AuthenticationFlowTest using Java 21.0.8 with PID 9366 (started by ec2-user in /home/ec2-user/lil-leap/backend)
+21:05:16.007 [main] INFO  c.n.leap.user.AuthenticationFlowTest - No active profile set, falling back to 1 default profile: "default"
+21:05:16.202 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
 
-src\generate_quotes.py:193: ValueError
-_______________________ test_currency_mismatch_rejected _______________________
+Using generated security password: d409f5ae-fa1e-497b-a737-11c27669ef1f
 
-    def test_currency_mismatch_rejected():
->       with pytest.raises(QuoteIngestionError): transform_batch(frame("EUR"), Instruments())
-                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-tests\test_quote_ingestor.py:20:
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-src\quote_ingestor.py:17: in transform_batch
-    validate_quotes(frame)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+21:05:16.203 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+21:05:16.299 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+21:05:16.300 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+21:05:16.300 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+21:05:16.309 [main] INFO  c.n.leap.user.AuthenticationFlowTest - Started AuthenticationFlowTest in 0.348 seconds (process running for 12.175)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.461 s -- in com.neueda.leap.user.AuthenticationFlowTest
+[INFO] Running com.neueda.leap.user.UserControllerTest
+21:05:16.385 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.neueda.leap.user.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:05:16.424 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.UserControllerTest
 
-quotes =   symbol                  quote_timestamp  ...         source  synthetic
-0   aapl 2026-09-18 20:42:44.074468+00:00  ...  SYNTHETIC_GBM       True
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
-[1 rows x 8 columns]
+ :: Spring Boot ::                (v3.3.4)
 
-    def validate_quotes(quotes: pd.DataFrame) -> None:
-        """Validate generated quotes against the NextTrade quote contract.
+21:05:16.454 [main] INFO  c.n.leap.user.UserControllerTest - Starting UserControllerTest using Java 21.0.8 with PID 9366 (started by ec2-user in /home/ec2-user/lil-leap/backend)
+21:05:16.454 [main] INFO  c.n.leap.user.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+21:05:16.712 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -
 
-        Args:
-            quote: generated quote data to validate
+Using generated security password: 4b857c3d-dfe9-4c62-b5a5-39a78963dfe8
 
-        Raises:
-            ValueError: If the quote dataset violates the required contract.
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-            """
-
-
-        required_columns = {
-            "symbol",
-            "quote_timestamp",
-            "price",
-            "bid",
-            "ask",
-            "currency",
-            "source",
-            "synthetic",
-        }
-
-        missing_columns = required_columns.difference(quotes.columns)
-
-        if missing_columns:
-            raise ValueError(
-                f"Missing required columns: {sorted(missing_columns)}"
-            )
-
-        if quotes.empty:
-            raise ValueError("Quote dataset is empty.")
-
-        if quotes[list(required_columns)].isna().any().any():
-            raise ValueError("Required quote fields must not contain null values.")
-
-        # re-read: Ensure that the quotes are sorted by symbol and timestamp
-
-        if quotes.duplicated(["symbol", "quote_timestamp"]).any():
-            raise ValueError("Symbol and timestamp combinations must be unique")
-        if not (quotes[["price", "bid", "ask"]] > 0).all().all():
-            raise ValueError("Price, bid, and ask must be greater than zero")
-        if not (quotes["bid"] <= quotes["price"]).all():
-            raise ValueError("Bid must not exceed price")
-        if not (quotes["price"] <= quotes["ask"]).all():
-            raise ValueError("Ask must not be below price")
-        if not quotes["currency"].eq("USD").all():
->           raise ValueError("All quotes must use USD")
-E           ValueError: All quotes must use USD
-
-src\generate_quotes.py:185: ValueError
-=========================== short test summary info ===========================
-FAILED tests/test_quote_ingestor.py::test_transform_preserves_contract - ValueError: Quote dataset contains an unsupported symbol
-FAILED tests/test_quote_ingestor.py::test_currency_mismatch_rejected - ValueError: All quotes must use USD
-2 failed, 23 passed in 1.24s
-(.venv)
-Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
-$
+21:05:16.713 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+21:05:16.730 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+21:05:16.730 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+21:05:16.731 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+21:05:16.740 [main] INFO  c.n.leap.user.UserControllerTest - Started UserControllerTest in 0.312 seconds (process running for 12.606)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.376 s -- in com.neueda.leap.user.UserControllerTest
+[INFO] Running com.neueda.leap.user.UserServiceTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.484 s -- in com.neueda.leap.user.UserServiceTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- maven-jar-plugin:3.4.2:jar (default-jar) @ sprint1-greeter-app ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.pom (4.5 kB at 109 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/36/maven-shared-components-36.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/36/maven-shared-components-36.pom (4.9 kB at 122 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/36/maven-parent-36.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/36/maven-parent-36.pom (45 kB at 1.1 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/26/apache-26.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/26/apache-26.pom (21 kB at 622 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.pom (7.8 kB at 230 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom (20 kB at 503 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom (77 kB at 1.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.pom (4.4 kB at 129 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/41/maven-shared-components-41.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/41/maven-shared-components-41.pom (3.2 kB at 106 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.pom (6.0 kB at 193 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.pom (3.9 kB at 99 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/16/plexus-16.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/16/plexus-16.pom (28 kB at 691 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.pom (22 kB at 546 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/66/commons-parent-66.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/66/commons-parent-66.pom (77 kB at 1.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.pom (16 kB at 412 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.pom (31 kB at 909 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/64/commons-parent-64.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/64/commons-parent-64.pom (78 kB at 2.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.pom (15 kB at 415 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.pom (2.0 kB at 66 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.pom (2.0 kB at 57 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.pom (3.0 kB at 104 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.jar (86 kB at 1.4 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar (36 kB at 279 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.jar (27 kB at 220 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.jar (225 kB at 1.6 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.jar (79 kB at 291 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.jar (193 kB at 623 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.jar (58 kB at 164 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar (509 kB at 1.3 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.jar (116 kB at 266 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.jar (365 kB at 794 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar (658 kB at 1.4 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.jar (1.1 MB at 2.3 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.jar (6.8 MB at 8.7 MB/s)
+[INFO] Building jar: /home/ec2-user/lil-leap/backend/target/sprint1-greeter-app.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:3.3.4:repackage (repackage) @ sprint1-greeter-app ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.4/spring-boot-buildpack-platform-3.3.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.4/spring-boot-buildpack-platform-3.3.4.pom (3.2 kB at 78 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.pom (19 kB at 500 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.14.2/jackson-base-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.14.2/jackson-base-2.14.2.pom (10 kB at 238 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.14.2/jackson-bom-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.14.2/jackson-bom-2.14.2.pom (17 kB at 460 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.14/jackson-parent-2.14.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.14/jackson-parent-2.14.pom (7.7 kB at 196 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/48/oss-parent-48.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/48/oss-parent-48.pom (24 kB at 625 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.pom (6.2 kB at 168 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.pom (7.0 kB at 167 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.pom (4.4 kB at 101 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-modules-java8/2.14.2/jackson-modules-java8-2.14.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-modules-java8/2.14.2/jackson-modules-java8-2.14.2.pom (3.1 kB at 65 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.pom (2.3 kB at 52 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.pom (2.0 kB at 52 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.pom (22 kB at 529 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom (6.0 kB at 119 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom (17 kB at 407 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom (30 kB at 737 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 kB at 399 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom (3.9 kB at 88 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom (14 kB at 327 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom (3.6 kB at 98 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.0.23/spring-core-6.0.23.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.0.23/spring-core-6.0.23.pom (2.0 kB at 50 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.0.23/spring-jcl-6.0.23.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.0.23/spring-jcl-6.0.23.pom (1.8 kB at 44 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.pom (2.8 kB at 76 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom (3.6 kB at 88 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-master/4.7.2/antlr4-master-4.7.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-master/4.7.2/antlr4-master-4.7.2.pom (4.4 kB at 116 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (4.3 kB at 105 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.4/spring-boot-loader-tools-3.3.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.4/spring-boot-loader-tools-3.3.4.pom (2.2 kB at 59 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.pom (5.3 kB at 120 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/37/maven-shared-components-37.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/37/maven-shared-components-37.pom (4.9 kB at 125 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom (46 kB at 1.1 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.10/micrometer-observation-1.12.10.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.10/micrometer-observation-1.12.10.pom (3.8 kB at 92 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.10/micrometer-commons-1.12.10.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.10/micrometer-commons-1.12.10.pom (3.4 kB at 90 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.pom (12 kB at 319 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.pom (3.8 kB at 89 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.32/slf4j-parent-1.7.32.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.32/slf4j-parent-1.7.32.pom (14 kB at 288 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.pom (2.4 kB at 58 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.pom (2.8 kB at 59 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.pom (2.6 kB at 54 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (4.6 kB at 107 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.pom (6.2 kB at 156 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.pom (20 kB at 423 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/58/commons-parent-58.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/58/commons-parent-58.pom (83 kB at 1.7 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.pom (14 kB at 323 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom (24 kB at 595 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/48/commons-parent-48.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/48/commons-parent-48.pom (72 kB at 1.6 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.4/spring-boot-buildpack-platform-3.3.4.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar (77 kB at 1.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.jar (9.5 kB at 137 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.4/spring-boot-buildpack-platform-3.3.4.jar (289 kB at 3.3 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.jar (459 kB at 4.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar (1.6 MB at 6.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.jar (1.4 MB at 5.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.jar (1.1 MB at 3.7 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar (862 kB at 2.9 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar (237 kB at 743 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.jar (157 kB at 449 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.4/spring-boot-loader-tools-3.3.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar (20 kB at 56 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar (1.9 MB at 5.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.10/micrometer-observation-1.12.10.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar (338 kB at 918 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.10/micrometer-commons-1.12.10.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar (855 kB at 2.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.jar (58 kB at 147 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.10/micrometer-observation-1.12.10.jar (72 kB at 169 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.10/micrometer-commons-1.12.10.jar (47 kB at 109 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.jar (122 kB at 271 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.jar (147 kB at 321 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.4/spring-boot-loader-tools-3.3.4.jar (464 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar (52 kB at 112 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar (72 kB at 150 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.jar (43 kB at 83 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.jar (233 kB at 447 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (328 kB at 592 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar (484 kB at 860 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar (752 kB at 1.3 MB/s)
+[INFO] Replacing main artifact /home/ec2-user/lil-leap/backend/target/sprint1-greeter-app.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/ec2-user/lil-leap/backend/target/sprint1-greeter-app.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  28.564 s
+[INFO] Finished at: 2026-09-18T21:05:23Z
+[INFO] ------------------------------------------------------------------------
+[ec2-user@ip-10-14-141-133 backend]$
