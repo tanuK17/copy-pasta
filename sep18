@@ -1,0 +1,12 @@
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ git apply --check /c/Users/Administrator/Downloads/lil-leap-postgres-quote-ingestion-safe/lil-leap-postgres-quote-ingestion-safe/existing-files.patch
+error: patch failed: data-pipeline/requirements.txt:2
+error: data-pipeline/requirements.txt: patch does not apply
+error: patch failed: data-pipeline/.gitignore:16
+error: data-pipeline/.gitignore: patch does not apply
+error: patch failed: data-pipeline/README.md:39
+error: data-pipeline/README.md: patch does not apply
+error: patch failed: docker-compose.yml:55
+error: docker-compose.yml: patch does not apply
+error: patch failed: env.example:20
+error: env.example: patch does not apply
