@@ -1,0 +1,137 @@
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd lil-leap/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ git apply --check /c/Users/Administrator/Downloads/lil-leap-postgres-quote-ingestion-safe/lil-leap-postgres-quote-ingestion-safe/existing-files.patch
+error: patch failed: data-pipeline/requirements.txt:2
+error: data-pipeline/requirements.txt: patch does not apply
+error: patch failed: data-pipeline/.gitignore:16
+error: data-pipeline/.gitignore: patch does not apply
+error: patch failed: data-pipeline/README.md:39
+error: data-pipeline/README.md: patch does not apply
+error: patch failed: docker-compose.yml:55
+error: docker-compose.yml: patch does not apply
+error: patch failed: env.example:20
+error: env.example: patch does not apply
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ cd ~/lil-leap/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ git status --short
+ M data-pipeline/.gitignore
+ M data-pipeline/README.md
+ M data-pipeline/requirements.txt
+ M data-pipeline/src/app.py
+ M data-pipeline/src/quote_provider.py
+ M docker-compose.yml
+ M env.example
+?? backend/src/main/java/com/neueda/leap/marketdata/
+?? backend/src/test/java/com/neueda/leap/marketdata/
+?? data-pipeline/src/database.py
+?? data-pipeline/src/instrument_repository.py
+?? data-pipeline/src/quote_ingestor.py
+?? data-pipeline/src/quote_repository.py
+?? data-pipeline/src/service_runner.py
+?? data-pipeline/tests/test_database.py
+?? data-pipeline/tests/test_postgres_quote_provider.py
+?? data-pipeline/tests/test_quote_ingestor.py
+?? db/seeds/
+?? db/tests/006_quote_ingestion.sql
+?? docs/
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ grep -n "PostgresQuoteProvider" data-pipeline/src/quote_provider.py data-pipeline/src/app.py
+data-pipeline/src/quote_provider.py:45:class PostgresQuoteProvider:
+data-pipeline/src/app.py:14:    PostgresQuoteProvider,
+data-pipeline/src/app.py:37:            active_provider = PostgresQuoteProvider()
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ grep -n "quote-service" docker-compose.yml
+60:  quote-service:
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-integration)
+$ git branch -m feature/postgres-quote-ingestion
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/postgres-quote-ingestion)
+$ cd ~/lil-leap/data-pipeline
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ source .venv/Scripts/activate
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -m pip install --upgrade pip
+Requirement already satisfied: pip in .\.venv\Lib\site-packages (26.2.1)
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -m pip install -r requirements.txt
+Requirement already satisfied: numpy in .\.venv\Lib\site-packages (from -r requirements.txt (line 1)) (2.5.3)
+Requirement already satisfied: pandas in .\.venv\Lib\site-packages (from -r requirements.txt (line 2)) (3.0.5)
+Requirement already satisfied: pytest in .\.venv\Lib\site-packages (from -r requirements.txt (line 3)) (9.1.1)
+Requirement already satisfied: pytest-cov in .\.venv\Lib\site-packages (from -r requirements.txt (line 4)) (7.1.0)
+Collecting psycopg==3.2.10 (from psycopg[binary]==3.2.10->-r requirements.txt (line 5))
+  Downloading psycopg-3.2.10-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: flask in .\.venv\Lib\site-packages (from -r requirements.txt (line 6)) (3.1.3)
+Requirement already satisfied: tzdata in .\.venv\Lib\site-packages (from psycopg==3.2.10->psycopg[binary]==3.2.10->-r requirements.txt (line 5)) (2026.3)
+Collecting psycopg-binary==3.2.10 (from psycopg[binary]==3.2.10->-r requirements.txt (line 5))
+  Downloading psycopg_binary-3.2.10-cp314-cp314-win_amd64.whl.metadata (3.0 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in .\.venv\Lib\site-packages (from pandas->-r requirements.txt (line 2)) (2.9.0.post0)
+Requirement already satisfied: colorama>=0.4 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (0.4.6)
+Requirement already satisfied: iniconfig>=1.0.1 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (2.3.0)
+Requirement already satisfied: packaging>=22 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in .\.venv\Lib\site-packages (from pytest->-r requirements.txt (line 3)) (2.21.0)
+Requirement already satisfied: coverage>=7.10.6 in .\.venv\Lib\site-packages (from coverage[toml]>=7.10.6->pytest-cov->-r requirements.txt (line 4)) (7.16.1)
+Requirement already satisfied: blinker>=1.9.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (8.5.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.0.3)
+Requirement already satisfied: werkzeug>=3.1.0 in .\.venv\Lib\site-packages (from flask->-r requirements.txt (line 6)) (3.1.8)
+Requirement already satisfied: six>=1.5 in .\.venv\Lib\site-packages (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 2)) (1.17.0)
+Downloading psycopg-3.2.10-py3-none-any.whl (206 kB)
+Downloading psycopg_binary-3.2.10-cp314-cp314-win_amd64.whl (3.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 84.3 MB/s  0:00:00
+Installing collected packages: psycopg-binary, psycopg
+Successfully installed psycopg-3.2.10 psycopg-binary-3.2.10
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -c "import psycopg; print(psycopg.__version__)"
+3.2.10
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$ python -m pytest -q
+
+=================================== ERRORS ====================================
+________________ ERROR collecting tests/test_quote_ingestor.py ________________
+.venv\Lib\site-packages\_pytest\python.py:508: in importtestmodule
+    mod = import_path(
+.venv\Lib\site-packages\_pytest\pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1342: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:938: in _load_unlocked
+    ???
+.venv\Lib\site-packages\_pytest\assertion\rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests\test_quote_ingestor.py:6: in <module>
+    from src.quote_ingestor import transform_batch, ingest_frame, QuoteIngestionError
+E     File "C:\Users\Administrator\lil-leap\data-pipeline\src\quote_ingestor.py", line 51
+E       print(f"Generated: {len(frame)}
+E             ^
+E   SyntaxError: unterminated f-string literal (detected at line 51)
+=========================== short test summary info ===========================
+ERROR tests/test_quote_ingestor.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 3.15s
+(.venv)
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap/data-pipeline (feature/postgres-quote-ingestion)
+$
