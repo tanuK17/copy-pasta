@@ -1,353 +1,109 @@
-14:01:37    .   ____          _            __ _ _
-14:01:37   /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-14:01:37  ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
-14:01:37   \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-14:01:37    '  |____| .__|_| |_|_| |_\__, | / / / /
-14:01:37   =========|_|==============|___/=/_/_/_/
-14:01:37  
-14:01:37   :: Spring Boot ::                (v3.3.4)
-14:01:37  
-14:01:37  2026-09-21T14:01:37.567Z  INFO 8536 --- [           main] c.n.leap.user.AuthenticationFlowTest     : Starting AuthenticationFlowTest using Java 21.0.8 with PID 8536 (started by jenkins in /var/lib/jenkins/workspace/lil-leap/nextTrade)
-14:01:37  2026-09-21T14:01:37.568Z  INFO 8536 --- [           main] c.n.leap.user.AuthenticationFlowTest     : No active profile set, falling back to 1 default profile: "default"
-14:01:38  2026-09-21T14:01:37.927Z  WARN 8536 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
-14:01:38  
-14:01:38  Using generated security password: 33ee8f83-c402-4252-9e59-d2ab47b134b7
-14:01:38  
-14:01:38  This generated password is for development use only. Your security configuration must be updated before running your application in production.
-14:01:38  
-14:01:38  2026-09-21T14:01:37.929Z  INFO 8536 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-14:01:38  2026-09-21T14:01:38.099Z  INFO 8536 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-14:01:38  2026-09-21T14:01:38.099Z  INFO 8536 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-14:01:38  2026-09-21T14:01:38.101Z  INFO 8536 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-14:01:38  2026-09-21T14:01:38.117Z  INFO 8536 --- [           main] c.n.leap.user.AuthenticationFlowTest     : Started AuthenticationFlowTest in 0.596 seconds (process running for 18.293)
-14:01:38  [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.755 s -- in com.neueda.leap.user.AuthenticationFlowTest
-14:01:38  [INFO] Running com.neueda.leap.user.UserControllerTest
-14:01:38  2026-09-21T14:01:38.279Z  INFO 8536 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.neueda.leap.user.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:01:38  2026-09-21T14:01:38.302Z  INFO 8536 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.neueda.leap.Main for test class com.neueda.leap.user.UserControllerTest
-14:01:38  
-14:01:38    .   ____          _            __ _ _
-14:01:38   /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-14:01:38  ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
-14:01:38   \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-14:01:38    '  |____| .__|_| |_|_| |_\__, | / / / /
-14:01:38   =========|_|==============|___/=/_/_/_/
-14:01:38  
-14:01:38   :: Spring Boot ::                (v3.3.4)
-14:01:38  
-14:01:38  2026-09-21T14:01:38.357Z  INFO 8536 --- [           main] c.neueda.leap.user.UserControllerTest    : Starting UserControllerTest using Java 21.0.8 with PID 8536 (started by jenkins in /var/lib/jenkins/workspace/lil-leap/nextTrade)
-14:01:38  2026-09-21T14:01:38.357Z  INFO 8536 --- [           main] c.neueda.leap.user.UserControllerTest    : No active profile set, falling back to 1 default profile: "default"
-14:01:39  2026-09-21T14:01:38.770Z  WARN 8536 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
-14:01:39  
-14:01:39  Using generated security password: 7c460977-7d0f-4763-83d0-d5a7f7be088a
-14:01:39  
-14:01:39  This generated password is for development use only. Your security configuration must be updated before running your application in production.
-14:01:39  
-14:01:39  2026-09-21T14:01:38.774Z  INFO 8536 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-14:01:39  2026-09-21T14:01:38.801Z  INFO 8536 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-14:01:39  2026-09-21T14:01:38.802Z  INFO 8536 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-14:01:39  2026-09-21T14:01:38.803Z  INFO 8536 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-14:01:39  2026-09-21T14:01:38.819Z  INFO 8536 --- [           main] c.neueda.leap.user.UserControllerTest    : Started UserControllerTest in 0.511 seconds (process running for 18.995)
-14:01:39  [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.612 s -- in com.neueda.leap.user.UserControllerTest
-14:01:39  [INFO] Running com.neueda.leap.user.UserServiceTest
-14:01:39  [INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.533 s -- in com.neueda.leap.user.UserServiceTest
-14:01:39  [INFO] 
-14:01:39  [INFO] Results:
-14:01:39  [INFO] 
-14:01:39  [INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
-14:01:39  [INFO] 
-14:01:39  [INFO] 
-14:01:39  [INFO] --- jar:3.4.2:jar (default-jar) @ nexttrade ---
-14:01:40  [INFO] Building jar: /var/lib/jenkins/workspace/lil-leap/nextTrade/target/nexttrade.jar
-14:01:40  [INFO] 
-14:01:40  [INFO] --- spring-boot:3.3.4:repackage (repackage) @ nexttrade ---
-14:01:43  [INFO] Replacing main artifact /var/lib/jenkins/workspace/lil-leap/nextTrade/target/nexttrade.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
-14:01:43  [INFO] The original artifact has been renamed to /var/lib/jenkins/workspace/lil-leap/nextTrade/target/nexttrade.jar.original
-14:01:43  [INFO] 
-14:01:43  [INFO] --- jacoco:0.8.13:report (report) @ nexttrade ---
-14:01:43  [INFO] Loading execution data file /var/lib/jenkins/workspace/lil-leap/nextTrade/target/jacoco.exec
-14:01:43  [INFO] Analyzed bundle 'NextTrade' with 31 classes
-14:01:43  [INFO] ------------------------------------------------------------------------
-14:01:43  [INFO] BUILD SUCCESS
-14:01:43  [INFO] ------------------------------------------------------------------------
-14:01:43  [INFO] Total time:  31.292 s
-14:01:43  [INFO] Finished at: 2026-09-21T14:01:43Z
-14:01:43  [INFO] ------------------------------------------------------------------------
-[Pipeline] }
-[Pipeline] // dir
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Publish Backend Coverage)
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] archiveArtifacts
-14:01:43  Archiving artifacts
-14:01:44  Recording fingerprints
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Run Python Tests With Coverage)
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] sh
-14:01:45  ++ id -u
-14:01:45  ++ id -g
-14:01:45  + docker run --rm --user 992:991 -v /var/lib/jenkins/workspace/lil-leap/data-pipeline:/app -w /app python:3.12-slim sh -ec 'python -m venv /tmp/python-venv
-14:01:45              /tmp/python-venv/bin/python -m pip install --no-cache-dir -r requirements-coverage.txt
-14:01:45              /tmp/python-venv/bin/python -m pytest -v             --cov=src             --cov-report=term-missing             --cov-report=html:htmlcov             --cov-report=xml:coverage.xml'
-14:01:45  Unable to find image 'python:3.12-slim' locally
-14:01:46  3.12-slim: Pulling from library/python
-14:01:47  6b37362b3da7: Pulling fs layer
-14:01:47  3764a9a7d1e8: Pulling fs layer
-14:01:47  b0dc7f87bef1: Pulling fs layer
-14:01:47  06ad939ed42b: Pulling fs layer
-14:01:47  06ad939ed42b: Waiting
-14:01:47  3764a9a7d1e8: Verifying Checksum
-14:01:47  3764a9a7d1e8: Download complete
-14:01:47  b0dc7f87bef1: Verifying Checksum
-14:01:47  b0dc7f87bef1: Download complete
-14:01:47  6b37362b3da7: Verifying Checksum
-14:01:47  6b37362b3da7: Download complete
-14:01:47  06ad939ed42b: Verifying Checksum
-14:01:47  06ad939ed42b: Download complete
-14:01:49  6b37362b3da7: Pull complete
-14:01:49  3764a9a7d1e8: Pull complete
-14:01:50  b0dc7f87bef1: Pull complete
-14:01:50  06ad939ed42b: Pull complete
-14:01:50  Digest: sha256:2f17fc044b579bab302c2e8054d3a686e2cb9a83de48e70534b94cd8ebbe06a9
-14:01:50  Status: Downloaded newer image for python:3.12-slim
-14:01:58  Collecting numpy (from -r /app/requirements.txt (line 1))
-14:01:58    Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
-14:01:58  Collecting pandas (from -r /app/requirements.txt (line 2))
-14:01:58    Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
-14:01:58  Collecting pytest (from -r /app/requirements.txt (line 3))
-14:01:58    Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
-14:01:58  Collecting pytest-cov (from -r /app/requirements.txt (line 4))
-14:01:58    Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
-14:01:58  Collecting psycopg==3.2.10 (from psycopg[binary]==3.2.10->-r /app/requirements.txt (line 5))
-14:01:58    Downloading psycopg-3.2.10-py3-none-any.whl.metadata (4.6 kB)
-14:01:58  Collecting flask (from -r /app/requirements.txt (line 6))
-14:01:58    Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
-14:01:58  Collecting pytest-cov (from -r /app/requirements.txt (line 4))
-14:01:58    Downloading pytest_cov-7.0.0-py3-none-any.whl.metadata (31 kB)
-14:01:58  Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov->-r /app/requirements.txt (line 4))
-14:01:58    Downloading coverage-7.16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.2 kB)
-14:01:58  Collecting pluggy>=1.2 (from pytest-cov->-r /app/requirements.txt (line 4))
-14:01:58    Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
-14:01:58  Collecting typing-extensions>=4.6 (from psycopg==3.2.10->psycopg[binary]==3.2.10->-r /app/requirements.txt (line 5))
-14:01:58    Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
-14:01:58  Collecting psycopg-binary==3.2.10 (from psycopg[binary]==3.2.10->-r /app/requirements.txt (line 5))
-14:01:58    Downloading psycopg_binary-3.2.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.0 kB)
-14:01:58  Collecting python-dateutil>=2.8.2 (from pandas->-r /app/requirements.txt (line 2))
-14:01:58    Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
-14:01:58  Collecting iniconfig>=1.0.1 (from pytest->-r /app/requirements.txt (line 3))
-14:01:58    Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
-14:01:58  Collecting packaging>=22 (from pytest->-r /app/requirements.txt (line 3))
-14:01:58    Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
-14:01:58  Collecting pygments>=2.7.2 (from pytest->-r /app/requirements.txt (line 3))
-14:01:58    Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
-14:01:58  Collecting blinker>=1.9.0 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
-14:01:58  Collecting click>=8.1.3 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
-14:01:58  Collecting itsdangerous>=2.2.0 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
-14:01:58  Collecting jinja2>=3.1.2 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
-14:01:58  Collecting markupsafe>=2.1.1 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
-14:01:58  Collecting werkzeug>=3.1.0 (from flask->-r /app/requirements.txt (line 6))
-14:01:58    Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
-14:01:58  Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas->-r /app/requirements.txt (line 2))
-14:01:58    Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
-14:01:58  Downloading pytest_cov-7.0.0-py3-none-any.whl (22 kB)
-14:01:58  Downloading psycopg-3.2.10-py3-none-any.whl (206 kB)
-14:01:58  Downloading psycopg_binary-3.2.10-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.4 MB)
-14:01:58     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 333.2 MB/s eta 0:00:00
-14:01:58  Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
-14:01:58     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 458.8 MB/s eta 0:00:00
-14:01:58  Downloading pandas-3.0.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (10.8 MB)
-14:01:58     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 515.4 MB/s eta 0:00:00
-14:01:58  Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
-14:01:58  Downloading flask-3.1.3-py3-none-any.whl (103 kB)
-14:01:58  Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
-14:01:58  Downloading click-8.5.0-py3-none-any.whl (125 kB)
-14:01:58  Downloading coverage-7.16.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (258 kB)
-14:01:58  Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
-14:01:58  Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
-14:01:58  Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
-14:01:58  Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
-14:01:58  Downloading packaging-26.3-py3-none-any.whl (129 kB)
-14:01:58  Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
-14:01:58  Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
-14:01:58     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 636.9 MB/s eta 0:00:00
-14:01:58  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
-14:01:58  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
-14:01:58  Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
-14:01:58  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
-14:01:58  Installing collected packages: typing-extensions, six, pygments, psycopg-binary, pluggy, packaging, numpy, markupsafe, itsdangerous, iniconfig, coverage, click, blinker, werkzeug, python-dateutil, pytest, psycopg, jinja2, pytest-cov, pandas, flask
-14:02:10  Successfully installed blinker-1.9.0 click-8.5.0 coverage-7.16.1 flask-3.1.3 iniconfig-2.3.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.3 numpy-2.5.3 packaging-26.3 pandas-3.0.6 pluggy-1.6.0 psycopg-3.2.10 psycopg-binary-3.2.10 pygments-2.21.0 pytest-9.1.1 pytest-cov-7.0.0 python-dateutil-2.9.0.post0 six-1.17.0 typing-extensions-4.16.0 werkzeug-3.1.8
-14:02:10  
-14:02:10  [notice] A new release of pip is available: 25.0.1 -> 26.2.1
-14:02:10  [notice] To update, run: python -m pip install --upgrade pip
-14:02:12  ============================= test session starts ==============================
-14:02:12  platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /tmp/python-venv/bin/python
-14:02:12  cachedir: .pytest_cache
-14:02:12  rootdir: /app
-14:02:12  plugins: cov-7.0.0
-14:02:14  collecting ... collected 25 items
-14:02:14  
-14:02:14  tests/test_database.py::test_database_config_from_environment PASSED     [  4%]
-14:02:14  tests/test_database.py::test_missing_database_configuration PASSED       [  8%]
-14:02:14  tests/test_generate_quotes.py::test_expected_row_count PASSED            [ 12%]
-14:02:14  tests/test_generate_quotes.py::test_required_columns_exist PASSED        [ 16%]
-14:02:14  tests/test_generate_quotes.py::test_prices_are_positive_and_ordered PASSED [ 20%]
-14:02:14  tests/test_generate_quotes.py::test_quotes_use_required_labels PASSED    [ 24%]
-14:02:14  tests/test_generate_quotes.py::test_symbol_timestamp_pairs_are_unique PASSED [ 28%]
-14:02:14  tests/test_generate_quotes.py::test_same_seed_produces_same_quotes PASSED [ 32%]
-14:02:14  tests/test_generate_quotes.py::test_different_seed_changes_prices PASSED [ 36%]
-14:02:14  tests/test_generate_quotes.py::test_timestamps_are_chronological PASSED  [ 40%]
-14:02:14  tests/test_generate_quotes.py::test_validation_rejects_duplicate_quote PASSED [ 44%]
-14:02:14  tests/test_generate_quotes.py::test_invalid_start_price_is_rejected PASSED [ 48%]
-14:02:14  tests/test_postgres_quote_provider.py::test_postgres_provider_maps_stable_contract PASSED [ 52%]
-14:02:14  tests/test_postgres_quote_provider.py::test_postgres_provider_not_found PASSED [ 56%]
-14:02:14  tests/test_quote_api.py::test_supported_symbol_returns_quote PASSED      [ 60%]
-14:02:14  tests/test_quote_api.py::test_symbol_lookup_is_case_insensitive PASSED   [ 64%]
-14:02:14  tests/test_quote_api.py::test_unsupported_symbol_returns_controlled_404 PASSED [ 68%]
-14:02:14  tests/test_quote_api.py::test_second_request_reuses_cached_quote PASSED  [ 72%]
-14:02:14  tests/test_quote_api.py::test_expired_cache_fetches_provider_again PASSED [ 76%]
-14:02:14  tests/test_quote_api.py::test_cache_entries_are_isolated_by_symbol PASSED [ 80%]
-14:02:14  tests/test_quote_api.py::test_source_failure_returns_503 PASSED          [ 84%]
-14:02:14  tests/test_quote_api.py::test_health_endpoint PASSED                     [ 88%]
-14:02:14  tests/test_quote_ingestor.py::test_transform_preserves_contract PASSED   [ 92%]
-14:02:14  tests/test_quote_ingestor.py::test_currency_mismatch_rejected PASSED     [ 96%]
-14:02:15  tests/test_quote_ingestor.py::test_ingestion_rolls_back_on_failure PASSED [100%]
-14:02:15  
-14:02:15  ================================ tests coverage ================================
-14:02:15  _______________ coverage: platform linux, python 3.12.14-final-0 _______________
-14:02:15  
-14:02:15  Name                           Stmts   Miss  Cover   Missing
-14:02:15  ------------------------------------------------------------
-14:02:15  src/__init__.py                    0      0   100%
-14:02:15  src/app.py                        35      5    86%   30, 72-74, 88
-14:02:15  src/database.py                   33      7    79%   32-33, 43-47
-14:02:15  src/generate_quotes.py            80     23    71%   55, 57, 164, 169, 172, 179, 181, 183, 187, 189, 193, 197, 216-230, 235-242, 249
-14:02:15  src/instrument_repository.py      28     11    61%   23-37
-14:02:15  src/quote_ingestor.py             79     40    49%   29, 39-41, 47-48, 51-61, 64-79, 82-94
-14:02:15  src/quote_provider.py            121     17    86%   57-60, 80, 82, 97-98, 113, 130-133, 138, 186, 229-230
-14:02:15  src/quote_repository.py           37     14    62%   26-36, 39-50, 53-64
-14:02:15  src/service_runner.py             34     34     0%   2-46
-14:02:15  ------------------------------------------------------------
-14:02:15  TOTAL                            447    151    66%
-14:02:15  Coverage HTML written to dir htmlcov
-14:02:15  Coverage XML written to file coverage.xml
-14:02:15  ============================== 25 passed in 2.85s ==============================
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Archive Python Coverage)
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] archiveArtifacts
-14:02:15  Archiving artifacts
-14:02:16  Recording fingerprints
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Unit Tests - insights)
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] tool
-[Pipeline] envVarsForTool
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] sh
-14:02:16  + mvn -f insights/pom.xml -B test
-14:02:19  [INFO] Scanning for projects...
-14:02:19  [INFO] 
-14:02:19  [INFO] ----------------------< com.neueda.leap:insights >----------------------
-14:02:19  [INFO] Building insights 0.1.0
-14:02:19  [INFO]   from pom.xml
-14:02:19  [INFO] --------------------------------[ jar ]---------------------------------
-14:02:20  [INFO] 
-14:02:20  [INFO] --- resources:3.3.1:resources (default-resources) @ insights ---
-14:02:20  [INFO] Copying 2 resources from src/main/resources to target/classes
-14:02:20  [INFO] Copying 1 resource from src/main/resources to target/classes
-14:02:20  [INFO] 
-14:02:20  [INFO] --- compiler:3.13.0:compile (default-compile) @ insights ---
-14:02:20  [INFO] Recompiling the module because of changed source code.
-14:02:20  [INFO] Compiling 96 source files with javac [debug parameters release 17] to target/classes
-14:02:23  [INFO] -------------------------------------------------------------
-14:02:23  [ERROR] COMPILATION ERROR : 
-14:02:23  [INFO] -------------------------------------------------------------
-14:02:23  [ERROR] /var/lib/jenkins/workspace/lil-leap/insights/src/main/java/com/neueda/leap/config/SecurityConfig.java:[5,32] cannot find symbol
-14:02:23    symbol:   class SecureTransportFilter
-14:02:23    location: package com.neueda.leap.security
-14:02:23  [ERROR] /var/lib/jenkins/workspace/lil-leap/insights/src/main/java/com/neueda/leap/config/SecurityConfig.java:[114,37] cannot find symbol
-14:02:23    symbol:   class SecureTransportFilter
-14:02:23    location: class com.neueda.leap.config.SecurityConfig
-14:02:23  [INFO] 2 errors 
-14:02:23  [INFO] -------------------------------------------------------------
-14:02:23  [INFO] ------------------------------------------------------------------------
-14:02:23  [INFO] BUILD FAILURE
-14:02:23  [INFO] ------------------------------------------------------------------------
-14:02:23  [INFO] Total time:  5.082 s
-14:02:23  [INFO] Finished at: 2026-09-21T14:02:23Z
-14:02:23  [INFO] ------------------------------------------------------------------------
-14:02:23  [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project insights: Compilation failure: Compilation failure: 
-14:02:23  [ERROR] /var/lib/jenkins/workspace/lil-leap/insights/src/main/java/com/neueda/leap/config/SecurityConfig.java:[5,32] cannot find symbol
-14:02:23  [ERROR]   symbol:   class SecureTransportFilter
-14:02:23  [ERROR]   location: package com.neueda.leap.security
-14:02:23  [ERROR] /var/lib/jenkins/workspace/lil-leap/insights/src/main/java/com/neueda/leap/config/SecurityConfig.java:[114,37] cannot find symbol
-14:02:23  [ERROR]   symbol:   class SecureTransportFilter
-14:02:23  [ERROR]   location: class com.neueda.leap.config.SecurityConfig
-14:02:23  [ERROR] -> [Help 1]
-14:02:23  [ERROR] 
-14:02:23  [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-14:02:23  [ERROR] Re-run Maven using the -X switch to enable full debug logging.
-14:02:23  [ERROR] 
-14:02:23  [ERROR] For more information about the errors and possible solutions, please read the following articles:
-14:02:23  [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Build Compose Services)
-Stage "Build Compose Services" skipped due to earlier failure(s)
-[Pipeline] getContext
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // timestamps
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // node
-[Pipeline] End of Pipeline
-ERROR: script returned exit code 1
-Finished: FAILURE
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/compose-mailpit-placement)
+$ test -f nextTrade/src/main/java/com/neueda/leap/security/SecureTransportFg^C
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/compose-mailpit-placement)
+$ grep -n "HeaderWriterFilter" insights/src/main/java/com/neueda/leap/config/SecurityConfig.java
+21:import org.springframework.security.web.header.HeaderWriterFilter;
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/compose-mailpit-placement)
+$ grep -R "SecureTransportFilter" insights/src/main/java insights/src/test/java
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (fix/compose-mailpit-placement)
+$ mvn -f insights/pom.xml -B clean test
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.neueda.leap:insights >----------------------
+[INFO] Building insights 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.3.2:clean (default-clean) @ insights ---
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ insights ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ insights ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 96 source files with javac [debug parameters release 17] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ insights ---
+[INFO] Copying 4 resources from src\test\resources to target\test-classes
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ insights ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 24 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/database/PostgresContractTest.java:[129,18] incompatible types: try-with-resources not applicable to variable type
+    (java.util.concurrent.ExecutorService cannot be converted to java.lang.AutoCloseable)
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[136,61] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[144,76] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[145,78] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[171,44] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[189,63] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[258,44] cannot find symbol
+  symbol:   method getFirst()
+  location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/security/HttpSecurityTest.java:[74,25] incompatible types: try-with-resources not applicable to variable type
+    (java.net.http.HttpClient cannot be converted to java.lang.AutoCloseable)
+[INFO] 8 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.352 s
+[INFO] Finished at: 2026-09-21T14:30:00Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile (default-testCompile) on project insights: Compilation failure: Compilation failure:
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/database/PostgresContractTest.java:[129,18] incompatible types: try-with-resources not applicable to variable type
+[ERROR]     (java.util.concurrent.ExecutorService cannot be converted to java.lang.AutoCloseable)
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[136,61] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[144,76] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[145,78] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[171,44] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[189,63] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java:[258,44] cannot find symbol
+[ERROR]   symbol:   method getFirst()
+[ERROR]   location: interface java.util.List<java.util.UUID>
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/test/java/com/neueda/leap/security/HttpSecurityTest.java:[74,25] incompatible types: try-with-resources not applicable to variable type
+[ERROR]     (java.net.http.HttpClient cannot be converted to java.lang.AutoCloseable)
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
