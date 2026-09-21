@@ -1,3 +1,261 @@
+create mode 100644 frontend/src/app/advanced-dashboard.html
+ create mode 100644 frontend/src/app/advanced-dashboard.scss
+ create mode 100644 frontend/src/app/advanced-dashboard.ts
+ create mode 100644 frontend/src/app/advanced-ticket.html
+ create mode 100644 frontend/src/app/advanced-ticket.scss
+ create mode 100644 frontend/src/app/advanced-ticket.ts
+ create mode 100644 frontend/src/app/app.config.ts
+ create mode 100644 frontend/src/app/app.html
+ create mode 100644 frontend/src/app/app.scss
+ create mode 100644 frontend/src/app/app.ts
+ create mode 100644 frontend/src/app/dashboard-icon.ts
+ create mode 100644 frontend/src/app/investor-profile.html
+ create mode 100644 frontend/src/app/investor-profile.scss
+ create mode 100644 frontend/src/app/investor-profile.ts
+ create mode 100644 frontend/src/app/novice-dashboard.html
+ create mode 100644 frontend/src/app/novice-dashboard.scss
+ create mode 100644 frontend/src/app/novice-dashboard.ts
+ create mode 100644 frontend/src/app/novice-hubs.scss
+ create mode 100644 frontend/src/app/novice-learn.html
+ create mode 100644 frontend/src/app/novice-learn.ts
+ create mode 100644 frontend/src/app/safe-error-handler.ts
+ create mode 100644 frontend/src/app/security.ts
+ create mode 100644 frontend/src/app/stock-dashboard.html
+ create mode 100644 frontend/src/app/stock-dashboard.ts
+ create mode 100644 frontend/src/index.html
+ create mode 100644 frontend/src/main.ts
+ create mode 100644 frontend/src/styles.scss
+ create mode 100644 frontend/tests/security.test.mjs
+ create mode 100644 frontend/tsconfig.app.json
+ create mode 100644 frontend/tsconfig.json
+ create mode 100644 insights-frontend/.dockerignore
+ create mode 100644 insights-frontend/.editorconfig
+ create mode 100644 insights-frontend/.gitignore
+ create mode 100644 insights-frontend/.prettierrc
+ create mode 100644 insights-frontend/Dockerfile
+ create mode 100644 insights-frontend/README.md
+ create mode 100644 insights-frontend/UI-v1.html
+ create mode 100644 insights-frontend/angular.json
+ create mode 100644 insights-frontend/nginx.conf
+ create mode 100644 insights-frontend/package-lock.json
+ create mode 100644 insights-frontend/package.json
+ create mode 100644 insights-frontend/public/favicon.ico
+ create mode 100644 insights-frontend/public/fonts/IBMPlexMono-OFL.txt
+ create mode 100644 insights-frontend/public/fonts/Inter-OFL.txt
+ create mode 100644 insights-frontend/public/fonts/SpaceGrotesk-OFL.txt
+ create mode 100644 insights-frontend/public/fonts/ibm-plex-mono-500.woff2
+ create mode 100644 insights-frontend/public/fonts/ibm-plex-mono-600.woff2
+ create mode 100644 insights-frontend/public/fonts/inter.woff2
+ create mode 100644 insights-frontend/public/fonts/space-grotesk.woff2
+ create mode 100644 insights-frontend/src/app/app.config.ts
+ create mode 100644 insights-frontend/src/app/app.html
+ create mode 100644 insights-frontend/src/app/app.scss
+ create mode 100644 insights-frontend/src/app/app.ts
+ create mode 100644 insights-frontend/src/app/investor-profile-mapping.md
+ create mode 100644 insights-frontend/src/app/investor-profile.html
+ create mode 100644 insights-frontend/src/app/investor-profile.scss
+ create mode 100644 insights-frontend/src/app/investor-profile.ts
+ create mode 100644 insights-frontend/src/app/stock-dashboard.html
+ create mode 100644 insights-frontend/src/app/stock-dashboard.scss
+ create mode 100644 insights-frontend/src/app/stock-dashboard.ts
+ create mode 100644 insights-frontend/src/app/stock-workspace-notes.md
+ create mode 100644 insights-frontend/src/index.html
+ create mode 100644 insights-frontend/src/main.ts
+ create mode 100644 insights-frontend/src/styles.scss
+ create mode 100644 insights-frontend/tsconfig.app.json
+ create mode 100644 insights-frontend/tsconfig.json
+ create mode 100644 insights/.dockerignore
+ create mode 100644 insights/Dockerfile
+ create mode 100644 insights/JACOCO_COVERAGE.md
+ create mode 100644 insights/README.md
+ create mode 100644 insights/pom.xml
+ create mode 100644 insights/src/main/java/com/neueda/leap/Main.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/common/exception/GlobalExceptionHandler.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/common/exception/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/config/SecurityConfig.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/config/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/marketdata/JdbcQuoteRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/marketdata/MarketQuote.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/marketdata/QuoteRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/controller/RegistrationController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/controller/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/dto/AddressRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/dto/RegisterUserRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/dto/UserResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/dto/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/entity/Account.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/entity/CustomerProfile.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/entity/FinancialProfile.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/entity/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/AccountType.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/CitizenshipStatus.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/EmploymentStatus.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/NetWorthBracket.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/NetWorthBracketConverter.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/RiskProfile.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/TraderLevel.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/enums/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/repository/AccountRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/repository/CustomerProfileRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/repository/FinancialProfileRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/repository/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/service/RegistrationService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/service/RegistrationServiceImpl.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/onboarding/service/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/model/Order.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/model/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/service/OrderSufficiencyException.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/service/OrderSufficiencyService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/service/OrderValidationService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/service/OrderValidationServiceImpl.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/service/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/controller/OrderSubmissionController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/controller/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/dto/OrderSubmissionResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/dto/SubmitOrderRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/dto/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/repository/JdbcOrderSubmissionRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/repository/JdbcOrderSufficiencyRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/repository/OrderSubmissionRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/repository/OrderSufficiencyRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/repository/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/service/OrderSubmissionResult.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/service/OrderSubmissionService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/order/submission/service/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/EmailPasswordResetDelivery.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/InvalidPasswordResetTokenException.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetDelivery.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetToken.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetTokenRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/PasswordResetTokenUtil.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/dto/PasswordResetConfirmRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/dto/PasswordResetRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/dto/PasswordResetResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/dto/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/passwordreset/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/controller/ClientFinancialController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/controller/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/dto/CashBalanceResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/dto/HoldingResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/dto/OrderSummaryResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/dto/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/service/ClientFinancialQueryService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/portfolio/service/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/JwtAuthenticationFilter.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/JwtPrincipal.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/JwtService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/JwtServiceImpl.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/SensitiveLogConverter.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/SsnEncryptionService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/security/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/AuthController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/UserController.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/UserService.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/UserServiceImpl.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/dto/LoginRequest.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/dto/LoginResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/dto/UserResponse.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/dto/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/entity/User.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/entity/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/exception/InvalidCredentialsException.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/exception/UserAlreadyExistsException.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/exception/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/package-info.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/repository/UserRepository.java
+ create mode 100644 insights/src/main/java/com/neueda/leap/user/repository/package-info.java
+ create mode 100644 insights/src/main/resources/application.properties
+ create mode 100644 insights/src/main/resources/application.yml
+ create mode 100644 insights/src/main/resources/logback-spring.xml
+ create mode 100644 insights/src/test/java/com/neueda/leap/config/ApiSecurityTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/config/SecurityConfigTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/database/PostgresContractTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/marketdata/JdbcQuoteRepositoryTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/onboarding/RegistrationControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/onboarding/RegistrationServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/order/submission/JdbcOrderSufficiencyRepositoryTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/order/submission/OrderSubmissionControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/order/submission/OrderSubmissionServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/order/submission/OrderSufficiencyServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/order/submission/SubmitOrderRequestValidationTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/passwordreset/EmailPasswordResetDeliveryTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/passwordreset/PasswordResetControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/passwordreset/PasswordResetServiceIntegrationTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/passwordreset/PasswordResetServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/passwordreset/PasswordResetTokenUtilTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/portfolio/ClientFinancialControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/portfolio/ClientFinancialQueryServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/portfolio/CrossClientAccessIntegrationTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/security/HttpSecurityTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/security/JwtAuthenticationFilterTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/security/JwtServiceTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/security/SensitiveLogConverterTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/user/AuthControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/user/AuthenticationFlowTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/user/UserControllerTest.java
+ create mode 100644 insights/src/test/java/com/neueda/leap/user/UserServiceTest.java
+ create mode 100644 insights/src/test/resources/application-test.yml
+ create mode 100644 insights/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker
+ create mode 100644 insights/src/test/resources/portfolio/isolation-schema.sql
+ create mode 100644 insights/src/test/resources/registration.json
+ create mode 100644 nextTrade/Dockerfile
+ create mode 100644 nextTrade/README.md
+ create mode 100644 nextTrade/pom.xml
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/Main.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/common/exception/GlobalExceptionHandler.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/config/SecurityConfig.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/controller/RegistrationController.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/controller/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/dto/AddressRequest.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/dto/RegisterUserRequest.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/dto/UserResponse.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/dto/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/entity/Account.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/entity/CustomerProfile.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/entity/FinancialProfile.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/entity/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/AccountType.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/CitizenshipStatus.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/EmploymentStatus.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/NetWorthBracket.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/RiskProfile.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/TraderLevel.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/enums/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/repository/AccountRepository.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/repository/CustomerProfileRepository.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/repository/FinancialProfileRepository.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/repository/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/service/RegistrationService.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/onboarding/service/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/order/model/Order.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/order/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/order/service/OrderValidationService.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/order/service/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/security/JwtAuthenticationFilter.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/security/JwtPrincipal.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/security/JwtService.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/AuthController.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/UserController.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/UserService.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/dto/LoginRequest.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/dto/LoginResponse.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/dto/UserResponse.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/dto/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/entity/User.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/entity/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/exception/InvalidCredentialsException.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/exception/UserAlreadyExistsException.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/exception/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/package-info.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/repository/UserRepository.java
+ create mode 100644 nextTrade/src/main/java/com/neueda/leap/user/repository/package-info.java
+ create mode 100644 nextTrade/src/test/java/com/neueda/leap/config/SecurityConfigTest.java
  create mode 100644 nextTrade/src/test/java/com/neueda/leap/onboarding/RegistrationControllerTest.java
  create mode 100644 nextTrade/src/test/java/com/neueda/leap/onboarding/RegistrationServiceTest.java
  create mode 100644 nextTrade/src/test/java/com/neueda/leap/security/JwtAuthenticationFilterTest.java
@@ -59,4 +317,126 @@ frontend
 insights
 insights-frontend
 mailpit
+[ec2-user@ip-10-14-141-133 lil-leap]$ ^C
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose build insights app
+[+] Building 28.0s (27/27) FINISHED                                                                      docker:default
+ => [insights internal] load build definition from Dockerfile                                                      0.0s
+ => => transferring dockerfile: 1.90kB                                                                             0.0s
+ => [app internal] load build definition from Dockerfile                                                           0.1s
+ => => transferring dockerfile: 1.90kB                                                                             0.0s
+ => [app internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine                               0.5s
+ => [app internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21                                0.5s
+ => [insights internal] load .dockerignore                                                                         0.0s
+ => => transferring context: 119B                                                                                  0.0s
+ => [app internal] load .dockerignore                                                                              0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [insights stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:1a29e1fe337eb28b5bec30f0ee  0.0s
+ => [app internal] load build context                                                                              0.1s
+ => => transferring context: 129.74kB                                                                              0.0s
+ => [insights build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:c2a2c58516d160f43b50f12baa427  0.0s
+ => [insights internal] load build context                                                                         0.1s
+ => => transferring context: 335.23kB                                                                              0.0s
+ => CACHED [insights build 2/6] WORKDIR /app                                                                       0.0s
+ => CACHED [app build 3/6] COPY pom.xml .                                                                          0.0s
+ => CACHED [app build 4/6] RUN mvn -B dependency:go-offline                                                        0.0s
+ => [app build 5/6] COPY src/ src/                                                                                 0.1s
+ => CACHED [insights build 3/6] COPY pom.xml .                                                                     0.0s
+ => CACHED [insights build 4/6] RUN mvn -B dependency:go-offline                                                   0.0s
+ => [insights build 5/6] COPY src/ src/                                                                            0.1s
+ => [app build 6/6] RUN mvn -B clean package -DskipTests                                                          24.4s
+ => [insights build 6/6] RUN mvn -B clean package -DskipTests                                                     26.6s
+ => CACHED [app stage-1 2/4] WORKDIR /app                                                                          0.0s
+ => CACHED [insights stage-1 3/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                       0.0s
+ => [app stage-1 4/4] COPY --from=build /app/target/nexttrade.jar app.jar                                          0.0s
+ => [app] exporting to image                                                                                       0.6s
+ => => exporting layers                                                                                            0.5s
+ => => writing image sha256:e45509f720d20ff08d1a7aa40ef8f3a1c504398cc3bd357c4490ddbf44e2061c                       0.0s
+ => => naming to docker.io/library/lil-leap-app                                                                    0.0s
+ => [app] resolving provenance for metadata file                                                                   0.0s
+ => [insights stage-1 4/4] COPY --from=build /app/target/insights.jar app.jar                                      0.0s
+ => [insights] exporting to image                                                                                  0.3s
+ => => exporting layers                                                                                            0.3s
+ => => writing image sha256:136775001402211c5efa4164a46be1bb17afd48fb1989632f1a9b9044b5b7095                       0.0s
+ => => naming to docker.io/library/lil-leap-insights                                                               0.0s
+ => [insights] resolving provenance for metadata file                                                              0.0s
+[ec2-user@ip-10-14-141-133 lil-leap]$ git fetch origin
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (33/33), done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 33 (delta 2), reused 3 (delta 2), pack-reused 0 (from 0)
+Unpacking objects: 100% (33/33), 25.64 KiB | 2.85 MiB/s, done.
+From https://github.com/juliawiecek/lil-leap
+   8f294f9..72e6421  NEXT-181/architecture -> origin/NEXT-181/architecture
+   d05890b..8f6004b  feature/Next(103-105) -> origin/feature/Next(103-105)
+[ec2-user@ip-10-14-141-133 lil-leap]$ git switch --track origin/feature/NEXT-14^C
+[ec2-user@ip-10-14-141-133 lil-leap]$ git pull
+remote: Enumerating objects: 32, done.
+remote: Counting objects: 100% (32/32), done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 32 (delta 4), reused 32 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (32/32), 5.69 KiB | 832.00 KiB/s, done.
+From https://github.com/juliawiecek/lil-leap
+ * [new branch]      feature/NEXT-145-instrument-endpoints -> origin/feature/NEXT-145-instrument-endpoints
+Already up to date.
+[ec2-user@ip-10-14-141-133 lil-leap]$ cd ~/lil-leap
+[ec2-user@ip-10-14-141-133 lil-leap]$ git fetch origin
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 347 bytes | 347.00 KiB/s, done.
+From https://github.com/juliawiecek/lil-leap
+   72e6421..4716357  NEXT-181/architecture -> origin/NEXT-181/architecture
+[ec2-user@ip-10-14-141-133 lil-leap]$ git switch --track origin/feature/NEXT-145-instrument-endpoints
+branch 'feature/NEXT-145-instrument-endpoints' set up to track 'origin/feature/NEXT-145-instrument-endpoints'.
+Switched to a new branch 'feature/NEXT-145-instrument-endpoints'
+[ec2-user@ip-10-14-141-133 lil-leap]$ git pull --ff-only
+Already up to date.
+[ec2-user@ip-10-14-141-133 lil-leap]$ ls
+InitialSetup  README_BUNDLE.md           RUN_NEXT_88.md  data-pipeline       docs         insights
+Jenkinsfile   README_NEXT_97.md          RUN_NEXT_97.md  db                  env.example  insights-frontend
+README.md     RUN_DATABASE_HARDENING.md  auth            docker-compose.yml  frontend     nextTrade
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose config -q
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose build insights app
+[+] Building 14.6s (27/27) FINISHED                                                                      docker:default
+ => [app internal] load build definition from Dockerfile                                                           0.0s
+ => => transferring dockerfile: 1.90kB                                                                             0.0s
+ => [insights internal] load build definition from Dockerfile                                                      0.0s
+ => => transferring dockerfile: 1.90kB                                                                             0.0s
+ => [insights internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine                          0.5s
+ => [insights internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21                           0.5s
+ => [insights internal] load .dockerignore                                                                         0.0s
+ => => transferring context: 119B                                                                                  0.0s
+ => [app internal] load .dockerignore                                                                              0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [app build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:c2a2c58516d160f43b50f12baa427ca869  0.0s
+ => [app stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:1a29e1fe337eb28b5bec30f0ee8ed29  0.0s
+ => [insights internal] load build context                                                                         0.0s
+ => => transferring context: 93.25kB                                                                               0.0s
+ => [app internal] load build context                                                                              0.0s
+ => => transferring context: 32.14kB                                                                               0.0s
+ => CACHED [app build 2/6] WORKDIR /app                                                                            0.0s
+ => CACHED [insights build 3/6] COPY pom.xml .                                                                     0.0s
+ => CACHED [insights build 4/6] RUN mvn -B dependency:go-offline                                                   0.0s
+ => [insights build 5/6] COPY src/ src/                                                                            0.1s
+ => CACHED [insights stage-1 2/4] WORKDIR /app                                                                     0.0s
+ => CACHED [insights stage-1 3/4] RUN addgroup -S appgroup && adduser -S appuser -G appgroup                       0.0s
+ => CACHED [app build 3/6] COPY pom.xml .                                                                          0.0s
+ => CACHED [app build 4/6] RUN mvn -B dependency:go-offline                                                        0.0s
+ => CACHED [app build 5/6] COPY src/ src/                                                                          0.0s
+ => CACHED [app build 6/6] RUN mvn -B clean package -DskipTests                                                    0.0s
+ => CACHED [app stage-1 4/4] COPY --from=build /app/target/nexttrade.jar app.jar                                   0.0s
+ => [app] exporting to image                                                                                       0.0s
+ => => exporting layers                                                                                            0.0s
+ => => writing image sha256:7af8d82c78f24b6eb5fa2bfe6df33cd0485f4cc3185c9e813e22e7cac164f797                       0.0s
+ => => naming to docker.io/library/lil-leap-app                                                                    0.0s
+ => [app] resolving provenance for metadata file                                                                   0.0s
+ => [insights build 6/6] RUN mvn -B clean package -DskipTests                                                     13.4s
+ => [insights stage-1 4/4] COPY --from=build /app/target/insights.jar app.jar                                      0.0s
+ => [insights] exporting to image                                                                                  0.3s
+ => => exporting layers                                                                                            0.3s
+ => => writing image sha256:edc9a66224c21ac0fbf819aca7215f05cd2f167257d514518ca97fd8e8a013cf                       0.0s
+ => => naming to docker.io/library/lil-leap-insights                                                               0.0s
+ => [insights] resolving provenance for metadata file                                                              0.0s
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
 [ec2-user@ip-10-14-141-133 lil-leap]$
