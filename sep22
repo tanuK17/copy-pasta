@@ -1,130 +1,21 @@
-I can see the Maven compilation error. The test is calling `findTradableInstrumentIdBySymbol(String)` on the `OrderSubmissionRepository`, but that method doesn't exist. Let me investigate and fix this.  
-
-Searched for files matching `**/insights/src/main/java/com/neueda/leap/order/submission/repository/OrderSubmissionRepository*`, 1 match
-
-Read , lines 1 to 120
-
-Read 
-
-Read 
-
-Searched for files matching `**/insights/src/main/java/com/neueda/leap/order/submission/repository/InstrumentTradingProfile*`, 1 match
-
-Read 
-
-Read , lines 100 to 129
-
-Now I see the issue. The test is calling `findTradableInstrumentIdBySymbol()` which doesn't exist on the repository. The actual repository has `findInstrumentTradingProfileBySymbol()` that returns an `InstrumentTradingProfile` record. I'll fix the test to use the correct method: 
-
-Replacing 17 lines with 17 lines in 
-
-
-```
-
-```
-
-
-Read , lines 1 to 15
-
-Replacing 4 lines with 5 lines in 
-
-
-```
-
-```
-Now let me verify the tests compile: 
-
-Execution complete: Run Maven test compilation to verify the fix
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml -Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest test
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test
-Completed with input: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test
-
-Ran terminal command: Get-Content "c:\Users\Administrator\AppData\Roaming\Code\User\workspaceStorage\fca9a71018942a20a6439f63d823e2a5\GitHub.copilot-chat\chat-session-resources\e2355811-6dd7-4c04-a380-13d212c9e850\toolu_01FuPAr9s1JWPcYiSU3v98Fr__vscode-1790020125927\content.txt"
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test 2>&1 | Select-Object -Last 100
-Completed with input: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test 2>&1 | Select-Object -Last 100
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test 2>&1 | Select-String -Pattern "BUILD|PASSED|FAILED|ERROR|Tests run:|Failures:|Errors:"
-Completed with input: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test 2>&1 | Select-String -Pattern "BUILD|PASSED|FAILED|ERROR|Tests run:|Failures:|Errors:"
-
-The compilation is fixed, but the tests are failing because the mocks are incomplete. The service calls `findAccountTradingProfile()` which isn't being mocked. Let me check the full test again and add the missing mocks:  
-
-Read , lines 48 to 80
-
-Searched for files matching `**/insights/src/main/java/com/neueda/leap/order/submission/repository/AccountTradingProfile*`, 1 match
-
-Read 
-
-Replacing 17 lines with 23 lines in 
-
-
-```
-
-```
-
-
-Replacing 14 lines with 16 lines in 
-
-
-```
-
-```
-
-
-Execution complete: Run Maven test again to verify all fixes
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml -Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest test
-Completed with input: mvn -B -ntp -f insights/pom.xml -Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest test
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test
-Completed with input: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test
-
-Ran terminal command: Get-Content c:\Users\Administrator\AppData\Roaming\Code\User\workspaceStorage\fca9a71018942a20a6439f63d823e2a5\GitHub.copilot-chat\chat-session-resources\e2355811-6dd7-4c04-a380-13d212c9e850\toolu_01E6RimqiyZcX3fTUarVevRC__vscode-1790020125938\content.txt | Tail -100
-
-The test is expecting the wrong exception type. The service throws `OrderRuleException` for unsupported symbols, not `ResponseStatusException`. Let me fix that test: 
-
-Read , lines 102 to 112
-
-Replacing 12 lines with 11 lines in 
-
-
-```
-
-```
-
-
-Read , lines 1 to 20
-
-Replacing 8 lines with 9 lines in 
-
-
-```
-
-```
-
-
-Execution complete: Run Maven test suite one more time to verify all fixes
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml -Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest test
-
-Ran terminal command: mvn -B -ntp -f insights/pom.xml "-Dtest=OrderTradingRulesTest,OrderSubmissionServiceTest,OrderSubmissionControllerTest" test
-
-Perfect! ✅ All tests are now passing. Here's what I fixed:
-
-## Summary of Changes
-
-**The Problem:** The test was calling `findTradableInstrumentIdBySymbol()` which doesn't exist on the `OrderSubmissionRepository` interface.
-
-**The Solution:**
-
-1. **Updated repository method calls**: Changed from the non-existent `findTradableInstrumentIdBySymbol()` to the correct `findInstrumentTradingProfileBySymbol()` method
-2. **Fixed mock return types**: Updated mocks to return `InstrumentTradingProfile` objects (which include instrumentId, enabled flag, and tradable flag) instead of raw UUIDs
-3. **Added missing mocks**: Added `findAccountTradingProfile()` mocks that return properly configured `AccountTradingProfile` objects with active status, trading enabled, and sufficient balance
-4. **Fixed exception expectation**: Changed the `unsupportedSymbolIsRejected` test to expect `OrderRuleException` instead of `ResponseStatusException`, which aligns with the actual service implementation
-5. **Added imports**: Imported `AccountTradingProfile`, `InstrumentTradingProfile`, `OrderRuleException`, and `BigDecimal`
-
-**Test Results:** All 16 tests now pass (OrderSubmissionControllerTest: 5/5, OrderSubmissionServiceTest: 5/5, OrderTradingRulesTest: 6/6) ✓
-
-Made changes.
+$ git status
+On branch feature/NEXT-99-account-permission-instrument-support
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   insights/src/main/java/com/neueda/leap/order/submission/repository/JdbcOrderSubmissionRepository.java
+        modified:   insights/src/main/java/com/neueda/leap/order/submission/repository/OrderSubmissionRepository.java
+        modified:   insights/src/main/java/com/neueda/leap/order/submission/service/OrderSubmissionService.java
+        modified:   insights/src/test/java/com/neueda/leap/order/submission/OrderSubmissionServiceTest.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        insights/src/main/java/com/neueda/leap/order/rules/
+        insights/src/main/java/com/neueda/leap/order/submission/repository/AccountTradingProfile.java
+        insights/src/main/java/com/neueda/leap/order/submission/repository/InstrumentTradingProfile.java
+        insights/src/test/java/com/neueda/leap/order/submission/OrderTradingRulesTest.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-99-account-permission-instrument-support)
+$
