@@ -1,0 +1,175 @@
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~
+$ cd ~/lil-leap
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-109-NEXT-110-execution-quotes)
+$ mvn -B -ntp -f insights/pom.xml -Dtest=QuoteFreshnessPolicyTest,ExecutionQuoteServiceTest,JdbcExecutionOrderContextRepositoryTest test
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.neueda.leap:insights >----------------------
+[INFO] Building insights 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ insights ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ insights ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 119 source files with javac [debug parameters release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,24] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,72] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,84] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,19] illegal start of expression
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,24] : expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,32] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,40] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,34] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,57] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,64] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,72] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,65] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,5] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,7] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,8] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,9] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,148] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,149] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,156] ';' expected
+[INFO] 19 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.657 s
+[INFO] Finished at: 2026-09-23T20:24:21Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project insights: Compilation failure: Compilation failure:
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,24] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,72] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,84] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,19] illegal start of expression
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,24] : expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,32] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,40] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,34] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,57] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,64] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,72] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,65] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,5] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,7] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,8] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,9] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,148] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,149] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,156] ';' expected
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-109-NEXT-110-execution-quotes)
+$ mvn -B -ntp -f insights/pom.xml clean test
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/ProgramData/chocolatey/lib/maven/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.neueda.leap:insights >----------------------
+[INFO] Building insights 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.3.2:clean (default-clean) @ insights ---
+[INFO] Deleting C:\Users\Administrator\lil-leap\insights\target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ insights ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ insights ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 119 source files with javac [debug parameters release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,24] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,72] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,84] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,19] illegal start of expression
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,24] : expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,32] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,40] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,34] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,57] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,64] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,72] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,65] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,5] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,7] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,8] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,9] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,148] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,149] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,156] ';' expected
+[INFO] 19 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.109 s
+[INFO] Finished at: 2026-09-23T20:24:40Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project insights: Compilation failure: Compilation failure:
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,24] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,72] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[11,84] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,19] illegal start of expression
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,24] : expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,32] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,40] unclosed character literal
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,34] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,57] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,64] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,72] illegal text block open delimiter sequence, missing line terminator
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[12,65] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,5] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,7] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,8] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,9] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,148] ';' expected
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,149] not a statement
+[ERROR] /C:/Users/Administrator/lil-leap/insights/src/main/java/com/neueda/leap/order/execution/quote/JdbcExecutionOrderContextRepository.java:[13,156] ';' expected
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Administrator@EC2AMAZ-64EBKCO MINGW64 ~/lil-leap (feature/NEXT-109-NEXT-110-execution-quotes)
+$
