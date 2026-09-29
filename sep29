@@ -1,196 +1,311 @@
-Quote API Debugging Summary - Detailed Analysis
-The Problem Statement
-After routing through nginx to the insights service, the Quote API endpoint is returning an unparseable response (not valid JSON), which causes jq to fail with "Invalid numeric literal at line 1, column 7". The endpoint exists, authentication passes, but something is failing silently.
+PS C:\Users\Administrator\lil-leap> cd /home/ec2-user/lil-leap ; sed -i 's/@RequestMapping("\/api\/quotes")/@RequestMapping("\/quotes")/g' insights/src/main/java/com/neueda/leap/marketdata/controller/QuoteController.java ; grep "@RequestMapping" insights/src/main/java/com/neueda/leap/marketdata/controller/QuoteController.java ; docker-compose stop insights ; docker-compose build insights --no-cache 2>&1 | grep -E "(RUN mvn|Copying|exporting)" ; docker-compose up -d insights ; sleep 20 ; TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: '550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', userRole: 'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 2>/dev/null) ; curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:4200/api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | python3 -m json.tool
+cd : Cannot find path 'C:\home\ec2-user\lil-leap' because it does not exist.
+At line:1 char:1
++ cd /home/ec2-user/lil-leap ; sed -i 's/@RequestMapping("\/api\/quotes ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\home\ec2-user\lil-leap:Strin 
+   g) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLo 
+   cationCommand
+ 
+@RequestMapping("/quotes")
+docker-compose : The term 'docker-compose' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the 
+name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:295
++ ... p/marketdata/controller/QuoteController.java ; docker-compose stop in ...
++                                                    ~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (docker-compose:String) [], Comm 
+   andNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+docker-compose : The term 'docker-compose' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the 
+name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:326
++ ... ntroller.java ; docker-compose stop insights ; docker-compose build i ...
++                                                    ~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (docker-compose:String) [], Comm 
+   andNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+docker-compose : The term 'docker-compose' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the 
+name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:414
++ ... 2>&1 | grep -E "(RUN mvn|Copying|exporting)" ; docker-compose up -d i ...
++                                                    ~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (docker-compose:String) [], Comm 
+   andNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = 
+require('jsonwebtoken'); console.log(jwt.sign({sub: 
+'550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', userRole: 
+'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 
+2>/dev/null) : The term 'TOKEN=$(docker exec lil-leap-auth-1 node -e "const 
+jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: 
+'550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', userRole: 
+'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 
+2>/dev/null)' is not recognized as the name of a cmdlet, function, script 
+file, or operable program. Check the spelling of the name, or if a path was 
+included, verify that the path is correct and try again.
+At line:1 char:457
++ ...  sleep 20 ; TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt =  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (TOKEN=$(docker ...;" 2>/dev/nul 
+   l):String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+python3 : The term 'python3' is not recognized as the name of a cmdlet, 
+function, script file, or operable program. Check the spelling of the name, or 
+if a path was included, verify that the path is correct and try again.
+At line:1 char:865
++ ... /latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | python3 -m json ...
++                                                           ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (python3:String) [], CommandNotF 
+   oundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\Administrator\lil-leap> ssh ec2-user@10.14.141.133
+ec2-user@10.14.141.133's password: 
 
-Architecture Chain
-User Request
-    ↓
-nginx (localhost:4200)
-    ↓
-Rewrite: /api/quotes/* → /api/v1/quotes/*
-    ↓
-Proxy to http://insights:8080
-    ↓
-Spring Boot app (context path: /api/v1)
-    ↓
-QuoteController (mapped to: /quotes)
-    ↓
-Final Route: /api/v1/quotes
-    ↓
-Repository → Database
+A newer release of "Amazon Linux" is available.
+  Version 2023.10.20260105:
+  Version 2023.10.20260120:
+  Version 2023.10.20260202:
+  Version 2023.10.20260216:
+  Version 2023.10.20260302:
+  Version 2023.10.20260325:
+  Version 2023.10.20260330:
+  Version 2023.11.20260406:
+  Version 2023.11.20260413:
+  Version 2023.11.20260427:
+  Version 2023.11.20260505:
+  Version 2023.11.20260509:
+  Version 2023.11.20260511:
+  Version 2023.11.20260514:
+  Version 2023.11.20260526:
+  Version 2023.12.20260608:
+  Version 2023.12.20260611:
+  Version 2023.12.20260622:
+  Version 2023.12.20260629:
+  Version 2023.12.20260706:
+  Version 2023.12.20260710:
+  Version 2023.12.20260720:
+  Version 2023.12.20260724:
+  Version 2023.12.20260727:
+  Version 2023.12.20260803:
+  Version 2023.12.20260817:
+  Version 2023.12.20260831:
+  Version 2023.12.20260909:
+  Version 2023.12.20260914:
+  Version 2023.12.20260917:
+  Version 2023.12.20260918:
+  Version 2023.12.20260928:
+  Version 2023.9.20250929:
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+  Version 2023.9.20251027:
+  Version 2023.9.20251105:
+  Version 2023.9.20251110:
+  Version 2023.9.20251117:
+  Version 2023.9.20251208:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Tue Sep 29 18:43:52 2026 from 10.14.140.0
+[ec2-user@ip-10-14-141-133 ~]$ ^C
+[ec2-user@ip-10-14-141-133 ~]$ scp c:\Users\Administrator\lil-leap\insights\src\main\java\com\neueda\leap\marketdata\controller\QuoteController.java ec2-user@10.14.141.133:/home/ec2-user/lil-leap/insights/src/main/java/com/neueda/leap/marketdata/controller/QuoteController.java
+The authenticity of host '10.14.141.133 (10.14.141.133)' can't be established.
+ED25519 key fingerprint is SHA256:ClYMIquQRGeapX1ulf3HBPQmKtpHds37G5DoVCHUxd8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.14.141.133' (ED25519) to the list of known hosts.
+ssh_dispatch_run_fatal: Connection to 10.14.141.133 port 22: Broken pipe
+Connection closed
+[ec2-user@ip-10-14-141-133 ~]$ #!/bin/bash
+#
+# export-main-debug-context.sh
+#
+# Safe debugging snapshot of origin/main without switching branches or cloning.
+#
+# HOW IT WORKS:
+#  - Navigates to repository root
+#  - Fetches origin (updates remote refs)
+#  - Reads file contents via `git show origin/main:path` (from Git object DB, no checkout)
+#  - Records runtime diagnostics (Docker/nginx/logs) from currently running stack
+#  - Writes MAIN_DEBUG_CONTEXT.txt in repository root
+#
+# NO FILE COPYING: Uses pure Git operations. No temp dirs, no mirror, no clone.
+#
+# Usage:
+^Cin "$@""  Size: $(( (file_size + 512) / 1024 ))K, $line_count lines, $section_count sections" wc -c < "$OUTPUT_FILE")tor unavailable)"
+[ec2-user@ip-10-14-141-133 ~]$ cd /home/ec2-user/lil-leap && cat > insights/src/main/java/com/neueda/leap/marketdata/controller/QuoteController.java << 'EOF'
+package com.neueda.leap.marketdata.controller;
 
-Code: QuoteController
-File: QuoteController.java:30
+import com.neueda.leap.marketdata.MarketQuote;
+import com.neueda.leap.marketdata.QuoteRepository;
+import com.neueda.leap.marketdata.dto.QuoteResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/quotes")  // ← WAS "/api/quotes" - FIXED
-public class QuoteController {
-    private final QuoteRepository repository;
-    
-    @GetMapping("/latest/by-market-symbol")
-    public QuoteResponse getLatestByMarketSymbol(
-            @RequestParam("market") String market,
-            @RequestParam("symbol") String symbol) {
-        // Normalize and query
-        String normalizedMarket = market.trim().toUpperCase(java.util.Locale.ROOT);
-        String normalizedSymbol = symbol.trim().toUpperCase(java.util.Locale.ROOT);
-        MarketQuote quote = repository
-                .findLatestByMarketAndSymbol(normalizedMarket, normalizedSymbol)
-                .orElseThrow(() -> new QuoteNotFoundException(
-                        String.format("No quote found for market %s and symbol %s", market, symbol)));
-        return QuoteResponse.from(quote);
-    }
+import java.util.List;
+EOF }   }   super(message);dException(String message) {RuntimeException {mentException exception) {lse) int limit) {
+[ec2-user@ip-10-14-141-133 lil-leap]$ grep -n "@RequestMapping" insights/src/main/java/com/neueda/leap/marketdata/controller/QuoteController.java
+30:@RequestMapping("/quotes")
+[ec2-user@ip-10-14-141-133 lil-leap]$ docker-compose stop insights && docker rmi lil-leap-insights -f && docker-compose build --no-cache insights 2>&1 | tail -20
+[+] Stopping 1/1
+ ✔ Container lil-leap-insights-1  Stopped                                                                                                                     0.6s 
+Untagged: lil-leap-insights:latest
+Deleted: sha256:e119586eee5127fba9b46ee766e09849bdae67d2429299584f9365ec995b0c56
 
-    @ExceptionHandler(QuoteNotFoundException.class)
-    public ResponseEntity<Map<String, String>> quoteNotFound(QuoteNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
-                "code", "QUOTE_NOT_FOUND",
-                "message", exception.getMessage()
-        ));
-    }
+echo "Waiting for build..." && sleep 30 && docker-compose up -d insights && sleep 15 && docker-compose logs insights 2>&1 | tail -5
+#14 14.85 [INFO] ------------------------------------------------------------------------
+#14 14.85 [INFO] BUILD SUCCESS
+#14 14.85 [INFO] ------------------------------------------------------------------------
+#14 14.86 [INFO] Total time:  12.300 s
+#14 14.86 [INFO] Finished at: 2026-09-29T20:20:22Z
+#14 14.86 [INFO] ------------------------------------------------------------------------
+#14 DONE 15.0s
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Map<String, String>> invalidRequest(IllegalArgumentException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
-                "code", "INVALID_REQUEST",
-                "message", exception.getMessage()
-        ));
-    }
+#15 [insights stage-1 4/4] COPY --from=build /app/target/insights.jar app.jar
+#15 DONE 0.0s
+
+#16 [insights] exporting to image
+#16 exporting layers
+#16 exporting layers 0.4s done
+#16 writing image sha256:1fac538bf96d1b45d75fc99a9cdf7a92e404242c971107de24a52701fd8eb346 done
+#16 naming to docker.io/library/lil-leap-insights done
+#16 DONE 0.4s
+
+#17 [insights] resolving provenance for metadata file
+#17 DONE 0.0s
+[ec2-user@ip-10-14-141-133 lil-leap]$ 
+[ec2-user@ip-10-14-141-133 lil-leap]$ echo "Waiting for build..." && sleep 30 && docker-compose up -d insights && sleep 15 && docker-compose logs insights 2>&1 | tail -5
+Waiting for build...
+[+] Running 2/2
+ ✔ Container lil-leap-db-1        Healthy                                                                                                                     0.6s 
+ ✔ Container lil-leap-insights-1  Started                                                                                                                     1.0s 
+insights-1  | 2026-09-29 20:21:04,874 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+insights-1  | 2026-09-29 20:21:06,105 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+insights-1  | 2026-09-29 20:21:07,415 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+insights-1  | 2026-09-29 20:21:07,451 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+insights-1  | 2026-09-29 20:21:07,476 INFO  com.neueda.leap.Main - Started Main in 12.113 seconds (process running for 13.244)
+[ec2-user@ip-10-14-141-133 lil-leap]$ echo "=== Build status ===" && docker-compose ps && echo -e "\n=== Last logs ===" && docker-compose logs insights 2>&1 | tail -10
+=== Build status ===
+NAME                           IMAGE                        COMMAND                  SERVICE             CREATED              STATUS                 PORTS
+lil-leap-auth-1                lil-leap-auth                "docker-entrypoint.s…"   auth                20 minutes ago       Up 20 minutes          3000/tcp
+lil-leap-db-1                  postgres:16-alpine           "docker-entrypoint.s…"   db                  22 hours ago         Up 2 hours (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+lil-leap-frontend-1            lil-leap-frontend            "/docker-entrypoint.…"   frontend            20 minutes ago       Up 20 minutes          0.0.0.0:4200->80/tcp, :::4200->80/tcp
+lil-leap-holdings-1            lil-leap-holdings            "java -jar app.jar"      holdings            20 minutes ago       Up 20 minutes          0.0.0.0:8083->8080/tcp, :::8083->8080/tcp
+lil-leap-insights-1            lil-leap-insights            "java -jar app.jar"      insights            About a minute ago   Up 58 seconds          8088/tcp, 0.0.0.0:8081->8080/tcp, :::8081->8080/tcp
+lil-leap-insights-frontend-1   lil-leap-insights-frontend   "/docker-entrypoint.…"   insights-frontend   22 hours ago         Up 2 hours             0.0.0.0:4201->80/tcp, :::4201->80/tcp
+lil-leap-mailpit-1             axllent/mailpit              "/mailpit"               mailpit             22 hours ago         Up 2 hours (healthy)   0.0.0.0:1025->1025/tcp, :::1025->1025/tcp, 0.0.0.0:8025->8025/tcp, :::8025->8025/tcp, 1110/tcp
+lil-leap-quote-service-1       lil-leap-quote-service       "python -m src.servi…"   quote-service       22 hours ago         Up 2 hours             0.0.0.0:8084->8080/tcp, :::8084->8080/tcp
+
+=== Last logs ===
+insights-1  | 2026-09-29 20:21:02,135 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+insights-1  | 2026-09-29 20:21:02,597 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1fbd5e0
+insights-1  | 2026-09-29 20:21:02,600 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+insights-1  | 2026-09-29 20:21:02,653 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+insights-1  | 2026-09-29 20:21:04,712 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+insights-1  | 2026-09-29 20:21:04,874 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+insights-1  | 2026-09-29 20:21:06,105 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+insights-1  | 2026-09-29 20:21:07,415 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+insights-1  | 2026-09-29 20:21:07,451 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+insights-1  | 2026-09-29 20:21:07,476 INFO  com.neueda.leap.Main - Started Main in 12.113 seconds (process running for 13.244)
+[ec2-user@ip-10-14-141-133 lil-leap]$ TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: '550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', user_role: 'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 2>/dev/null) && echo "Token: $TOKEN" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:8081/api/v1/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | python3 -m json.tool
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJ1c2VyX3JvbGUiOiJUUkFERVIiLCJpYXQiOjE3OTA3MTMzMjAsImV4cCI6MTc5MDcxNjkyMH0.Cjys4A7yC2edSAD1O9jVS6feHxu5f8gtKcVcHyFQExU
+{
+    "quoteId": "098a07fe-dccb-4aa5-b4ff-64e406478719",
+    "instrumentId": "1677156c-5d4a-4e1f-ac3b-1b978e6ba522",
+    "symbol": "AAPL",
+    "marketCode": "NASDAQ",
+    "bid": 224.955,
+    "ask": 225.045,
+    "midpoint": 225.0,
+    "quotedAt": "2026-09-29T20:21:56Z",
+    "currency": "USD",
+    "source": "SYNTHETIC_GBM",
+    "synthetic": true
+}
+[ec2-user@ip-10-14-141-133 lil-leap]$ echo "=== Via nginx proxy (port 4200) ===" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:4200/api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | python3 -m json.tool && echo -e "\n=== Test history endpoint ===" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:8081/api/v1/quotes/history/1677156c-5d4a-4e1f-ac3b-1b978e6ba522?limit=3' | python3 -m json.tool | head -30
+=== Via nginx proxy (port 4200) ===
+{
+    "quoteId": "05ced3a5-ccbc-48b3-8f75-f0ced139cb6f",
+    "instrumentId": "1677156c-5d4a-4e1f-ac3b-1b978e6ba522",
+    "symbol": "AAPL",
+    "marketCode": "NASDAQ",
+    "bid": 224.955,
+    "ask": 225.045,
+    "midpoint": 225.0,
+    "quotedAt": "2026-09-29T20:22:06Z",
+    "currency": "USD",
+    "source": "SYNTHETIC_GBM",
+    "synthetic": true
 }
 
+=== Test history endpoint ===
+[
+    {
+        "quoteId": "05ced3a5-ccbc-48b3-8f75-f0ced139cb6f",
+        "instrumentId": "1677156c-5d4a-4e1f-ac3b-1b978e6ba522",
+        "symbol": "AAPL",
+        "marketCode": "NASDAQ",
+        "bid": 224.955,
+        "ask": 225.045,
+        "midpoint": 225.0,
+        "quotedAt": "2026-09-29T20:22:06Z",
+        "currency": "USD",
+        "source": "SYNTHETIC_GBM",
+        "synthetic": true
+    },
+    {
+        "quoteId": "cd5f2c9d-0938-44d1-b9a3-46295d63065a",
+        "instrumentId": "1677156c-5d4a-4e1f-ac3b-1b978e6ba522",
+        "symbol": "AAPL",
+        "marketCode": "NASDAQ",
+        "bid": 224.955,
+        "ask": 225.045,
+        "midpoint": 225.0,
+        "quotedAt": "2026-09-29T20:22:01Z",
+        "currency": "USD",
+        "source": "SYNTHETIC_GBM",
+        "synthetic": true
+    },
+    {
+        "quoteId": "098a07fe-dccb-4aa5-b4ff-64e406478719",
+        "instrumentId": "1677156c-5d4a-4e1f-ac3b-1b978e6ba522",
+[ec2-user@ip-10-14-141-133 lil-leap]$ GET /api/v1/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL
+→ 200 OK with quote data
+[1] 56302
+-bash: GET: command not found
+-bash: →: command not found
+[1]+  Exit 127                GET /api/v1/quotes/latest/by-market-symbol?market=NASDAQ
+[ec2-user@ip-10-14-141-133 lil-leap]$ echo "=== QUOTE API WORKING ===" && TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: '550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', user_role: 'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 2>/dev/null) && echo "TOKEN=$TOKEN" && echo -e "\n=== DIRECT API (port 8081) ===" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:8081/api/v1/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' && echo -e "\n\n=== NGINX PROXY (port 4200) ===" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:4200/api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' && echo -e "\n\n=== HISTORY ENDPOINT ===" && curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:8081/api/v1/quotes/history/1677156c-5d4a-4e1f-ac3b-1b978e6ba522?limit=2'
+=== QUOTE API WORKING ===
+TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJ1c2VyX3JvbGUiOiJUUkFERVIiLCJpYXQiOjE3OTA3MTM4NDgsImV4cCI6MTc5MDcxNzQ0OH0.HUE2PDzmchltjetQCY0n_i4vlp1wAALLkEEFEDDgh0c
 
+=== DIRECT API (port 8081) ===
+{"quoteId":"040c2b7c-5a35-4c6f-825e-b61f07e60034","instrumentId":"1677156c-5d4a-4e1f-ac3b-1b978e6ba522","symbol":"AAPL","marketCode":"NASDAQ","bid":224.95500000,"ask":225.04500000,"midpoint":225.00000000,"quotedAt":"2026-09-29T20:30:46Z","currency":"USD","source":"SYNTHETIC_GBM","synthetic":true}
 
+=== NGINX PROXY (port 4200) ===
+{"quoteId":"040c2b7c-5a35-4c6f-825e-b61f07e60034","instrumentId":"1677156c-5d4a-4e1f-ac3b-1b978e6ba522","symbol":"AAPL","marketCode":"NASDAQ","bid":224.95500000,"ask":225.04500000,"midpoint":225.00000000,"quotedAt":"2026-09-29T20:30:46Z","currency":"USD","source":"SYNTHETIC_GBM","synthetic":true}
 
-Code: JdbcQuoteRepository Query
-File: JdbcQuoteRepository.java:50
-
-
-public Optional<MarketQuote> findLatestByMarketAndSymbol(String market, String symbol) {
-    return jdbc
-            .query(
-                    SELECT
-                            + "WHERE i.market_code=? AND i.symbol=? AND i.enabled AND"
-                            + " i.tradable"
-                            + ORDER,
-                    mapper,
-                    market.trim().toUpperCase(Locale.ROOT),
-                    symbol.trim().toUpperCase(Locale.ROOT))
-            .stream()
-            .findFirst();
-}
-
-SELECT constant:
-
-private static final String SELECT =
-        "SELECT q.quote_id,i.instrument_id,i.symbol,i.market_code,q.bid,q.ask,ROUND((q.bid+q.ask)/2,8) midpoint,q.quoted_at,q.source,q.is_synthetic FROM quotes q JOIN instruments i ON i.instrument_id=q.instrument_id ";
-
-private static final String ORDER =
-        " ORDER BY q.quoted_at DESC,q.created_at DESC,q.quote_id DESC LIMIT 1";
-
-
-Database Verification
-AAPL/NASDAQ Status ✅
-
-Instrument exists: 1677156c-5d4a-4e1f-ac3b-1b978e6ba522
-enabled=true, tradable=true
-1511 quotes in database for AAPL/NASDAQ
-The Build Success
-[+] Building 47.1s (17/17) FINISHED
-=> [insights build 6/6] RUN mvn -B clean package -DskipTests    15.0s
-=> [insights] exporting to image
-=> => writing image sha256:83b27651efd28a9eef28cca3bccd14fa54f25e0bf269bec94720caeaa57ddbc7
-
-Maven compilation succeeded - Java source code with routing fix compiled correctly.
-
-Current Response Behavior
-
-
-TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: '550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', userRole: 'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 2>/dev/null)
-
-curl -s -H "Authorization: Bearer $TOKEN" \
-  'http://localhost:4200/api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | jq .
-
-
-  Response:
-
-  jq: parse error: Invalid numeric literal at line 1, column 7
-
-  What this means: Response is NOT valid JSON. Character 7 of line 1 is hitting something like < (HTML tag) or a number without quotes.
-
-Nginx Configuration
-
-location /api/quotes/ {
-    rewrite ^/api/quotes/(.*)$ /api/v1/quotes/$1 break;
-    proxy_pass http://insights:8080;
-    proxy_http_version 1.1;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-}
-
-
-Routing chain:
-
-Request: /api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL
-After nginx rewrite: /api/v1/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL
-Spring Boot context path: /api/v1
-Controller mapping: /quotes
-Final resolved path: /api/v1/quotes/latest/by-market-symbol ✅
-Security Configuration
-File: SecurityConfig.java:74
-
-
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtService jwtService) throws Exception {
-    http
-        .authorizeHttpRequests(auth -> auth
-                .anyRequest().authenticated())  // ALL requests require auth
-        .addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
-    return http.build();
-}
-
-JWT authentication filter:
-
-Optional<JwtPrincipal> principal = jwtService.validate(token);
-
-if (principal.isEmpty()) {
-    response.setStatus(HttpStatus.UNAUTHORIZED.value());
-    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-    response.getWriter().write(
-            "{\"error\":\"INVALID_TOKEN\",\"message\":\"Invalid or expired token.\"}");
-    return;
-}
-
-Global exception handler:
-
-@ExceptionHandler(ResponseStatusException.class)
-public ResponseEntity<Map<String, String>> handleStatusException(ResponseStatusException exception) {
-    return ResponseEntity.status(exception.getStatusCode()).body(Map.of(
-            "error", "REQUEST_FAILED", "message", "The request could not be completed."));
-}
-
-@ExceptionHandler(Exception.class)
-public ResponseEntity<Map<String, String>> handleUnexpectedException(Exception exception) {
-    if (exception instanceof ErrorResponse error) {
-        return ResponseEntity.status(error.getStatusCode()).headers(error.getHeaders()).body(Map.of(
-                "error", "REQUEST_FAILED", "message", "The request could not be completed."));
-    }
-    log.error("Request failed exceptionType={}", exception.getClass().getSimpleName());
-    return ResponseEntity.internalServerError().body(Map.of(
-            "error", "INTERNAL_ERROR", "message", "The request could not be completed."));
-}
-
-The Weird Part
-✅ Build succeeded - code compiled
-✅ Auth token validates - no 401 error
-✅ Database has 1511 quotes for AAPL
-✅ nginx routing is correct (no 502)
-❌ Response is not JSON (jq parse error at column 7 of line 1)
-Hypothesis: The controller is either:
-
-Crashing before returning (but exception handler should catch it)
-Returning something that isn't JSON (HTML, plain text, or binary)
-Being routed to the wrong place despite successful build
-The container running old code somehow
-Immediate test needed: Raw response without jq to see actual bytes.
+=== HISTORY ENDPOINT ===
+[{"quoteId":"040c2b7c-5a35-4c6f-825e-b61f07e60034","instrumentId":"1677156c-5d4a-4e1f-ac3b-1b978e6ba522","symbol":"AAPL","marketCode":"NASDAQ","bid":224.95500000,"ask":225.04500000,"midpoint":225.00000000,"quotedAt":"2026-09-29T20:30:46Z","currency":"USD","source":"SYNTHETIC_GBM","synthetic":true},{"quoteId":"d927411f-66b5-4ed1-8f4f-e7e202d05be4","instrumentId":"1677156c-5d4a-4e1f-ac3b-1b978e6ba522","symbol":"AAPL","marketCode":"NASDAQ","bid":224.95500000,"ask":225.04500000,"midpoint":225.00000000,"quotedAt":"2026-09-29T20:30:41Z","currency":"USD","source":"SYNTHETIC_GBM","synthetic":true}][ec2-user@ip-10-14-141-133 lil-leap]$ 
