@@ -1,0 +1,196 @@
+Quote API Debugging Summary - Detailed Analysis
+The Problem Statement
+After routing through nginx to the insights service, the Quote API endpoint is returning an unparseable response (not valid JSON), which causes jq to fail with "Invalid numeric literal at line 1, column 7". The endpoint exists, authentication passes, but something is failing silently.
+
+Architecture Chain
+User Request
+    ↓
+nginx (localhost:4200)
+    ↓
+Rewrite: /api/quotes/* → /api/v1/quotes/*
+    ↓
+Proxy to http://insights:8080
+    ↓
+Spring Boot app (context path: /api/v1)
+    ↓
+QuoteController (mapped to: /quotes)
+    ↓
+Final Route: /api/v1/quotes
+    ↓
+Repository → Database
+
+Code: QuoteController
+File: QuoteController.java:30
+
+@RestController
+@RequestMapping("/quotes")  // ← WAS "/api/quotes" - FIXED
+public class QuoteController {
+    private final QuoteRepository repository;
+    
+    @GetMapping("/latest/by-market-symbol")
+    public QuoteResponse getLatestByMarketSymbol(
+            @RequestParam("market") String market,
+            @RequestParam("symbol") String symbol) {
+        // Normalize and query
+        String normalizedMarket = market.trim().toUpperCase(java.util.Locale.ROOT);
+        String normalizedSymbol = symbol.trim().toUpperCase(java.util.Locale.ROOT);
+        MarketQuote quote = repository
+                .findLatestByMarketAndSymbol(normalizedMarket, normalizedSymbol)
+                .orElseThrow(() -> new QuoteNotFoundException(
+                        String.format("No quote found for market %s and symbol %s", market, symbol)));
+        return QuoteResponse.from(quote);
+    }
+
+    @ExceptionHandler(QuoteNotFoundException.class)
+    public ResponseEntity<Map<String, String>> quoteNotFound(QuoteNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
+                "code", "QUOTE_NOT_FOUND",
+                "message", exception.getMessage()
+        ));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> invalidRequest(IllegalArgumentException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "code", "INVALID_REQUEST",
+                "message", exception.getMessage()
+        ));
+    }
+}
+
+
+
+
+Code: JdbcQuoteRepository Query
+File: JdbcQuoteRepository.java:50
+
+
+public Optional<MarketQuote> findLatestByMarketAndSymbol(String market, String symbol) {
+    return jdbc
+            .query(
+                    SELECT
+                            + "WHERE i.market_code=? AND i.symbol=? AND i.enabled AND"
+                            + " i.tradable"
+                            + ORDER,
+                    mapper,
+                    market.trim().toUpperCase(Locale.ROOT),
+                    symbol.trim().toUpperCase(Locale.ROOT))
+            .stream()
+            .findFirst();
+}
+
+SELECT constant:
+
+private static final String SELECT =
+        "SELECT q.quote_id,i.instrument_id,i.symbol,i.market_code,q.bid,q.ask,ROUND((q.bid+q.ask)/2,8) midpoint,q.quoted_at,q.source,q.is_synthetic FROM quotes q JOIN instruments i ON i.instrument_id=q.instrument_id ";
+
+private static final String ORDER =
+        " ORDER BY q.quoted_at DESC,q.created_at DESC,q.quote_id DESC LIMIT 1";
+
+
+Database Verification
+AAPL/NASDAQ Status ✅
+
+Instrument exists: 1677156c-5d4a-4e1f-ac3b-1b978e6ba522
+enabled=true, tradable=true
+1511 quotes in database for AAPL/NASDAQ
+The Build Success
+[+] Building 47.1s (17/17) FINISHED
+=> [insights build 6/6] RUN mvn -B clean package -DskipTests    15.0s
+=> [insights] exporting to image
+=> => writing image sha256:83b27651efd28a9eef28cca3bccd14fa54f25e0bf269bec94720caeaa57ddbc7
+
+Maven compilation succeeded - Java source code with routing fix compiled correctly.
+
+Current Response Behavior
+
+
+TOKEN=$(docker exec lil-leap-auth-1 node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({sub: '550e8400-e29b-41d4-a716-446655440000', email: 'test@example.com', userRole: 'TRADER'}, 'nexttrade-shared-dev-secret-32bytes-min', { expiresIn: '1h' }));" 2>/dev/null)
+
+curl -s -H "Authorization: Bearer $TOKEN" \
+  'http://localhost:4200/api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL' | jq .
+
+
+  Response:
+
+  jq: parse error: Invalid numeric literal at line 1, column 7
+
+  What this means: Response is NOT valid JSON. Character 7 of line 1 is hitting something like < (HTML tag) or a number without quotes.
+
+Nginx Configuration
+
+location /api/quotes/ {
+    rewrite ^/api/quotes/(.*)$ /api/v1/quotes/$1 break;
+    proxy_pass http://insights:8080;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+
+Routing chain:
+
+Request: /api/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL
+After nginx rewrite: /api/v1/quotes/latest/by-market-symbol?market=NASDAQ&symbol=AAPL
+Spring Boot context path: /api/v1
+Controller mapping: /quotes
+Final resolved path: /api/v1/quotes/latest/by-market-symbol ✅
+Security Configuration
+File: SecurityConfig.java:74
+
+
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtService jwtService) throws Exception {
+    http
+        .authorizeHttpRequests(auth -> auth
+                .anyRequest().authenticated())  // ALL requests require auth
+        .addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
+    return http.build();
+}
+
+JWT authentication filter:
+
+Optional<JwtPrincipal> principal = jwtService.validate(token);
+
+if (principal.isEmpty()) {
+    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+    response.getWriter().write(
+            "{\"error\":\"INVALID_TOKEN\",\"message\":\"Invalid or expired token.\"}");
+    return;
+}
+
+Global exception handler:
+
+@ExceptionHandler(ResponseStatusException.class)
+public ResponseEntity<Map<String, String>> handleStatusException(ResponseStatusException exception) {
+    return ResponseEntity.status(exception.getStatusCode()).body(Map.of(
+            "error", "REQUEST_FAILED", "message", "The request could not be completed."));
+}
+
+@ExceptionHandler(Exception.class)
+public ResponseEntity<Map<String, String>> handleUnexpectedException(Exception exception) {
+    if (exception instanceof ErrorResponse error) {
+        return ResponseEntity.status(error.getStatusCode()).headers(error.getHeaders()).body(Map.of(
+                "error", "REQUEST_FAILED", "message", "The request could not be completed."));
+    }
+    log.error("Request failed exceptionType={}", exception.getClass().getSimpleName());
+    return ResponseEntity.internalServerError().body(Map.of(
+            "error", "INTERNAL_ERROR", "message", "The request could not be completed."));
+}
+
+The Weird Part
+✅ Build succeeded - code compiled
+✅ Auth token validates - no 401 error
+✅ Database has 1511 quotes for AAPL
+✅ nginx routing is correct (no 502)
+❌ Response is not JSON (jq parse error at column 7 of line 1)
+Hypothesis: The controller is either:
+
+Crashing before returning (but exception handler should catch it)
+Returning something that isn't JSON (HTML, plain text, or binary)
+Being routed to the wrong place despite successful build
+The container running old code somehow
+Immediate test needed: Raw response without jq to see actual bytes.
