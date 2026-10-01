@@ -1,34 +1,4 @@
-I'll audit the main branch for the Must MVP golden path. Let me systematically trace this exact flow and identify all components, integrations, and gaps.   
-
-Read , lines 1 to 60
-
-Read , lines 1 to 100
-
-Read , lines 1 to 100
-
-Now let me trace the exact flow. I'll examine each step of the golden path:    
-
-Read 
-
-Read 
-
-Read , lines 1 to 150
-
-Searched for text `CREATE TABLE orders` (`**/db/finalized-schema.sql`), 1 result
-
-Searched for text `CREATE TABLE fills` (`**/db/finalized-schema.sql`), 1 result
-
-Searched for text `CREATE TABLE quotes` (`**/db/finalized-schema.sql`), 1 result
-
-Searched for text `CREATE TABLE holdings` (`**/db/finalized-schema.sql`), 1 result
-
-Read , lines 295 to 375
-
-Read , lines 376 to 473
-
-Read , lines 425 to 530
-
-Read 
+I'll quickly verify each of the previous audit findings against the current rebased state.   
 
 Read 
 
@@ -36,9 +6,21 @@ No matches found. Your search pattern might be excluded completely by either the
 If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
 Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
 
+Read , lines 330 to 420
+
 No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
 If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
 Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
+
+Read 
+
+No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
+If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
+Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
+
+Read 
+
+Read 
 
 Read 
 
@@ -58,17 +40,11 @@ Read
 
 Read 
 
-Read , lines 1 to 100
-
-Read , lines 1 to 100
-
 Read 
 
-Read , lines 80 to 153
+Read , lines 1 to 50
 
-No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
-If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
-Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
+Read 
 
 Read , lines 1 to 50
 
@@ -80,77 +56,9 @@ Read
 
 Read 
 
-Trace complete golden path flow
-
-Semantic workspace search is not currently available
-
-Searched for files matching `**/*.ts`, 50 matches
-
-Searched for files matching `**/*.java`, 50 matches
-
-Searched for regex `@PostMapping|@GetMapping.*order|@RequestMapping` (`**/*.java`), 9 results
-
-Read , lines 1 to 200
-
-Read , lines 200 to 600
-
-Read 
-
-Read , lines 100 to 600
-
-Read , lines 1 to 150
-
-Read , lines 1 to 150
-
-Read , lines 150 to 200
-
-Read 
-
-Read , lines 1 to 100
-
-Searched for regex `login|signIn|submit.*order|order.*submit` (`**/*.ts`), 74 results
-
 Read 
 
 Read 
-
-Read 
-
-Read , lines 1 to 150
-
-Read 
-
-Searched for regex `advanced-ticket|ticket.*submit|order.*form|form.*submit` (`**/*.ts`), 5 results
-
-Read , lines 70 to 243
-
-Searched for regex `CREATE TABLE audit_log` (`**/finalized-schema.sql`), 1 result
-
-Read , lines 663 to 750
-
-Read 
-
-Read 
-
-Searched for files matching `**/*.html`, 20 matches
-
-Read 
-
-Read 
-
-Searched for files matching `**/advanced-ticket.html`, 1 match
-
-Read , lines 1 to 100
-
-Read , lines 1 to 150
-
-Read , lines 1 to 100
-
-Read , lines 1 to 50
-
-Read , lines 1 to 100
-
-Created memory file 
 
 Read 
 
@@ -158,47 +66,27 @@ No matches found. Your search pattern might be excluded completely by either the
 If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
 Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
 
-No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
-If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
-Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
+Read , lines 80 to 390
 
-Read 
+Read , lines 1 to 30
 
 No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
 If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
 Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
 
-Read 
+Read , lines 1 to 25
+
+Read , lines 30 to 50
+
+Read , lines 50 to 75
+
+Read , lines 1 to 40
 
 Read 
 
 Read 
 
 Read 
-
-Read 
-
-Read 
-
-Read 
-
-Read 
-
-Read , lines 1 to 100
-
-Read , lines 1 to 50
-
-Read 
-
-Read memory
-
-Read 
-
-Read 
-
-Read 
-
-Read , lines 1 to 150
 
 Read 
 
@@ -206,248 +94,333 @@ No matches found. Your search pattern might be excluded completely by either the
 If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
 Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
 
-Read 
+## Rebased Golden Path: Findings
 
-Read , lines 1 to 50
-
-No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
-If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
-Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
-
-Read , lines 40 to 82
-
-No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
-If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
-Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
-
-Read , lines 1 to 50
-
-Read 
-
-Read 
-
-Now let me generate a comprehensive audit by checking frontend components and verify all the integrations: 
-
-Audit frontend integration endpoints
-
-Read memory
-
-Read memory 
-
-Read 
-
-Read 
-
-Read 
-
-Read , lines 1 to 100
-
-Read , lines 1 to 100
-
-Read 
-
-Read 
-
-Searched for regex `holdings|balance|cash|portfolio` (`**/frontend/src/app/**`), 128 results
-
-Read 
-
-Read , lines 1 to 100
-
-Searched for regex `http\.get|http\.post|fetch|api/|baseUrl` (`**/frontend/src/app/**`), 29 results
-
-Searched for regex `Injectable|service\.ts` (`**/frontend/src/app/**`), 8 results
-
-Read , lines 1 to 100
-
-Searched for files matching `**/frontend/src/app/**/*.ts`, 20 matches
-
-Read 
-
-Read , lines 1 to 150
-
-Searched for regex `/api|/clients|/orders|/quotes|/holdings|/cash|/balance` (`**/frontend/src/app/**`), 5 results
-
-Read 
-
-Read 
-
-Read 
-
-Read , lines 100 to 250
-
-Searched for regex `reviewOrder|submitOrder|desk\(\)|fetch\(` (`**/frontend/src/app/**`), 73 results
-
-Read , lines 330 to 400
-
-Read , lines 400 to 432
-
-Read 
-
-Read 
-
-Read memory 
-
-Updated memory file 
-
-Inserted into memory file 
-
-Searched for files matching `**/frontend/src/app/**/*-api.ts`, 2 matches
-
-No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
-If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
-Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
-
-Read 
-
-Now let me create the audit report. I'll verify a few more critical points and then compile the findings:  
-
-Read , lines 1 to 100
-
-Read , lines 1 to 50
-
-Now I'll create a comprehensive audit report: 
-
-Created 
-
-Created memory file 
-
-## Audit Complete ✅
-
-I've traced the entire Must MVP golden path. **The flow breaks at the critical first integration boundary: frontend order submission never reaches the backend.**
-
-### **Report Location**  
-`AUDIT-MVP-GOLDEN-PATH.md` — Comprehensive step-by-step trace of all 11 flow steps with exact file paths, endpoints, tests, and status
-
----
-
-## **First Broken Boundary**
-
-**Location:** `advanced-dashboard.ts:346-416` → `OrderController.java:48`
-
-**Problem:** `confirmOrder()` updates local signals only; never POSTs to `/api/orders`
+### **1. Advanced-Dashboard confirmOrder() Status**  
+❌ **STILL BROKEN** — No change from previous audit
 
 ```typescript
-// Current: All local, no backend call
+// Still only mutates local state (lines 342-416 in advanced-dashboard.ts)
 confirmOrder(): void {
   const order = { id: Date.now(), ... };
-  this.buyingPower.update(v => v - cost);  // ← Mock update
-  this.orders.update(list => [order, ...list]);  // ← Local only
-  // ❌ No fetch('/api/orders', ...)
+  this.buyingPower.update((v) => ...);     // ← Local only
+  this.portfolio.update((v) => ...);       // ← Local only
+  this.positions.update((list) => [...]);  // ← Local only
+  this.orders.update((list) => [...]);     // ← Local only
+  // ❌ No fetch() or HTTP POST to backend
 }
 ```
 
-**Impact:** Execution, settlement, audit trail, holdings/cash updates all unreachable
+### **2. Order Submission URL**  
+✅ **NOW DOCUMENTED** (Previously hidden)
+
+- **Exact URL:** `POST /api/v1/orders` (with gateway at :4200)
+- **Frontend calls:** None (no service client exists)
+- **Backend endpoint:** `OrderSubmissionController.submit()` in nextTrade-orders:8082
+- **Controller path:** `/orders` + context-path `/api/v1` = `/api/v1/orders`
+- **Mapping:** `@PostMapping` (line 36 in OrderSubmissionController)
+
+### **3. Nginx Routing for Orders**  
+⚠️ **CHANGED (Improved)**
+
+**Previous audit (invalid now):**
+```nginx
+# Old frontend/nginx.conf had wrong routing
+```
+
+**Current (gateway/nginx.conf line 16):**
+```nginx
+location = /api/v1/orders { proxy_pass http://$order_backend; }
+```
+
+Where `$order_backend` is a method-based map:
+- `POST /api/v1/orders` → `orders:8082` ✅
+- `GET /api/v1/orders` → Would fail (no such endpoint), but...
+- `GET /api/v1/clients/{id}/orders` → handled by separate regex route → `holdings:8080` ✅
+
+**Exact match caveat:** Only matches `/api/v1/orders` exactly, not nested paths. But nested paths are routed separately (see #4 below).
+
+### **4. Service Ownership Map (POST-MIGRATION)**
+
+| Resource | Endpoint Pattern | Service | Port | Endpoint Handler |
+|----------|------------------|---------|------|------------------|
+| **Order Submission (Write)** | `POST /api/v1/orders` | orders | 8082 | `OrderSubmissionController.submit()` |
+| **Order History (Read)** | `GET /api/v1/clients/{id}/orders` | holdings | 8080 | `OrderHistoryController.getOrders()` |
+| **Holdings (Read)** | `GET /api/v1/(accounts\|holdings\|cash\|instruments)` | holdings | 8080 | `ClientFinancialController` |
+| **Portfolio Summary** | `GET /api/v1/clients/{id}/portfolio-summary` | holdings | 8080 | `ClientFinancialController` |
+| **Cash (Read)** | `GET /api/v1/clients/{id}/cash` | holdings | 8080 | `CashController` |
+| **Quotes** | `GET /api/v1/quotes/(latest/\|history/)` | holdings | 8080 | ❓ (Quote read delegation) |
+| **Quotes** | `GET /api/v1/quotes/*` (other) | quote-service | 8083 | Quote endpoints |
+
+**Key Change:** Holdings service (8080) now owns all portfolio/financial read endpoints that were previously in Insights.
+
+### **5. Frontend-Facing Routes (Gateway :4200)**
+
+From [gateway/nginx.conf lines 14-22]:
+
+```
+/auth/*                                     → auth:8081
+/rules/*                                    → auth:8081
+POST /api/v1/orders                         → orders:8082
+GET /api/v1/quotes/(latest/|history/)       → holdings:8080
+GET /api/v1/clients/{id}/(cash|holdings|orders|portfolio-summary) → holdings:8080
+GET /api/v1/quotes/*                        → quote-service:8083
+GET /api/v1/(accounts|holdings|cash|instruments) → holdings:8080
+/api/*                                      → 404
+/                                           → frontend:80
+```
+
+**Exact browser URLs (from localhost:4200):**
+- `POST /api/v1/orders` ✅ Implemented in backend, not called by frontend
+- `GET /api/v1/clients/{userId}/orders` ✅ Working (order history)
+- `GET /api/v1/clients/{userId}/holdings` ✅ Backend ready, frontend still hardcodes
+- `GET /api/v1/clients/{userId}/cash` ✅ Backend ready, frontend still hardcodes
+
+### **6. Duplicate Controllers in Insights**  
+✅ **NONE** — Service migration is clean
+
+**insights:8084 now contains only:**
+- `marketdata/` (quote generation pipeline)
+- `reporting/` (analytics)
+- No `portfolio/`, no `order/`, no financial controllers
+
+**All moved to holdings:8080:**
+- `portfolio/controller/ClientFinancialController.java` (holdings, cash, portfolio-summary)
+- `portfolio/controller/OrderHistoryController.java` (order history reads)
+- `portfolio/controller/CashController.java` (cash balance)
+- `instrument/controller/InstrumentController.java` (instruments)
+
+### **7. Order History Routing**  
+✅ **UNCHANGED, WORKING**
+
+- Frontend: `order-history.service.ts` calls `GET /api/orders/clients/{id}/orders`
+- Nginx rewrite: `/api/orders/` → `/api/v1/` → routes to holdings:8080
+- Backend: `OrderHistoryController.getOrders()` at `/api/v1/clients/{id}/orders`
+- ✅ End-to-end functional
+
+Wait, let me verify the nginx rewrite again. The audit report mentioned a different path. 
+
+Read , lines 1 to 25
+
+Read , lines 50 to 70
+
+Read , lines 25 to 45
+
+No matches found. Your search pattern might be excluded completely by either the search.exclude settings or .*ignore files.
+If you believe that it should have results, you can check into the .*ignore files and the exclude setting (here are some excluded patterns for reference:[**/node_modules,**/bower_components,**/*.code-search]).
+Then if you want to include those files you can call the tool again by setting "includeIgnoredFiles" to true.
+
+Read , lines 30 to 45
 
 ---
 
-## **Secondary Broken Boundaries**
+## Rebase Audit: Changed/Stale Findings
 
-| Issue | Frontend | Backend | Status |
-|-------|----------|---------|--------|
-| **Holdings Display** | Hardcoded signal | ✅ `/api/v1/holdings` (insights) | Needs frontend client + nginx fix |
-| **Cash Display** | Hardcoded signal | ✅ `/api/v1/cash` (orders) | Needs frontend client |
-| **Nginx Routing** | `/api/holdings/` | Routes to wrong service | Fix: point to insights:8080 |
+### **Question 1: Does confirmOrder() still only mutate local state?**  
+❌ **YES, still broken** — No change  
 
----
-
-## **Working Golden Path Steps**
-
-✅ **1. LOGIN** — `POST /auth/login` → JWT with trader_level, user_role  
-✅ **2. BROWSE QUOTES** — `GET /api/quotes/latest/{id}` → Synthetic quotes polling  
-✅ **3. (Backend Ready)** — `OrderController.submit()` exists, never called  
-✅ **4-7. (Backend Ready)** — Execution, settlement, ledgers, triggers all implemented  
-✅ **10. ORDER HISTORY** — `GET /api/orders/clients/{id}/orders` works end-to-end  
-✅ **11. (Backend Ready)** — Audit events (ORDER_ACCEPTED, PRICE_DECISION, ORDER_FILLED) ready
+Frontend line 391 onwards still has no HTTP call. Remains identical to previous audit.
 
 ---
 
-## **Smallest Changes to Fix MVP (3 Files)**
+### **Question 2: What exact browser-relative URL submits orders?**  
+✅ **NOW CLEAR (Previous audit incomplete):**
 
-### 1. **Create:** `frontend/src/app/order-submission-api.ts`
+- **URL:** `POST /api/v1/orders` (from browser at localhost:4200)
+- **Backend service:** nextTrade-orders:8082
+- **Controller:** `OrderSubmissionController.submit()` at `com.neueda.leap.order.submission.controller`
+- **HTTP Method:** POST (line 37 of `OrderSubmissionController.java`)
+- **Request Body:** `SubmitOrderRequest { accountId, instrumentId, side, quantity, clientReference }`
+- **Response:** `OrderSubmissionResponse { orderId, clientReference, status }`
+
+---
+
+### **Question 3: Does nginx route `/api/orders` and nested paths correctly?**  
+⚠️ **PARTIAL CHANGE (Architecture evolved):**
+
+**Previous audit:** Mentioned `/api/orders/` routes in `nginx.conf`
+
+**Current state:** Frontend nginx.conf is now stripped down (returns 404 for all `/api/*` paths)
+
+**Actual routing (gateway/nginx.conf):**
+| Path | Method | Routing | Target |
+|------|--------|---------|--------|
+| `/api/v1/orders` | POST | `location = /api/v1/orders` | orders:8082 ✅ |
+| `/api/v1/clients/{id}/orders` | GET | `location ~ ^/api/v1/clients/.../orders$` | holdings:8080 ✅ |
+
+**Summary:** Routing changed architecture (frontend → gateway), now correct but differently structured.
+
+---
+
+### **Question 4: Which service owns instruments, holdings, cash, portfolio?**  
+✅ **COMPLETELY CHANGED (Service migration complete)**
+
+**Previous audit conclusion:** Insights owned portfolio/financial endpoints
+
+**Current ownership:**
+- **Holdings Service (nextTrade-holdings:8080)** now owns all:
+  - `ClientFinancialController.java` → holdings, cash, portfolio-summary
+  - `CashController.java` → cash balance reads
+  - `OrderHistoryController.java` → order history reads
+  - `InstrumentController.java` → instruments
+  - `AccountController.java` → accounts
+
+- **Insights (insights:8084)** now limited to:
+  - `marketdata/` (quote pipeline)
+  - `reporting/` (analytics only)
+  - No financial endpoints
+
+**Previous audit was INVALID** — Insights no longer has ClientFinancialController
+
+---
+
+### **Question 5: Exact frontend-facing routes for those APIs?**  
+✅ **NOW ACCURATE:**
+
+From `nginx.conf` (lines 14-22), all routes use context-path `/api/v1`:
+
+```
+POST   /api/v1/orders                                    → orders:8082
+GET    /api/v1/clients/{id}/orders                       → holdings:8080
+GET    /api/v1/clients/{id}/holdings                     → holdings:8080
+GET    /api/v1/clients/{id}/cash                         → holdings:8080
+GET    /api/v1/clients/{id}/portfolio-summary            → holdings:8080
+GET    /api/v1/quotes/latest/{instrumentId}              → holdings:8080
+GET    /api/v1/accounts                                  → holdings:8080
+GET    /api/v1/instruments                               → holdings:8080
+```
+
+**Previous audit routes are STALE** — Said `/api/orders/`, `/api/holdings/`, etc. (different prefix pattern)
+
+---
+
+### **Question 6: Any active duplicate controllers in Insights?**  
+✅ **NO** — All removed
+
+**Verified:** No `ClientFinancialController`, `CashController`, `OrderHistoryController`, or portfolio-related classes in insights source.
+
+Migration is clean.
+
+---
+
+### **Question 7: Does order history route correctly?**  
+✅ **YES, works** — But routing changed
+
+**Previous:** Said `/api/orders/clients/{id}/orders` → orders service  
+**Current:** `GET /api/v1/clients/{id}/orders` → holdings service (reads)
+
+Frontend now correctly calls `/api/v1/clients/{userId}/orders` (from `order-history-api.ts` line 38).
+
+Route works end-to-end ✅
+
+---
+
+### **Question 8: Which prior audit conclusions are unchanged/invalid/superseded?**
+
+| Finding from `AUDIT-MVP-GOLDEN-PATH.md` | Status | Current Truth |
+|-------|--------|---------|
+| **✅ UNCHANGED:** Frontend order submission broken (Step 3) | Still TRUE | confirmOrder() still has no HTTP call |
+| **✅ UNCHANGED:** Order execution unreachable (Step 4) | Still TRUE | No orders in database to execute |
+| **❌ INVALID:** Holdings endpoint at `/api/v1/holdings` (step 6) | SUPERSEDED | Now owned by holdings service; frontend still hardcodes |
+| **❌ INVALID:** Cash endpoint at `/api/orders/clients/{id}/cash` (step 7) | SUPERSEDED | Moved to holdings:8080; frontend still hardcodes |
+| **❌ INVALID:** Order history at orders service | SUPERSEDED | Now read by holdings service (GET); writes still by orders service (POST) |
+| **❌ INVALID:** Nginx routing `/api/holdings/` to wrong service | SUPERSEDED | No longer frontend nginx issue; gateway handles routing correctly |
+| **❌ INVALID:** Duplicate controllers in Insights | FALSE | All controllers removed; migration complete |
+| **⚠️ PARTIALLY STALE:** Service architecture | EVOLVED | `nginx.conf` is now stateless; gateway handles all routing |
+
+---
+
+## Summary: Current Broken Boundary
+
+**UNCHANGED:** Frontend order submission → Backend OrderController
+
+- **Exact URL:** `POST /api/v1/orders`
+- **Frontend status:** Still no HTTP call (confirmOrder() mutates local signals only)
+- **Backend status:** ✅ Endpoint exists at `OrderSubmissionController.submit()`
+- **Routing status:** ✅ Gateway routes POST to orders:8082 correctly
+- **Issue:** Frontend never sends request
+
+---
+
+## Current Service Ownership Map
+
+```
+4200/gateway
+├─ POST /api/v1/orders → orders:8082 (OrderSubmissionController.submit)
+├─ GET  /api/v1/clients/{id}/orders → holdings:8080 (OrderHistoryController)
+├─ GET  /api/v1/clients/{id}/holdings → holdings:8080 (ClientFinancialController)
+├─ GET  /api/v1/clients/{id}/cash → holdings:8080 (CashController)
+├─ GET  /api/v1/clients/{id}/portfolio-summary → holdings:8080 (ClientFinancialController)
+├─ GET  /api/v1/quotes/latest/* → holdings:8080
+├─ GET  /api/v1/quotes/* → quote-service:8083
+├─ GET  /api/v1/accounts → holdings:8080
+├─ GET  /api/v1/instruments → holdings:8080
+└─ /auth/* → auth:8081
+```
+
+---
+
+## Smallest Next Fix
+
+**Single file change:**
+
+Add `order-submission-api.ts` to frontend:
+
 ```typescript
 export class OrderSubmissionClient {
-  async submit(accountId, instrumentId, side, quantity): Promise<OrderSubmissionResponse> {
-    return fetch('/api/orders', {
+  async submit(accountId, instrumentId, side, quantity): Promise<{orderId: string, status: string}> {
+    return fetch('/api/v1/orders', {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}` },
-      body: JSON.stringify({ accountId, instrumentId, side, quantity, clientReference })
+      headers: { 'Authorization': `Bearer ${this.tokens.accessToken}` },
+      body: JSON.stringify({ accountId, instrumentId, side, quantity, clientReference: crypto.randomUUID() })
     }).then(r => r.json());
   }
 }
 ```
 
-### 2. **Modify:** `advanced-dashboard.ts` (confirmOrder method)
+Then modify `advanced-dashboard.ts` confirmOrder() to:
 ```typescript
 async confirmOrder(): Promise<void> {
-  const response = await this.submissionClient.submit({
-    accountId: this.accountId(),
-    instrumentId: this.selected().instrumentId,
-    side: this.side(),
-    quantity: this.qty()
-  });
-  // Order submitted; scheduler will execute within ~5 seconds
+  const result = await this.submissionClient.submit(...);
+  // Order submitted to backend; execution happens in scheduler
 }
 ```
 
-### 3. **Fix:** `nginx.conf` (line 29-37)
-```nginx
-# Change from: proxy_pass http://holdings:8080;
-# To:
-rewrite ^/api/holdings/(.*)$ /api/v1/holdings/$1 break;
-proxy_pass http://insights:8080;
-```
-
 ---
 
-## **Exact Verification Commands**
+## Exact Verification Commands
 
 ```bash
-# 1. Get JWT
+# 1. Verify POST /api/v1/orders routing (gateway → orders service)
+curl -i -X POST http://localhost:4200/api/v1/orders \
+  -H "Authorization: Bearer $(curl -s -X POST http://localhost:4200/auth/login -H 'Content-Type: application/json' -d '{"email":"trader@example.com","password":"pwd"}' | jq -r .accessToken)" \
+  -H "Content-Type: application/json" \
+  -d '{"accountId":"12345","instrumentId":"67890","side":"BUY","quantity":10}'
+# Expected: 201 Created (or 400 if validation fails) from orders service
+
+# 2. Verify GET /api/v1/clients/{id}/orders routing (gateway → holdings service)
 TOKEN=$(curl -s -X POST http://localhost:4200/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"trader@example.com","password":"pwd"}' | jq -r .accessToken)
+USER_ID=$(echo "$TOKEN" | cut -d. -f2 | base64 -d | jq -r .sub)
 
-# 2. Submit order (requires fix above)
-ORDER=$(curl -s -X POST http://localhost:4200/api/orders \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"accountId":"...","instrumentId":"...","side":"BUY","quantity":10}' | jq -r .orderId)
+curl -i http://localhost:4200/api/v1/clients/$USER_ID/orders \
+  -H "Authorization: Bearer $TOKEN"
+# Expected: 200 OK with order history array from holdings service
 
-# 3. Wait for scheduler (5 sec) and verify execution
-sleep 6
-psql -h localhost -U app_user -d nexttrade -c \
-  "SELECT event_type, payload FROM audit_log WHERE related_order_id = '$ORDER' ORDER BY created_at ASC;"
+# 3. Verify holdings ownership moved to holdings service
+curl -i http://localhost:4200/api/v1/clients/$USER_ID/holdings \
+  -H "Authorization: Bearer $TOKEN"
+# Expected: 200 OK with holdings array from holdings:8080
 
-# 4. Verify holdings updated
-psql -h localhost -U app_user -d nexttrade -c \
-  "SELECT quantity FROM holdings WHERE account_id = '...';"
-
-# 5. Verify cash updated
-psql -h localhost -U app_user -d nexttrade -c \
-  "SELECT balance FROM cash_balances WHERE account_id = '...';"
+# 4. Verify no duplicates in insights
+curl -i http://localhost:4200/api/v1/portfolio \
+  -H "Authorization: Bearer $TOKEN"
+# Expected: 404 (endpoint not found, doesn't exist in insights anymore)
 ```
 
----
 
-## **Database Readiness**
-
-✅ Schema complete (orders, fills, holding_movements, cash_transactions, holdings, cash_balances, audit_log)  
-✅ Constraints in place (negative balance/quantity prevention)  
-✅ Triggers implemented (holdings + cash cache updates on fill)  
-✅ Ledger pattern ready (append-only, idempotent)  
-✅ Audit log schema with JSONB payloads
-
-All awaiting data from frontend → backend order submission
-
----
-
-**No edit, commit, or push — audit only. Report saved to:** `AUDIT-MVP-GOLDEN-PATH.md`
-
-Made changes.
-
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 
 # NextTrade Must MVP Golden Path Audit
 
@@ -1457,5 +1430,4 @@ location /api/holdings/ {
 
 ### Verification Commands
 See "Deployment Verification Commands" section above for curl-based testing of each step.
-
 
